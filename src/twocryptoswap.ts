@@ -347,7 +347,7 @@ export class MathUtils {
             const mul1 = (((((10n ** 18n * D) / gamma) * _g1k0) / gamma) * _g1k0 * this.A_MULTIPLIER) / ann;
             const mul2 = (2n * 10n ** 18n * this.N_COINS * k0) / _g1k0;
 
-            const neg_fprime = S + (S * mul2 * 10n ** 18n) + (mul1 * this.N_COINS / k0) - (mul2 * D) / 10n ** 18n;
+            const neg_fprime = S + (S * mul2 / 10n ** 18n) + (mul1 * this.N_COINS / k0) - (mul2 * D) / 10n ** 18n;
 
             let D_plus = (D * (neg_fprime + S) / neg_fprime);
             let D_minus = D * D / neg_fprime;
