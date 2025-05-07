@@ -1,174 +1,12 @@
 const { ethers } = require("ethers");
-
-export class MathUtils {
-    static readonly N_COINS = 2n;
-
-    static snekmateLog2(x: bigint, roundup: boolean): bigint {
-        let value = x;
-        let result = 0n;
-        if (x >> 128n !== 0n) {
-            value = x >> 128n;
-            result = 128n
-        }
-        if (value >> 64n !== 0n) {
-            value = value >> 64n;
-            result += 64n
-        }
-        if (value >> 32n !== 0n) {
-            value = value >> 32n;
-            result += 32n
-        }
-        if (value >> 16n !== 0n) {
-            value = value >> 16n;
-            result += 16n
-        }
-        if (value >> 8n !== 0n) {   
-            value = value >> 8n;
-            result += 8n
-        }
-        if (value >> 4n !== 0n) {
-            value = value >> 4n;
-            result += 4n
-        }
-        if (value >> 2n !== 0n) {
-            value = value >> 2n;
-            result += 2n
-        }
-        if (value >> 1n !== 0n) {
-            result += 1n
-        }
-
-        if (roundup && (1n << result) < x) {
-            result += 1n
-        }
-        return result;
-    }
-
-    static cbrt(x: bigint): bigint {
-        let xx = 0n;
-
-        if (x >= 115792089237316195423570985008687907853269n * 10n ** 18n) {
-            xx = x;
-        } else if (x >= 115792089237316195423570985008687907853269n) {
-            xx = x * 10n ** 18n;
-        } else {
-            xx = x * 10n ** 36n;
-        }
-
-        const log2x = this.convert(this.snekmateLog2(xx, false), "int256");
-        const remainder = this.convert(log2x, "uint256") % 3n;
-
-        let a = (((2n ** (this.convert(log2x, "uint256") / 3n)) % (2n ** 256n)) * ((1260n ** remainder) % (2n ** 256n))) / ((1000n ** remainder) % (2n ** 256n));
-
-        a = ((2n * a) + (xx / (a * a))) / 3n;
-        a = ((2n * a) + (xx / (a * a))) / 3n;
-        a = ((2n * a) + (xx / (a * a))) / 3n;
-        a = ((2n * a) + (xx / (a * a))) / 3n;
-        a = ((2n * a) + (xx / (a * a))) / 3n;
-        a = ((2n * a) + (xx / (a * a))) / 3n;
-        a = ((2n * a) + (xx / (a * a))) / 3n;
-
-        if (x >= 115792089237316195423570985008687907853269n * 10n ** 18n) {
-            a = a * (10n ** 12n);
-        } else if (x >= 115792089237316195423570985008687907853269n) {
-            a = a * (10n ** 6n);
-        }
-        return a;
-    }
-
-    static max(a: bigint, b: bigint): bigint {
-        return a > b ? a : b;
-    }
-
-    static min(a: bigint, b: bigint): bigint {
-        return a < b ? a : b;
-    }
-
-    static abs(x: bigint): bigint {
-        return x < 0n ? -x : x;
-    }
-
-    static floorDiv(a: bigint, b: bigint): bigint {
-        const quotient = a / b;
-        const remainder = a % b;
-    
-        // If remainder is not zero and signs are different, subtract 1 from quotient
-        if ((remainder !== 0n) && ((a < 0n) !== (b < 0n))) {
-            return quotient - 1n;
-        }
-        return quotient;
-    }
-
-    static sqrt(n: bigint): bigint {
-        if (n < 0n) throw new Error("square root of negative bigint");
-        if (n < 2n) return n;
-    
-        let left = 1n;
-        let right = n;
-        let result = 1n;
-        
-        while (left <= right) {
-            const mid = (left + right) / 2n;
-            const square = mid * mid;
-        
-            if (square === n) {
-            return mid;
-            } else if (square < n) {
-            result = mid;
-            left = mid + 1n;
-            } else {
-            right = mid - 1n;
-            }
-        }
-        
-        return result;
-    }
-
-    static convert(value: bigint, type: "int256" | "uint256"): bigint {
-        const BIT_SIZE = 256n;
-        const MAX_UINT = (1n << BIT_SIZE) - 1n;
-        const MAX_INT = (1n << (BIT_SIZE - 1n)) - 1n;
-        const MIN_INT = -(1n << (BIT_SIZE - 1n));
-    
-        if (type === "uint256") {
-            return value & MAX_UINT;
-        } else if (type === "int256") {
-            const uval = value & MAX_UINT;
-            return uval <= MAX_INT ? uval : uval - (1n << BIT_SIZE);
-        } else {
-            throw new Error("Unsupported type");
-        }
-    }
-
-    static geometricMean(unsorted_x: bigint[], sort: boolean): bigint {
-        let x: bigint[] = unsorted_x;
-        if (sort && x[0] < x[1]) {
-            x = [x[1], x[0]];
-        }
-        let D = x[0];
-        let diff = 0n;
-        for (let i = 0; i < 255; i++) {
-            let D_prev = D;
-            D = (D + x[0] * x[1] / D) / this.N_COINS;
-            if (D > D_prev) {
-                diff = D - D_prev;
-            } else {
-                diff = D_prev - D;
-            }
-            if (diff <= 1n || diff * 10n ** 18n < D) {
-                return D;
-            } 
-        }
-        throw new Error("dev: did not converge");
-    }
-}
+import { exp10, geometricMean, max } from "./math/index";
 
 export class CryptoSwap {
     static readonly N_COINS = 2n;
-    private static readonly PRECISION = 10n ** 18n;
-    private static readonly FEE_DENOMINATOR = 10n ** 10n;
+    private static readonly PRECISION = exp10(18);
+    private static readonly FEE_DENOMINATOR = exp10(10);
     private static readonly A_MULTIPLIER = 10000n;
-    private static readonly MIN_GAMMA = 10n ** 10n;
+    private static readonly MIN_GAMMA = exp10(10);
     private static readonly MAX_GAMMA = 2n * 10n ** 16n;
     private static readonly MIN_A = (this.N_COINS ** this.N_COINS * this.A_MULTIPLIER / 10n) ;
     private static readonly MAX_A = this.N_COINS ** this.N_COINS * this.A_MULTIPLIER * 100000n;
@@ -199,8 +37,8 @@ export class CryptoSwap {
 
     public feeCalculate(xp: bigint[]): bigint {
         let f = xp[0] + xp[1];
-        f = this.fee_gamma * (10n ** 18n) / (this.fee_gamma + 10n ** 18n - (10n ** 18n * MathUtils.N_COINS ** MathUtils.N_COINS) * xp[0] / f * xp[1] / f);
-        return (this.mid_fee * f + this.out_fee * (10n ** 18n - f)) / (10n ** 18n);
+        f = this.fee_gamma * (exp10(18)) / (this.fee_gamma + exp10(18) - (exp10(18) * CryptoSwap.N_COINS ** CryptoSwap.N_COINS) * xp[0] / f * xp[1] / f);
+        return (this.mid_fee * f + this.out_fee * (exp10(18) - f)) / (exp10(18));
     }
 
     static newtonY(ann: bigint, gamma: bigint, x: bigint[], D: bigint, i: number): bigint {
@@ -210,33 +48,33 @@ export class CryptoSwap {
         if (gamma <= this.MIN_GAMMA - 1n || gamma >= this.MAX_GAMMA + 1n) {
             throw new Error("dev: unsafe values gamma");
         }
-        if (D <= 10n ** 17n - 1n || D >= 10n ** 15n * 10n ** 18n + 1n) {
+        if (D <= 10n ** 17n - 1n || D >= exp10(15) * exp10(18) + 1n) {
             throw new Error("dev: unsafe values D");
         }
 
         let xj = x[1 - i];
         let y = D ** 2n / (xj * this.N_COINS ** 2n);
-        let k0i = (10n ** 18n * this.N_COINS) * xj / D;
+        let k0i = (exp10(18) * this.N_COINS) * xj / D;
 
-        if (k0i <= 10n ** 16n * this.N_COINS - 1n || k0i >= 10n ** 20n * this.N_COINS + 1n) {
+        if (k0i <= exp10(16) * this.N_COINS - 1n || k0i >= exp10(20) * this.N_COINS + 1n) {
             throw new Error("dev: unsafe values x[i]");
         }
 
-        let convergence_limit = MathUtils.max(MathUtils.max(xj / 10n ** 14n, D / 10n ** 14n), 100n);
+        let convergence_limit = max(max(xj / exp10(14), D / exp10(14)), 100n);
 
         for (let j = 0; j < 255; j++) {
             let y_prev = y;
             let k0 = k0i * y * this.N_COINS / D;
             let S = xj + y;
-            let g1k0 = gamma + 10n ** 18n;
+            let g1k0 = gamma + exp10(18);
             if (g1k0 > k0) {
                 g1k0 = g1k0 - k0 + 1n;
             } else {
                 g1k0 = k0 - g1k0 + 1n;
             }
-            let mul1 = 10n ** 18n * D / gamma * g1k0 / gamma * g1k0 * this.A_MULTIPLIER / ann;
-            let mul2 = 10n ** 18n + (2n * 10n ** 18n) * k0 / g1k0;
-            let yfprime = 10n ** 18n * y + S * mul2 + mul1;
+            let mul1 = exp10(18) * D / gamma * g1k0 / gamma * g1k0 * this.A_MULTIPLIER / ann;
+            let mul2 = exp10(18) + (2n * exp10(18)) * k0 / g1k0;
+            let yfprime = exp10(18) * y + S * mul2 + mul1;
             let dyfprime = D * mul2;
             if (yfprime < dyfprime) {
                 y = y_prev / 2n;
@@ -246,8 +84,8 @@ export class CryptoSwap {
             }
             let fprime = yfprime / y;
             let y_minus = mul1 / fprime;
-            let y_plus = (yfprime + 10n ** 18n * D) / fprime + y_minus * 10n ** 18n / k0;
-            y_minus += 10n ** 18n * S / fprime;
+            let y_plus = (yfprime + exp10(18) * D) / fprime + y_minus * exp10(18) / k0;
+            y_minus += exp10(18) * S / fprime;
 
             if (y_plus < y_minus) {
                 y = y_prev / 2n;
@@ -260,9 +98,9 @@ export class CryptoSwap {
             } else {
                 diff = y_prev - y;
             }
-            if (diff < MathUtils.max(convergence_limit, y / 10n ** 14n)) {
-                let frac = y * 10n ** 18n / D;
-                if (frac <= 10n ** 16n - 1n || frac >= 10n ** 20n + 1n) {
+            if (diff < max(convergence_limit, y / exp10(14))) {
+                let frac = y * exp10(18) / D;
+                if (frac <= 10n ** 16n - 1n || frac >= exp10(20) + 1n) {
                     throw new Error("dev: unsafe values y");
                 }
                 return y;
@@ -284,35 +122,35 @@ export class CryptoSwap {
             x = [x[1], x[0]];
         }
 
-        if (x[0] <= 10n ** 9n - 1n || x[0] >= 10n ** 15n * 10n ** 18n + 1n) {
+        if (x[0] <= 10n ** 9n - 1n || x[0] >= exp10(15) * exp10(18) + 1n) {
             throw new Error("dev: unsafe values x[0]");
         }
 
-        if (x[1] * 10n ** 18n / x[0] > 10n ** 14n - 1n) {
+        if (x[1] * exp10(18) / x[0] > exp10(14) - 1n) {
             throw new Error("dev: unsafe values x[i] (input)");
         }
 
-        let D = this.N_COINS * MathUtils.geometricMean(x, false);
+        let D = this.N_COINS * geometricMean(x, false);
         let S = x[0] + x[1];
 
         for (let i = 0; i < 255; i++) {
             let D_prev = D;
-            let k0 = (10n ** 18n * this.N_COINS ** 2n) * x[0] / D * x[1] / D;
-            let g1k0 = gamma + 10n ** 18n;
+            let k0 = (exp10(18) * this.N_COINS ** 2n) * x[0] / D * x[1] / D;
+            let g1k0 = gamma + exp10(18);
             if (g1k0 > k0) {
                 g1k0 = g1k0 - k0 - 1n;
             } else {
                 g1k0 = k0 - g1k0 - 1n;
             }
-            let mul1 = 10n ** 18n * D / gamma * g1k0 / gamma * g1k0 * this.A_MULTIPLIER / ann;
-            let mul2 = (2n * 10n ** 18n) * this.N_COINS * k0 / g1k0;
-            let neg_fprime = (S + S * mul2 / 10n ** 18n) + mul1 * this.N_COINS / k0 - mul2 * D / 10n ** 18n;
+            let mul1 = exp10(18) * D / gamma * g1k0 / gamma * g1k0 * this.A_MULTIPLIER / ann;
+            let mul2 = (2n * exp10(18)) * this.N_COINS * k0 / g1k0;
+            let neg_fprime = (S + S * mul2 / exp10(18)) + mul1 * this.N_COINS / k0 - mul2 * D / exp10(18);
             let D_plus = D * (neg_fprime + S) / neg_fprime;
             let D_minus = D * D / neg_fprime;
-            if (10n ** 18n > k0) {
-                D_minus += D * (mul1 / neg_fprime) / 10n ** 18n * (10n ** 18n -k0) / k0;
+            if (exp10(18) > k0) {
+                D_minus += D * (mul1 / neg_fprime) / exp10(18) * (exp10(18) -k0) / k0;
             } else {
-                D_minus -= D * (mul1 / neg_fprime) / 10n ** 18n * (k0 - 10n ** 18n) / k0;
+                D_minus -= D * (mul1 / neg_fprime) / exp10(18) * (k0 - exp10(18)) / k0;
             }
             if (D_plus > D_minus) {
                 D = D_plus - D_minus;
@@ -325,10 +163,10 @@ export class CryptoSwap {
             } else {
                 diff = D_prev - D;
             }
-            if (diff * 10n ** 14n < MathUtils.max(10n ** 16n, D)) {
+            if (diff * exp10(14) < max(10n ** 16n, D)) {
                 x.forEach(_x => {
-                    let frac = _x * 10n ** 18n / D;
-                    if (frac <= 10n ** 16n - 1n || frac >= 10n ** 20n + 1n) {
+                    let frac = _x * exp10(18) / D;
+                    if (frac <= 10n ** 16n - 1n || frac >= exp10(20) + 1n) {
                         throw new Error("dev: unsafe values x[i]");
                     }
                     return D;
