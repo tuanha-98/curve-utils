@@ -1,5 +1,4 @@
 const { ethers } = require("ethers");
-import JSBI from "jsbi";
 
 export class MathUtils {
     static readonly N_COINS = 2n;
