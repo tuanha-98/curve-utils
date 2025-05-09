@@ -9,12 +9,14 @@ export class StableSwap {
     private rates: bigint[];
     private FEE: bigint;
     private OFF_PEG_FEE_MULTIPLIER: bigint;
+    private A: bigint;
 
-    constructor(xp: bigint[], rates: bigint[], fee: bigint, offpegFeeMultiplier: bigint) {
+    constructor(a: bigint, xp: bigint[], rates: bigint[], fee: bigint, offpegFeeMultiplier: bigint) {
         this.xp = xp;
         this.rates = rates;
         this.FEE = fee;
         this.OFF_PEG_FEE_MULTIPLIER = offpegFeeMultiplier;
+        this.A = a;
     }
 
     private getXP(): bigint[] {
@@ -35,6 +37,10 @@ export class StableSwap {
                 StableSwap.FEE_DENOMINATOR
             )
         );
+    }
+
+    private stableFee(dy: bigint, fee: bigint): bigint {
+        return (dy * fee) / StableSwap.FEE_DENOMINATOR;
     }
 
     private getD(xp: bigint[], amp: bigint): bigint {
@@ -94,38 +100,51 @@ export class StableSwap {
         throw new Error("getY did not converge");
     }
 
-    public getDy(i: number, j: number, amountIn: bigint): bigint {
-        const xp = this.getXP();
-        const x = xp[i] + (amountIn * this.rates[i]) / StableSwap.PRECISION;
-        const y = this.getY(i, j, x, xp, 2000000n);
+    public getDy(i: number, j: number, dx: bigint): bigint {
+        const xp = this.rates[0] == 0n ? this.xp : this.getXP();
+        const x = this.rates[0] == 0n ? xp[i] + dx : xp[i] + (dx * this.rates[i]) / StableSwap.PRECISION;
+        const y = this.getY(i, j, x, xp, this.A * StableSwap.A_PRECISION);
         const dy = xp[j] - y - 1n;
-        const fee = (dy * this.dynamicFee((xp[i] + x) / 2n, (xp[j] + y) / 2n, this.FEE)) / StableSwap.FEE_DENOMINATOR;
-        return ((dy - fee) * StableSwap.PRECISION) / this.rates[j];
+
+        let fee = 0n;
+        if (this.OFF_PEG_FEE_MULTIPLIER == 0n) {
+            fee = this.stableFee(dy, this.FEE);
+            return dy - fee;    
+        } else {
+            fee = (dy * this.dynamicFee((xp[i] + x) / 2n, (xp[j] + y) / 2n, this.FEE)) / StableSwap.FEE_DENOMINATOR;
+            return ((dy - fee) * StableSwap.PRECISION) / this.rates[j];
+        }
     }
 }
 
 // Example usage
 async function main() {
     const provider = new ethers.providers.JsonRpcProvider("https://ethereum-rpc.publicnode.com");
-    const poolAddress = "0x4f493B7dE8aAC7d55F71853688b1F7C8F0243C85";
+    const poolAddress = "0x4f493B7dE8aAC7d55F71853688b1F7C8F0243C85"; // stable ng
+    const poolAddress2 = "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022"; // stable
     const poolAbi = [
-        "function get_balances() view returns (uint256[])",
+        "function A() view returns (uint256)",
+        "function balances(uint256) view returns (uint256)",
         "function stored_rates() view returns (uint256[])",
         "function get_dy(int128 i, int128 j, uint256 dx) view returns (uint256)",
         "function fee() view returns (uint256)",
         "function offpeg_fee_multiplier() view returns (uint256)",
     ];
 
-    const poolContract = new ethers.Contract(poolAddress, poolAbi, provider);
+    const poolContract = new ethers.Contract(poolAddress2, poolAbi, provider);
 
-    async function fetchBalances() {
-        const balances = await poolContract.get_balances();
-        return balances.map((balance: any) => BigInt(balance.toString()));
+    async function fetchBalances(index: bigint) {
+        const balance = await poolContract.balances(index);
+        return BigInt(balance.toString());
     }
 
     async function fetchRates() {
-        const rates = await poolContract.stored_rates();
-        return rates.map((rate: any) => BigInt(rate.toString()));
+        try {
+            const rates = await poolContract.stored_rates();
+            return rates.map((rate: any) => BigInt(rate.toString()));
+        } catch (error) {
+            return [0n, 0n];
+        }
     }
 
     async function fetchDy(i: number, j: number, amountIn: bigint) {
@@ -138,16 +157,26 @@ async function main() {
         return BigInt(fee.toString());
     }
 
-    async function fetchOffpegFeeMultiplier() {
-        const offpegFeeMultiplier = await poolContract.offpeg_fee_multiplier();
-        return BigInt(offpegFeeMultiplier.toString());
+    async function fetchA() {
+        const A = await poolContract.A();
+        return BigInt(A.toString());
     }
 
-    const xp = await fetchBalances();
+    async function fetchOffpegFeeMultiplier() {
+        try {
+            const offpegFeeMultiplier = await poolContract.offpeg_fee_multiplier();
+            return BigInt(offpegFeeMultiplier.toString());
+        } catch (error) {
+            return 0n;
+        }
+    }
+
+    const xp = [await fetchBalances(0n), await fetchBalances(1n)];
     const rates = await fetchRates();
     const fee = await fetchFee();
+    const A = await fetchA();
     const offpegFeeMultiplier = await fetchOffpegFeeMultiplier();
-    const stableSwap = new StableSwap(xp, rates, fee, offpegFeeMultiplier);
+    const stableSwap = new StableSwap(A, xp, rates, fee, offpegFeeMultiplier);
 
     const i = 0; // Token in: USDC
     const j = 1; // Token out: USDT
