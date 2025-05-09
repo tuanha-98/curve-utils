@@ -583,7 +583,8 @@ export class TricryptoSwap {
 
 async function main() {
     const provider = new ethers.providers.JsonRpcProvider("https://ethereum-rpc.publicnode.com");
-    const poolAddress = "0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B";
+    const poolAddress = "0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B"; // tricryptong
+    const poolAddress2 = "0xd51a44d3fae010294c616388b506acda1bfaae46"; // tricrypto
     const poolAbi = [
         "function balances(uint256) view returns (uint256)",
         "function price_scale(uint256) view returns (uint256)",
@@ -597,13 +598,23 @@ async function main() {
         "function fee_gamma() view returns (uint256)",
         "function get_dy(uint256 i, uint256 j, uint256 dx) view returns (uint256)",
         "function precisions() view returns (uint256[3])",
+        "function coins(uint256) view returns (address)",
     ];
 
-    const poolContract = new ethers.Contract(poolAddress, poolAbi, provider);
+    const tokenAbi = [
+        "function decimals() view returns (uint8)",
+    ]
+
+    const poolContract = new ethers.Contract(poolAddress2, poolAbi, provider);
 
     async function fetchBalances(index: bigint) {
         const balance = await poolContract.balances(index);
         return BigInt(balance.toString());
+    }
+
+    async function fetchTokenAddress(index: bigint) {
+        const tokenAddress = await poolContract.coins(index);
+        return tokenAddress;
     }
 
     async function fetchPriceScale(index: bigint) {
@@ -652,8 +663,19 @@ async function main() {
     }
 
     async function fetchPrecisions() {
-        const precisions = await poolContract.precisions();
-        return precisions.map((p: any) => BigInt(p.toString()));
+        try {
+            const precisions = await poolContract.precisions();
+            return precisions.map((p: any) => BigInt(p.toString()));
+        } catch (error) {
+            let precisions: bigint[] = [];
+            for (let i = 0; i < 3; i++) {
+                const tokenAddress = await fetchTokenAddress(BigInt(i));
+                const tokenContract = new ethers.Contract(tokenAddress, tokenAbi, provider);
+                const decimals = await tokenContract.decimals();
+                precisions[i] = BigInt(10n ** (18n - BigInt(decimals)));
+            }
+            return precisions;
+        }
     }
 
 
