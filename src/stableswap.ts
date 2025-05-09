@@ -78,6 +78,7 @@ export class StableSwap {
         const D = this.getD(xp, amp);
         const Ann = amp * N;
         let c = D;
+        console.log("c", c.toString());
         let S_ = 0n;
 
         for (let k = 0; k < n; k++) {
@@ -89,11 +90,14 @@ export class StableSwap {
         }
 
         c = (c * D * StableSwap.A_PRECISION) / (Ann * N);
+        console.log("c", c.toString());
         const b = S_ + (D * StableSwap.A_PRECISION) / Ann;
+        console.log("b", b.toString());
         let y = D;
 
         for (let i = 0; i < 255; i++) {
             const yPrev = y;
+            console.log("yPrev", yPrev.toString());
             y = (y * y + c) / (2n * y + b - D);
             if (y === yPrev || (y > yPrev ? y - yPrev : yPrev - y) <= 1n) return y;
         }
@@ -103,6 +107,7 @@ export class StableSwap {
     public getDy(i: number, j: number, dx: bigint): bigint {
         const xp = this.rates[0] == 0n ? this.xp : this.getXP();
         const x = this.rates[0] == 0n ? xp[i] + dx : xp[i] + (dx * this.rates[i]) / StableSwap.PRECISION;
+        console.log("x", x.toString());
         const y = this.getY(i, j, x, xp, this.A * StableSwap.A_PRECISION);
         const dy = xp[j] - y - 1n;
 
@@ -112,6 +117,7 @@ export class StableSwap {
             return dy - fee;    
         } else {
             fee = (dy * this.dynamicFee((xp[i] + x) / 2n, (xp[j] + y) / 2n, this.FEE)) / StableSwap.FEE_DENOMINATOR;
+            console.log("fee", fee.toString());
             return ((dy - fee) * StableSwap.PRECISION) / this.rates[j];
         }
     }
@@ -131,7 +137,7 @@ async function main() {
         "function offpeg_fee_multiplier() view returns (uint256)",
     ];
 
-    const poolContract = new ethers.Contract(poolAddress2, poolAbi, provider);
+    const poolContract = new ethers.Contract(poolAddress, poolAbi, provider);
 
     async function fetchBalances(index: bigint) {
         const balance = await poolContract.balances(index);
