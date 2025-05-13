@@ -11,24 +11,49 @@ type Pool struct {
 	Address, Exchange   string
 	Fee                 *m.Uint256
 	A                   *m.Uint256   // amplification coefficient
-	A_precision         *m.Uint256   // precision of A
+	A_precise           *m.Uint256   // precision of A
 	Coins               []string     // address of coins in the pool in correct order
 	XP                  []*m.Uint256 // balance of each coin in the pool
 	Rates               []*m.Uint256 // rate of each coin in the NG pool
 	OffPegFeeMultiplier *m.Uint256   // multiplier for off-peg in fee NG pool
 }
 
-func NewStableSwapPool(address, exchange string, fee *m.Uint256, a, a_precision *m.Uint256, coins []string, xp []*m.Uint256, rates []*m.Uint256, offPegFeeMultiplier *m.Uint256) *Pool {
+func NewStableSwapPool(address, exchange string, fee, a, a_precise, offPegFeeMultiplier *m.Uint256, coins []string, xp, rates []*m.Uint256) *Pool {
 	return &Pool{
 		Address:             address,
 		Exchange:            exchange,
 		Fee:                 fee,
 		A:                   a,
-		A_precision:         a_precision,
+		A_precise:           a_precise,
 		Coins:               coins,
 		XP:                  xp,
 		Rates:               rates,
 		OffPegFeeMultiplier: offPegFeeMultiplier,
+	}
+}
+
+func (p *Pool) GetDy(i, j int, dx *m.Uint256) (*m.Uint256, error) {
+	xp := p.getXP()
+	x := p.getX(xp, i, dx)
+	y, err := p.getY(i, j, x, xp, new(m.Uint256).Mul(p.A, p.A_precise))
+	if err != nil {
+		return nil, err
+	}
+	dy := new(m.Uint256).Sub(new(m.Uint256).Sub(xp[j], y), new(m.Uint256).SetUint64(1))
+	if p.isNG() {
+		fee := new(m.Uint256).Div(
+			new(m.Uint256).Mul(
+				dy,
+				p.dynamicFee(
+					new(m.Uint256).Div(new(m.Uint256).Add(xp[i], x), new(m.Uint256).SetUint64(2)),
+					new(m.Uint256).Div(new(m.Uint256).Add(xp[j], y), new(m.Uint256).SetUint64(2)),
+				),
+			),
+			c.FeeDenominator,
+		)
+		return new(m.Uint256).Div(new(m.Uint256).Mul(new(m.Uint256).Sub(dy, fee), c.Precision), p.Rates[j]), nil
+	} else {
+		return new(m.Uint256).Sub(dy, p.stableFee(dy)), nil
 	}
 }
 
@@ -51,9 +76,9 @@ func (p *Pool) getD(xp []*m.Uint256, amp *m.Uint256) (*m.Uint256, error) {
 			D_P = new(m.Uint256).Div(new(m.Uint256).Mul(D_P, D), new(m.Uint256).Mul(x, n))
 		}
 		D_prev := new(m.Uint256).Set(D)
-		numerator := new(m.Uint256).Add(new(m.Uint256).Div(new(m.Uint256).Mul(ann, S), p.A_precision), new(m.Uint256).Mul(D_P, n))
+		numerator := new(m.Uint256).Add(new(m.Uint256).Div(new(m.Uint256).Mul(ann, S), p.A_precise), new(m.Uint256).Mul(D_P, n))
 		denominator := new(m.Uint256).Add(
-			new(m.Uint256).Div(new(m.Uint256).Mul(new(m.Uint256).Sub(ann, p.A_precision), D), p.A_precision),
+			new(m.Uint256).Div(new(m.Uint256).Mul(new(m.Uint256).Sub(ann, p.A_precise), D), p.A_precise),
 			new(m.Uint256).Mul(new(m.Uint256).Add(n, new(m.Uint256).SetUint64(1)), D_P))
 		D = new(m.Uint256).Div(new(m.Uint256).Mul(numerator, D), denominator)
 
@@ -108,9 +133,9 @@ func (p *Pool) getY(i, j int, x *m.Uint256, xp []*m.Uint256, amp *m.Uint256) (*m
 	}
 
 	c = new(m.Uint256).Mul(c, D)
-	c = new(m.Uint256).Mul(c, p.A_precision)
+	c = new(m.Uint256).Mul(c, p.A_precise)
 	c = new(m.Uint256).Div(c, new(m.Uint256).Mul(Ann, N))
-	b := new(m.Uint256).Add(S_, new(m.Uint256).Div(new(m.Uint256).Mul(D, p.A_precision), Ann))
+	b := new(m.Uint256).Add(S_, new(m.Uint256).Div(new(m.Uint256).Mul(D, p.A_precise), Ann))
 	y := new(m.Uint256).Set(D)
 
 	for i := 0; i < 255; i++ {
@@ -188,30 +213,5 @@ func (p *Pool) getX(xp []*m.Uint256, i int, dx *m.Uint256) *m.Uint256 {
 		return new(m.Uint256).Add(xp[i], new(m.Uint256).Div(new(m.Uint256).Mul(dx, p.Rates[i]), c.Precision))
 	} else {
 		return new(m.Uint256).Add(p.XP[i], dx)
-	}
-}
-
-func (p *Pool) GetDy(i, j int, dx *m.Uint256) (*m.Uint256, error) {
-	xp := p.getXP()
-	x := p.getX(xp, i, dx)
-	y, err := p.getY(i, j, x, xp, new(m.Uint256).Mul(p.A, p.A_precision))
-	if err != nil {
-		return nil, err
-	}
-	dy := new(m.Uint256).Sub(new(m.Uint256).Sub(xp[j], y), new(m.Uint256).SetUint64(1))
-	if p.isNG() {
-		fee := new(m.Uint256).Div(
-			new(m.Uint256).Mul(
-				dy,
-				p.dynamicFee(
-					new(m.Uint256).Div(new(m.Uint256).Add(xp[i], x), new(m.Uint256).SetUint64(2)),
-					new(m.Uint256).Div(new(m.Uint256).Add(xp[j], y), new(m.Uint256).SetUint64(2)),
-				),
-			),
-			c.FeeDenominator,
-		)
-		return new(m.Uint256).Div(new(m.Uint256).Mul(new(m.Uint256).Sub(dy, fee), c.Precision), p.Rates[j]), nil
-	} else {
-		return new(m.Uint256).Sub(dy, p.stableFee(dy)), nil
 	}
 }

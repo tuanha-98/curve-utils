@@ -33,7 +33,6 @@ func NewNGContract(client *ethclient.Client, poolAddress common.Address) (*stabl
 func TestGetDYNgPool(t *testing.T) {
 	// Pool addresses
 	stableNgPoolAddr := "0x4f493B7dE8aAC7d55F71853688b1F7C8F0243C85"
-	// stablePoolAddr := "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022"
 
 	// Connect to Ethereum node
 	client, err := ethclient.Dial("https://ethereum-rpc.publicnode.com")
@@ -98,10 +97,11 @@ func TestGetDYNgPool(t *testing.T) {
 		new(m.Uint256).SetBytes(fee.Bytes()),
 		new(m.Uint256).SetBytes(A.Bytes()),
 		new(m.Uint256).SetBytes(A_precision.Bytes()),
+		new(m.Uint256).SetBytes(offPegFeeMultiplier.Bytes()),
 		coins,
 		xp,
 		rates_,
-		new(m.Uint256).SetBytes(offPegFeeMultiplier.Bytes()))
+	)
 
 	value1, err := pool.GetDy(0, 1, c.Precision)
 	if err != nil {
@@ -178,10 +178,11 @@ func TestGetDYPool(t *testing.T) {
 		new(m.Uint256).SetBytes(fee.Bytes()),
 		new(m.Uint256).SetBytes(A.Bytes()),
 		new(m.Uint256).SetBytes(A_precision.Bytes()),
+		nil,
 		coins,
 		xp,
 		nil,
-		nil)
+	)
 
 	value1, err := pool.GetDy(0, 1, c.Precision)
 	if err != nil {
