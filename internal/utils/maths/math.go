@@ -98,14 +98,28 @@ func GeometricMean3Coins(x []*Uint256) (*Uint256, error) {
 	return Cbrt(prod), nil
 }
 
-func Max(x, y *Uint256) *Uint256 {
+func MaxUint256(x, y *Uint256) *Uint256 {
 	if x.Cmp(y) > 0 {
 		return x
 	}
 	return y
 }
 
-func Min(x, y *Uint256) *Uint256 {
+func MaxInt256(x, y *big.Int) *big.Int {
+	if x.Cmp(y) > 0 {
+		return x
+	}
+	return y
+}
+
+func MinUint256(x, y *Uint256) *Uint256 {
+	if x.Cmp(y) < 0 {
+		return x
+	}
+	return y
+}
+
+func MinInt256(x, y *big.Int) *big.Int {
 	if x.Cmp(y) < 0 {
 		return x
 	}

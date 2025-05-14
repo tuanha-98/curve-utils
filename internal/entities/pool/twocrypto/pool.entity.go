@@ -1,4 +1,4 @@
-package pool
+package twocrypto
 
 import (
 	"fmt"
@@ -10,8 +10,8 @@ import (
 var (
 	N_COINS      = new(m.Uint256).SetUint64(2)
 	A_MULTIPLIER = new(m.Uint256).SetUint64(10000)
-	MIN_GAMMA    = new(m.Uint256).Exp(new(m.Uint256).SetUint64(10), new(m.Uint256).SetUint64(10))
-	MAX_GAMMA    = new(m.Uint256).Mul(new(m.Uint256).SetUint64(2), new(m.Uint256).Exp(new(m.Uint256).SetUint64(10), new(m.Uint256).SetUint64(16)))
+	MIN_GAMMA    = c.Wei10
+	MAX_GAMMA    = new(m.Uint256).Mul(new(m.Uint256).SetUint64(2), c.Wei16)
 
 	MIN_A = new(m.Uint256).Div(new(m.Uint256).Mul(new(m.Uint256).Exp(N_COINS, N_COINS), A_MULTIPLIER), new(m.Uint256).SetUint64(10))
 	MAX_A = new(m.Uint256).Mul(new(m.Uint256).Mul(new(m.Uint256).Exp(N_COINS, N_COINS), A_MULTIPLIER), new(m.Uint256).SetUint64(100000))
@@ -293,7 +293,7 @@ func (p *Pool) newtonD(ann, gamma *m.Uint256, x_unsorted []*m.Uint256) (*m.Uint2
 			diff = new(m.Uint256).Sub(D_prev, D)
 		}
 
-		if new(m.Uint256).Mul(diff, c.Wei14).Cmp(m.Max(c.Wei16, D)) < 0 {
+		if new(m.Uint256).Mul(diff, c.Wei14).Cmp(m.MaxUint256(c.Wei16, D)) < 0 {
 			for _, _x := range x {
 				frac := new(m.Uint256).Div(new(m.Uint256).Mul(_x, c.Wei18), D)
 				if frac.Cmp(new(m.Uint256).Sub(c.Wei16, new(m.Uint256).SetUint64(1))) <= 0 || frac.Cmp(new(m.Uint256).Add(c.Wei20, new(m.Uint256).SetUint64(1))) >= 0 {
@@ -347,7 +347,7 @@ func (p *Pool) newtonY(ann, gamma, D *m.Uint256, x []*m.Uint256, i int) (*m.Uint
 		return nil, fmt.Errorf("dev: unsafe values x[i]")
 	}
 
-	convergenceLimit := m.Max(m.Max(new(m.Uint256).Div(xj, c.Wei14), new(m.Uint256).Div(D, c.Wei14)), new(m.Uint256).SetUint64(100))
+	convergenceLimit := m.MaxUint256(m.MaxUint256(new(m.Uint256).Div(xj, c.Wei14), new(m.Uint256).Div(D, c.Wei14)), new(m.Uint256).SetUint64(100))
 
 	for j := 0; j < 255; j++ {
 		yPrev := new(m.Uint256).Set(y)
@@ -475,7 +475,7 @@ func (p *Pool) newtonY(ann, gamma, D *m.Uint256, x []*m.Uint256, i int) (*m.Uint
 			diff = new(m.Uint256).Sub(yPrev, y)
 		}
 
-		if diff.Cmp(m.Max(convergenceLimit, new(m.Uint256).Div(y, c.Wei14))) < 0 {
+		if diff.Cmp(m.MaxUint256(convergenceLimit, new(m.Uint256).Div(y, c.Wei14))) < 0 {
 			frac := new(m.Uint256).Div(new(m.Uint256).Mul(y, c.Wei18), D)
 			if frac.Cmp(new(m.Uint256).Sub(c.Wei16, new(m.Uint256).SetUint64(1))) <= 0 || frac.Cmp(new(m.Uint256).Add(c.Wei20, new(m.Uint256).SetUint64(1))) >= 0 {
 				return nil, fmt.Errorf("dev: unsafe values y")
