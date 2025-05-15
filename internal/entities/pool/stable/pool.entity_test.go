@@ -1,4 +1,4 @@
-package stableng
+package stable
 
 import (
 	"fmt"
@@ -8,12 +8,12 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/holiman/uint256"
-	stableNGContract "github.com/tuanha-98/curve-utils/contract/stableswap-ng"
+	stableContract "github.com/tuanha-98/curve-utils/contract/stableswap"
 	token "github.com/tuanha-98/curve-utils/internal/entities/token"
 )
 
-func NewContract(client *ethclient.Client, poolAddress common.Address) (*stableNGContract.ContractCaller, error) {
-	pool, err := stableNGContract.NewContractCaller(poolAddress, client)
+func NewContract(client *ethclient.Client, poolAddress common.Address) (*stableContract.ContractCaller, error) {
+	pool, err := stableContract.NewContractCaller(poolAddress, client)
 	if err != nil {
 		return nil, err
 	}
@@ -22,7 +22,7 @@ func NewContract(client *ethclient.Client, poolAddress common.Address) (*stableN
 
 func TestGetDYNgPool(t *testing.T) {
 	// Pool addresses
-	stableNgPoolAddr := "0x4f493B7dE8aAC7d55F71853688b1F7C8F0243C85"
+	stablePoolAddr := "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022"
 
 	// Connect to Ethereum node
 	client, err := ethclient.Dial("https://ethereum-rpc.publicnode.com")
@@ -31,7 +31,7 @@ func TestGetDYNgPool(t *testing.T) {
 	}
 
 	// Create a new contract instance
-	contract, _ := NewContract(client, common.HexToAddress(stableNgPoolAddr))
+	contract, _ := NewContract(client, common.HexToAddress(stablePoolAddr))
 
 	// Fetch the A value
 	APrecise, err := contract.APrecise(nil)
@@ -99,30 +99,16 @@ func TestGetDYNgPool(t *testing.T) {
 		t.Fatalf("Failed to get adminFee: %v", err)
 	}
 
-	rates, err := contract.StoredRates(nil)
-	if err != nil {
-		t.Fatalf("Failed to get rates: %v", err)
-	}
-
-	_rates := []uint256.Int{*uint256.MustFromBig(rates[0]), *uint256.MustFromBig(rates[1])}
-
-	offPegFeeMultiplier, err := contract.OffpegFeeMultiplier(nil)
-	if err != nil {
-		t.Fatalf("Failed to get offPegFeeMultiplier: %v", err)
-	}
-
 	pool := NewPool(
-		stableNgPoolAddr,
-		"StableNG",
+		stablePoolAddr,
+		"Stable",
 		xp,
 		tokens,
 		*uint256.MustFromBig(new(big.Int).Div(APrecise, A)),
-		*uint256.MustFromBig(offPegFeeMultiplier),
 		*uint256.MustFromBig(InitialA),
 		*uint256.MustFromBig(FutureA),
 		*uint256.MustFromBig(fee),
 		*uint256.MustFromBig(adminFee),
-		_rates,
 		InitialATime.Int64(),
 		FutureATime.Int64(),
 	)

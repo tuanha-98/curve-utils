@@ -21,9 +21,9 @@ func NewContract(client *ethclient.Client, poolAddress common.Address) (*twoCryt
 	return pool, nil
 }
 
-func TestGetDYTwoCryptoPool(t *testing.T) {
+func TestGetDYTwoCryptoNGPool(t *testing.T) {
 	// Pool addresses
-	cryptoPoolAddr := "0xB576491F1E6e5E62f1d8F26062Ee822B40B0E0d4"
+	cryptoPoolAddr := "0xC907ba505C2E1cbc4658c395d4a2c7E6d2c32656"
 
 	// Connect to Ethereum node
 	client, err := ethclient.Dial("https://ethereum-rpc.publicnode.com")
@@ -89,13 +89,6 @@ func TestGetDYTwoCryptoPool(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to get feeGamma: %v", err)
 	}
-
-	// InitialA          *uint256.Int
-	// 	InitialGamma      *uint256.Int
-	// 	InitialAGammaTime int64
-	// 	FutureA           *uint256.Int
-	// 	FutureGamma       *uint256.Int
-	// 	FutureAGammaTime  int64
 
 	initialAGamma, err := contract.InitialAGamma(nil)
 	if err != nil {

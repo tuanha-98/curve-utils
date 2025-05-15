@@ -19,25 +19,38 @@ func NewToken(address common.Address) (*Token, error) {
 	if err != nil {
 		return nil, err
 	}
-	token, err := NewContractWrapper(client, address)
 
-	name, err := token.Name(nil)
-	if err != nil {
-		return nil, err
-	}
-	symbol, err := token.Symbol(nil)
-	if err != nil {
-		return nil, err
-	}
-	decimals, err := token.Decimals(nil)
-	if err != nil {
-		return nil, err
-	}
+	if address == common.HexToAddress("0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE") {
+		return &Token{
+			Address:  address.String(),
+			Name:     "Ether",
+			Symbol:   "ETH",
+			Decimals: 18,
+		}, nil
+	} else {
+		tokenContract, err := NewContractWrapper(client, address)
+		if err != nil {
+			return nil, err
+		}
 
-	return &Token{
-		Address:  address.String(),
-		Name:     name,
-		Symbol:   symbol,
-		Decimals: decimals,
-	}, nil
+		name, err := tokenContract.Name(nil)
+		if err != nil {
+			return nil, err
+		}
+		symbol, err := tokenContract.Symbol(nil)
+		if err != nil {
+			return nil, err
+		}
+		decimals, err := tokenContract.Decimals(nil)
+		if err != nil {
+			return nil, err
+		}
+
+		return &Token{
+			Address:  address.String(),
+			Name:     name,
+			Symbol:   symbol,
+			Decimals: decimals,
+		}, nil
+	}
 }

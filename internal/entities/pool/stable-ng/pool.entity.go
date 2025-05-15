@@ -1,217 +1,116 @@
-package pool
+package stableng
 
 import (
-	"fmt"
-
-	c "github.com/tuanha-98/curve-utils/internal/constants"
-	m "github.com/tuanha-98/curve-utils/internal/utils/maths"
+	"github.com/holiman/uint256"
+	token "github.com/tuanha-98/curve-utils/internal/entities/token"
+	"github.com/tuanha-98/curve-utils/internal/utils/toolkit/number"
 )
 
-type Pool struct {
-	Address, Exchange   string
-	Fee                 *m.Uint256
-	A                   *m.Uint256   // amplification coefficient
-	A_precise           *m.Uint256   // precision of A
-	Coins               []string     // address of coins in the pool in correct order
-	XP                  []*m.Uint256 // balance of each coin in the pool
-	Rates               []*m.Uint256 // rate of each coin in the NG pool
-	OffPegFeeMultiplier *m.Uint256   // multiplier for off-peg in fee NG pool
-}
+type (
+	Extra struct {
+		APrecision          *uint256.Int
+		OffPegFeeMultiplier *uint256.Int
 
-func NewStableSwapPool(address, exchange string, fee, a, a_precise, offPegFeeMultiplier *m.Uint256, coins []string, xp, rates []*m.Uint256) *Pool {
+		InitialA     *uint256.Int
+		FutureA      *uint256.Int
+		InitialATime int64
+		FutureATime  int64
+		SwapFee      *uint256.Int
+		AdminFee     *uint256.Int
+
+		RateMultipliers []uint256.Int
+	}
+
+	Pool struct {
+		Address, Exchange string
+		Reserves          []uint256.Int
+		NumTokens         int
+		NumTokensU256     uint256.Int
+		Tokens            []token.Token
+		Extra             Extra
+	}
+)
+
+func NewPool(address, exchange string, reserves []uint256.Int, tokens []token.Token, a_precision, off_peg_fee_multipler, initial_a, future_a, swap_fee, admin_fee uint256.Int, rate_multipliers []uint256.Int, initial_a_time, future_a_time int64) *Pool {
 	return &Pool{
-		Address:             address,
-		Exchange:            exchange,
-		Fee:                 fee,
-		A:                   a,
-		A_precise:           a_precise,
-		Coins:               coins,
-		XP:                  xp,
-		Rates:               rates,
-		OffPegFeeMultiplier: offPegFeeMultiplier,
+		Address:       address,
+		Exchange:      exchange,
+		Reserves:      reserves,
+		NumTokens:     len(tokens),
+		NumTokensU256: *number.SetUint64(uint64(len(tokens))),
+		Extra: Extra{
+			APrecision:          &a_precision,
+			OffPegFeeMultiplier: &off_peg_fee_multipler,
+			InitialA:            &initial_a,
+			FutureA:             &future_a,
+			InitialATime:        initial_a_time,
+			FutureATime:         future_a_time,
+			SwapFee:             &swap_fee,
+			AdminFee:            &admin_fee,
+			RateMultipliers:     rate_multipliers,
+		},
 	}
 }
 
-func (p *Pool) GetDy(i, j int, dx *m.Uint256) (*m.Uint256, error) {
-	xp := p.getXP()
-	x := p.getX(xp, i, dx)
-	y, err := p.getY(i, j, x, xp, new(m.Uint256).Mul(p.A, p.A_precise))
-	if err != nil {
-		return nil, err
+func (p *Pool) DynamicFee(xpi, xpj, fee *uint256.Int) {
+	_swap_fee := p.Extra.SwapFee
+	_off_peg_fee_multiplier := p.Extra.OffPegFeeMultiplier
+	if _off_peg_fee_multiplier.Cmp(FeeDenominator) <= 0 {
+		fee.Set(_swap_fee)
+		return
 	}
-	dy := new(m.Uint256).Sub(new(m.Uint256).Sub(xp[j], y), new(m.Uint256).SetUint64(1))
-	if p.isNG() {
-		fee := new(m.Uint256).Div(
-			new(m.Uint256).Mul(
-				dy,
-				p.dynamicFee(
-					new(m.Uint256).Div(new(m.Uint256).Add(xp[i], x), new(m.Uint256).SetUint64(2)),
-					new(m.Uint256).Div(new(m.Uint256).Add(xp[j], y), new(m.Uint256).SetUint64(2)),
+
+	sum := number.SafeAdd(xpi, xpj)
+	prod := number.SafeMul(xpi, xpj)
+	xps2 := number.SafeMul(sum, sum)
+	fee.Div(
+		number.Mul(_off_peg_fee_multiplier, _swap_fee),
+		number.Add(
+			number.Div(
+				number.SafeMul(
+					number.SafeMul(
+						number.Sub(_off_peg_fee_multiplier, FeeDenominator),
+						number.Number_4,
+					),
+					prod,
 				),
+				xps2,
 			),
-			c.FeeDenominator,
-		)
-		return new(m.Uint256).Div(new(m.Uint256).Mul(new(m.Uint256).Sub(dy, fee), c.Precision), p.Rates[j]), nil
-	} else {
-		return new(m.Uint256).Sub(dy, p.stableFee(dy)), nil
-	}
+			FeeDenominator,
+		),
+	)
 }
 
-func (p *Pool) getD(xp []*m.Uint256, amp *m.Uint256) (*m.Uint256, error) {
-	n := new(m.Uint256).SetUint64(uint64(len(xp)))
-	ann := new(m.Uint256).Mul(amp, n)
-	S := new(m.Uint256).SetUint64(0)
-	for _, x := range xp {
-		S.Add(S, x)
-	}
-
-	if S.IsZero() {
-		return new(m.Uint256).SetUint64(0), nil
-	}
-
-	D := new(m.Uint256).Set(S)
-	for i := 0; i < 255; i++ {
-		D_P := new(m.Uint256).Set(D)
-		for _, x := range xp {
-			D_P = new(m.Uint256).Div(new(m.Uint256).Mul(D_P, D), new(m.Uint256).Mul(x, n))
-		}
-		D_prev := new(m.Uint256).Set(D)
-		numerator := new(m.Uint256).Add(new(m.Uint256).Div(new(m.Uint256).Mul(ann, S), p.A_precise), new(m.Uint256).Mul(D_P, n))
-		denominator := new(m.Uint256).Add(
-			new(m.Uint256).Div(new(m.Uint256).Mul(new(m.Uint256).Sub(ann, p.A_precise), D), p.A_precise),
-			new(m.Uint256).Mul(new(m.Uint256).Add(n, new(m.Uint256).SetUint64(1)), D_P))
-		D = new(m.Uint256).Div(new(m.Uint256).Mul(numerator, D), denominator)
-
-		if D.Cmp(D_prev) > 0 {
-			if new(m.Uint256).Sub(D, D_prev).Cmp(new(m.Uint256).SetUint64(1)) <= 0 {
-				return D, nil
-			}
-		} else {
-			if new(m.Uint256).Sub(D_prev, D).Cmp(new(m.Uint256).SetUint64(1)) <= 0 {
-				return D, nil
-			}
-		}
-	}
-	return nil, fmt.Errorf("getD did not converge")
-}
-
-func (p *Pool) getY(i, j int, x *m.Uint256, xp []*m.Uint256, amp *m.Uint256) (*m.Uint256, error) {
-	n := len(xp)
-	if i == j {
-		return nil, fmt.Errorf("i and j must be different")
-	}
-	if i < 0 || i >= n || j < 0 || j >= n {
-		return nil, fmt.Errorf("index out of bounds")
-	}
-
-	N := new(m.Uint256).SetUint64(uint64(n))
-	D, err := p.getD(xp, amp)
-
+func (p *Pool) GetDy(
+	i, j int, dx *uint256.Int,
+	// output
+	dy *uint256.Int,
+) error {
+	var xp = XpMem(p.Extra.RateMultipliers, p.Reserves)
+	var x = number.SafeAdd(&xp[i], number.Div(number.SafeMul(dx, &p.Extra.RateMultipliers[i]), Precision))
+	var y uint256.Int
+	var err = p.getY(i, j, x, xp, nil, &y)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	Ann := new(m.Uint256).Mul(amp, N)
-	c := new(m.Uint256).Set(D)
-	S_ := new(m.Uint256).SetUint64(0)
-
-	for k := 0; k < n; k++ {
-		var _x = new(m.Uint256).SetUint64(0)
-		if k == i {
-			_x = new(m.Uint256).Set(x)
-		} else if k == j {
-			_x = new(m.Uint256).SetUint64(0)
-		} else {
-			_x = new(m.Uint256).Set(xp[k])
-		}
-
-		if k != j {
-			S_ = new(m.Uint256).Add(S_, _x)
-			c = new(m.Uint256).Mul(c, D)
-			c = new(m.Uint256).Div(c, new(m.Uint256).Mul(_x, N))
-		}
+	number.SafeSubZ(&xp[j], &y, dy)
+	if dy.Sign() <= 0 {
+		return ErrZero
 	}
+	dy.SubUint64(dy, 1)
+	var fee, dyFee uint256.Int
+	p.DynamicFee(
+		number.Div(number.SafeAdd(&xp[i], x), number.Number_2),
+		number.Div(number.SafeAdd(&xp[j], &y), number.Number_2),
+		&fee,
+	)
+	dyFee.Div(
+		number.SafeMul(dy, &fee),
+		FeeDenominator,
+	)
 
-	c = new(m.Uint256).Mul(c, D)
-	c = new(m.Uint256).Mul(c, p.A_precise)
-	c = new(m.Uint256).Div(c, new(m.Uint256).Mul(Ann, N))
-	b := new(m.Uint256).Add(S_, new(m.Uint256).Div(new(m.Uint256).Mul(D, p.A_precise), Ann))
-	y := new(m.Uint256).Set(D)
+	dy.Div(number.SafeMul(number.SafeSub(dy, &dyFee), Precision), &p.Extra.RateMultipliers[j])
 
-	for i := 0; i < 255; i++ {
-		yPrev := new(m.Uint256).Set(y)
-		numerator := new(m.Uint256).Add(new(m.Uint256).Mul(y, y), c)
-		denominator := new(m.Uint256).Sub(new(m.Uint256).Add(new(m.Uint256).Mul(new(m.Uint256).SetUint64(2), y), b), D)
-		y = new(m.Uint256).Div(numerator, denominator)
-
-		if y.Cmp(yPrev) == 0 {
-			return y, nil
-		}
-
-		if y.Cmp(yPrev) > 0 {
-			if new(m.Uint256).Sub(y, yPrev).Cmp(new(m.Uint256).SetUint64(1)) <= 0 {
-				return y, nil
-			}
-		} else {
-			if new(m.Uint256).Sub(yPrev, y).Cmp(new(m.Uint256).SetUint64(1)) <= 0 {
-				return y, nil
-			}
-		}
-	}
-	return nil, fmt.Errorf("getY did not converge")
-}
-
-func (p *Pool) isNG() bool {
-	if p.Rates == nil && p.OffPegFeeMultiplier == nil {
-		return false
-	}
-	return true
-}
-
-func (p *Pool) stableFee(dy *m.Uint256) *m.Uint256 {
-	fee := new(m.Uint256).Div(new(m.Uint256).Mul(dy, p.Fee), c.FeeDenominator)
-	return fee
-}
-
-func (p *Pool) dynamicFee(xpi *m.Uint256, xpj *m.Uint256) *m.Uint256 {
-	if p.OffPegFeeMultiplier.Cmp(c.FeeDenominator) <= 0 {
-		return p.Fee
-	}
-
-	xps2 := new(m.Uint256).Exp(new(m.Uint256).Add(xpi, xpj), new(m.Uint256).SetUint64(2))
-
-	numerator := new(m.Uint256).Mul(p.OffPegFeeMultiplier, p.Fee)
-
-	temp := new(m.Uint256).Sub(p.OffPegFeeMultiplier, c.FeeDenominator)
-	temp = new(m.Uint256).Mul(temp, new(m.Uint256).SetUint64(4))
-
-	temp = new(m.Uint256).Mul(temp, xpi)
-
-	temp = new(m.Uint256).Mul(temp, xpj)
-
-	temp = new(m.Uint256).Div(temp, xps2)
-
-	temp = new(m.Uint256).Add(temp, c.FeeDenominator)
-
-	return new(m.Uint256).Div(numerator, temp)
-}
-
-func (p *Pool) getXP() []*m.Uint256 {
-	xp := make([]*m.Uint256, len(p.XP))
-	for i, x := range p.XP {
-		if p.isNG() {
-			xp[i] = new(m.Uint256).Div(new(m.Uint256).Mul(x, p.Rates[i]), c.Precision)
-		} else {
-			xp[i] = x
-		}
-	}
-	return xp
-}
-
-func (p *Pool) getX(xp []*m.Uint256, i int, dx *m.Uint256) *m.Uint256 {
-	if p.isNG() {
-		return new(m.Uint256).Add(xp[i], new(m.Uint256).Div(new(m.Uint256).Mul(dx, p.Rates[i]), c.Precision))
-	} else {
-		return new(m.Uint256).Add(p.XP[i], dx)
-	}
+	return nil
 }

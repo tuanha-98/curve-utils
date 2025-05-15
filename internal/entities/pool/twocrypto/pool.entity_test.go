@@ -7,21 +7,21 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
-	crytoContract "github.com/tuanha-98/curve-utils/contract/cryptoswap"
-
-	c "github.com/tuanha-98/curve-utils/internal/constants"
-	m "github.com/tuanha-98/curve-utils/internal/utils/maths"
+	"github.com/holiman/uint256"
+	twoCrytoContract "github.com/tuanha-98/curve-utils/contract/twocryptoswap"
+	token "github.com/tuanha-98/curve-utils/internal/entities/token"
+	"github.com/tuanha-98/curve-utils/internal/utils/toolkit/number"
 )
 
-func NewContract(client *ethclient.Client, poolAddress common.Address) (*crytoContract.ContractCaller, error) {
-	pool, err := crytoContract.NewContractCaller(poolAddress, client)
+func NewContract(client *ethclient.Client, poolAddress common.Address) (*twoCrytoContract.ContractCaller, error) {
+	pool, err := twoCrytoContract.NewContractCaller(poolAddress, client)
 	if err != nil {
 		return nil, err
 	}
 	return pool, nil
 }
 
-func TestGetDYCryptoPool(t *testing.T) {
+func TestGetDYTwoCryptoPool(t *testing.T) {
 	// Pool addresses
 	cryptoPoolAddr := "0xB576491F1E6e5E62f1d8F26062Ee822B40B0E0d4"
 
@@ -33,12 +33,6 @@ func TestGetDYCryptoPool(t *testing.T) {
 
 	// Create a new contract instance
 	contract, _ := NewContract(client, common.HexToAddress(cryptoPoolAddr))
-
-	// Fetch the A value
-	A, err := contract.A(nil)
-	if err != nil {
-		t.Fatalf("Failed to get A: %v", err)
-	}
 
 	D, err := contract.D(nil)
 	if err != nil {
@@ -53,7 +47,7 @@ func TestGetDYCryptoPool(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to get balance: %v", err)
 	}
-	xp := []*m.Uint256{new(m.Uint256).SetBytes(xi.Bytes()), new(m.Uint256).SetBytes(xj.Bytes())}
+	xp := []uint256.Int{*uint256.MustFromBig(xi), *uint256.MustFromBig(xj)}
 
 	x, err := contract.Coins(nil, big.NewInt(int64(0)))
 	if err != nil {
@@ -63,19 +57,23 @@ func TestGetDYCryptoPool(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to get coin: %v", err)
 	}
-	coins := []string{x.String(), y.String()}
+	token1, err := token.NewToken(x)
+	if err != nil {
+		t.Fatalf("Failed to create token: %v", err)
+	}
+	token2, err := token.NewToken(y)
+	if err != nil {
+		t.Fatalf("Failed to create token: %v", err)
+	}
+	tokens := []token.Token{*token1, *token2}
 
-	precisions := []*m.Uint256{new(m.Uint256).SetUint64(1), new(m.Uint256).SetUint64(1)}
+	precisions := []uint256.Int{*new(uint256.Int).Exp(number.Number_10, uint256.NewInt(uint64(18-token1.Decimals))), *new(uint256.Int).Exp(number.Number_10, uint256.NewInt(uint64(18-token2.Decimals)))}
 
-	price_scale, err := contract.PriceScale(nil)
+	_price_scale, err := contract.PriceScale(nil)
 	if err != nil {
 		t.Fatalf("Failed to get price_scale: %v", err)
 	}
-
-	gamma, err := contract.Gamma(nil)
-	if err != nil {
-		t.Fatalf("Failed to get gamma: %v", err)
-	}
+	price_scale := []uint256.Int{*uint256.MustFromBig(_price_scale)}
 
 	midFee, err := contract.MidFee(nil)
 	if err != nil {
@@ -92,43 +90,60 @@ func TestGetDYCryptoPool(t *testing.T) {
 		t.Fatalf("Failed to get feeGamma: %v", err)
 	}
 
+	initialAGamma, err := contract.InitialAGamma(nil)
+	if err != nil {
+		t.Fatalf("Failed to get initialA: %v", err)
+	}
+
+	initialAGammaTime, err := contract.InitialAGammaTime(nil)
+	if err != nil {
+		t.Fatalf("Failed to get initialGamma: %v", err)
+	}
+
+	futureAGamma, err := contract.FutureAGamma(nil)
+	if err != nil {
+		t.Fatalf("Failed to get futureA: %v", err)
+	}
+
 	futureAGammaTime, err := contract.FutureAGammaTime(nil)
 	if err != nil {
 		t.Fatalf("Failed to get futureAGammaTime: %v", err)
 	}
 
-	pool := NewCryptoSwapPool(
+	pool := NewPool(
 		cryptoPoolAddr,
-		"CryptoSwap",
-		new(m.Uint256).SetBytes(A.Bytes()),
-		new(m.Uint256).SetBytes(gamma.Bytes()),
-		new(m.Uint256).SetBytes(D.Bytes()),
-		new(m.Uint256).SetBytes(price_scale.Bytes()),
-		new(m.Uint256).SetBytes(futureAGammaTime.Bytes()),
-		new(m.Uint256).SetBytes(midFee.Bytes()),
-		new(m.Uint256).SetBytes(outFee.Bytes()),
-		new(m.Uint256).SetBytes(feeGamma.Bytes()),
-		coins,
+		"TwoCryptoSwap",
 		xp,
+		tokens,
+		*uint256.MustFromBig(initialAGamma),
+		*uint256.MustFromBig(futureAGamma),
+		*uint256.MustFromBig(D),
+		*uint256.MustFromBig(feeGamma),
+		*uint256.MustFromBig(midFee),
+		*uint256.MustFromBig(outFee),
+		price_scale,
 		precisions,
+		initialAGammaTime.Int64(),
+		futureAGammaTime.Int64(),
 	)
 
-	value1, err := pool.GetDy(0, 1, c.Wei18)
-	if err != nil {
-		t.Fatalf("Failed to get Y: %v", err)
-	}
-	fmt.Println("DY calculated:", value1.String())
+	var amountOut, fee, amount uint256.Int
+	amount.SetFromDecimal("1000000000000000000")
 
-	amount := new(big.Int)
-	amount.SetString("1000000000000000000", 10)
-	contractDy, err := contract.GetDy(nil, big.NewInt(int64(0)), big.NewInt(int64(1)), amount)
+	if err := pool.GetDy(0, 1, &amount, &amountOut, &fee, xp); err != nil {
+		t.Fatalf("Failed to get DY: %v", err)
+	}
+	fmt.Println("DY calculated:", amountOut.String())
+
+	contractDy, err := contract.GetDy(nil, big.NewInt(int64(0)), big.NewInt(int64(1)), amount.ToBig())
 	if err != nil {
 		t.Fatalf("Failed to get DY: %v", err)
 	}
-	value2 := new(m.Uint256).SetBytes(contractDy.Bytes())
-	fmt.Println("DY from contract:", value2.String())
+	fmt.Println("DY from contract:", contractDy.String())
 
-	if value1.Cmp(value2) != 0 {
-		t.Errorf("Values are not equal: got %s, want %s", value1.String(), value2.String())
+	contractDyInt := new(uint256.Int)
+	contractDyInt.SetFromBig(contractDy)
+	if amountOut.Cmp(contractDyInt) != 0 {
+		t.Errorf("Values are not equal: got %s, want %s", amountOut.String(), contractDyInt.String())
 	}
 }

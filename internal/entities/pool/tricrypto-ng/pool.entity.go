@@ -1,4 +1,4 @@
-package twocrypto
+package tricryptong
 
 import (
 	"github.com/holiman/uint256"
@@ -46,6 +46,7 @@ func NewPool(address, exchange string, reserves []uint256.Int, tokens []token.To
 		Address:              address,
 		Exchange:             exchange,
 		Reserves:             reserves,
+		Tokens:               tokens,
 		Extra: Extra{
 			InitialAGamma:     &initial_a_gamma,
 			InitialAGammaTime: initial_a_gamma_time,
@@ -77,17 +78,17 @@ func (p *Pool) FeeCalculate(xp []uint256.Int, fee *uint256.Int) error {
 }
 
 func (p *Pool) GetDy(
-	i, j int, dx *uint256.Int,
+	i int, j int, dx *uint256.Int,
 
-	dy, fee *uint256.Int, xp []uint256.Int,
+	// output
+	dy, fee, K0 *uint256.Int, xp []uint256.Int,
 ) error {
-	if i == j {
-		return ErrSameCoin
-	}
-	if i >= NumTokens && j >= NumTokens {
-		return ErrCoinIndexOutOfRange
+	// assert dx > 0, "do not exchange 0 coins"
+	if dx.IsZero() {
+		return ErrExchange0Coins
 	}
 
+	yOrg := number.Set(&p.Reserves[j])
 	for k := 0; k < NumTokens; k += 1 {
 		if k == i {
 			number.SafeAddZ(&p.Reserves[k], dx, &xp[k])
@@ -106,18 +107,20 @@ func (p *Pool) GetDy(
 
 	A, gamma := p._A_gamma()
 	var y uint256.Int
-
-	var err = newton_y(A, gamma, xp[:], p.Extra.D, j, &y)
+	var err = get_y(A, gamma, xp[:], p.Extra.D, j, &y, K0)
 	if err != nil {
 		return err
 	}
-	number.SafeSubZ(number.SafeSub(&xp[j], &y), number.Number_1, dy)
+	number.SafeSubZ(&xp[j], &y, dy)
+	if dy.Sign() <= 0 {
+		return ErrExchange0Coins
+	}
+	dy.SubUint64(dy, 1)
 	xp[j] = y
 	if j > 0 {
 		dy.Div(number.SafeMul(dy, Precision), &p.Extra.PriceScale[j-1])
-	} else {
-		dy.Div(dy, &p.precisionMultipliers[0])
 	}
+	dy.Div(dy, &p.precisionMultipliers[j])
 
 	err = p.FeeCalculate(xp[:], fee)
 	if err != nil {
@@ -126,6 +129,13 @@ func (p *Pool) GetDy(
 
 	fee.Div(number.SafeMul(fee, dy), U_1e10)
 	dy.Sub(dy, fee)
+
+	number.SafeSubZ(yOrg, dy, yOrg)
+	number.SafeMulZ(yOrg, &p.precisionMultipliers[j], yOrg)
+	if j > 0 {
+		yOrg.Div(number.SafeMul(yOrg, &p.Extra.PriceScale[j-1]), Precision)
+	}
+	xp[j].Set(yOrg)
 
 	return nil
 }
