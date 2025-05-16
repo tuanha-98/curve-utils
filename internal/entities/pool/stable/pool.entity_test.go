@@ -102,6 +102,7 @@ func TestGetDYNgPool(t *testing.T) {
 	pool := NewPool(
 		stablePoolAddr,
 		"Stable",
+		nil,
 		xp,
 		tokens,
 		*uint256.MustFromBig(new(big.Int).Div(APrecise, A)),

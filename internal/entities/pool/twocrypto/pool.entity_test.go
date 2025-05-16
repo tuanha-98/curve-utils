@@ -10,7 +10,6 @@ import (
 	"github.com/holiman/uint256"
 	twoCrytoContract "github.com/tuanha-98/curve-utils/contract/twocryptoswap"
 	token "github.com/tuanha-98/curve-utils/internal/entities/token"
-	"github.com/tuanha-98/curve-utils/internal/utils/toolkit/number"
 )
 
 func NewContract(client *ethclient.Client, poolAddress common.Address) (*twoCrytoContract.ContractCaller, error) {
@@ -67,8 +66,6 @@ func TestGetDYTwoCryptoPool(t *testing.T) {
 	}
 	tokens := []token.Token{*token1, *token2}
 
-	precisions := []uint256.Int{*new(uint256.Int).Exp(number.Number_10, uint256.NewInt(uint64(18-token1.Decimals))), *new(uint256.Int).Exp(number.Number_10, uint256.NewInt(uint64(18-token2.Decimals)))}
-
 	_price_scale, err := contract.PriceScale(nil)
 	if err != nil {
 		t.Fatalf("Failed to get price_scale: %v", err)
@@ -122,7 +119,6 @@ func TestGetDYTwoCryptoPool(t *testing.T) {
 		*uint256.MustFromBig(midFee),
 		*uint256.MustFromBig(outFee),
 		price_scale,
-		precisions,
 		initialAGammaTime.Int64(),
 		futureAGammaTime.Int64(),
 	)

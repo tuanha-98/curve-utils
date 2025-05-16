@@ -32,12 +32,14 @@ type (
 )
 
 func NewPool(address, exchange string, reserves []uint256.Int, tokens []token.Token, a_precision, off_peg_fee_multipler, initial_a, future_a, swap_fee, admin_fee uint256.Int, rate_multipliers []uint256.Int, initial_a_time, future_a_time int64) *Pool {
+	numtokens := len(tokens)
+
 	return &Pool{
 		Address:       address,
 		Exchange:      exchange,
 		Reserves:      reserves,
-		NumTokens:     len(tokens),
-		NumTokensU256: *number.SetUint64(uint64(len(tokens))),
+		NumTokens:     numtokens,
+		NumTokensU256: *number.SetUint64(uint64(numtokens)),
 		Extra: Extra{
 			APrecision:          &a_precision,
 			OffPegFeeMultiplier: &off_peg_fee_multipler,
