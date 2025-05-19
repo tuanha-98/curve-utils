@@ -40,13 +40,12 @@ type (
 	}
 )
 
-func NewPool(address, exchange string, reserves []uint256.Int, tokens []token.Token, initial_a_gamma, future_a_gamma, d, fee_gamma, mid_fee, out_fee uint256.Int, price_scale, precisions []uint256.Int, initial_a_gamma_time, future_A_gamma_time int64) *Pool {
-	return &Pool{
-		precisionMultipliers: precisions,
-		Address:              address,
-		Exchange:             exchange,
-		Reserves:             reserves,
-		Tokens:               tokens,
+func NewPool(address, exchange string, reserves []uint256.Int, tokens []token.Token, initial_a_gamma, future_a_gamma, d, fee_gamma, mid_fee, out_fee uint256.Int, price_scale []uint256.Int, initial_a_gamma_time, future_A_gamma_time int64) *Pool {
+	pool := &Pool{
+		Address:  address,
+		Exchange: exchange,
+		Reserves: reserves,
+		Tokens:   tokens,
 		Extra: Extra{
 			InitialAGamma:     &initial_a_gamma,
 			InitialAGammaTime: initial_a_gamma_time,
@@ -59,6 +58,13 @@ func NewPool(address, exchange string, reserves []uint256.Int, tokens []token.To
 			OutFee:            &out_fee,
 		},
 	}
+
+	pool.precisionMultipliers = make([]uint256.Int, NumTokens)
+	for i := 0; i < NumTokens; i++ {
+		pool.precisionMultipliers[i].Set(number.TenPow(18 - tokens[i].Decimals))
+	}
+
+	return pool
 }
 
 func (p *Pool) FeeCalculate(xp []uint256.Int, fee *uint256.Int) error {

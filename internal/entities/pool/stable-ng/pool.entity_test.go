@@ -71,6 +71,11 @@ func TestGetDYNgPool(t *testing.T) {
 	}
 	xp := []uint256.Int{*uint256.MustFromBig(xi), *uint256.MustFromBig(xj)}
 
+	totalSupply, err := contract.TotalSupply(nil)
+	if err != nil {
+		t.Fatalf("Failed to get total supply: %v", err)
+	}
+
 	x, err := contract.Coins(nil, big.NewInt(int64(0)))
 	if err != nil {
 		t.Fatalf("Failed to get coin: %v", err)
@@ -113,7 +118,7 @@ func TestGetDYNgPool(t *testing.T) {
 
 	pool := NewPool(
 		stableNgPoolAddr,
-		"StableNG",
+		DexType,
 		xp,
 		tokens,
 		*uint256.MustFromBig(new(big.Int).Div(APrecise, A)),
@@ -122,15 +127,16 @@ func TestGetDYNgPool(t *testing.T) {
 		*uint256.MustFromBig(FutureA),
 		*uint256.MustFromBig(fee),
 		*uint256.MustFromBig(adminFee),
+		*uint256.MustFromBig(totalSupply),
 		_rates,
 		InitialATime.Int64(),
 		FutureATime.Int64(),
 	)
 
-	var amountOut, amount uint256.Int
+	var amountOut, amount, feeAdmin uint256.Int
 	amount.SetFromDecimal("1000000000000000000")
 
-	if err := pool.GetDy(0, 1, &amount, &amountOut); err != nil {
+	if err := pool.GetDy(0, 1, &amount, &amountOut, &feeAdmin); err != nil {
 		t.Fatalf("Failed to get DY: %v", err)
 	}
 	fmt.Println("DY calculated:", amountOut.String())

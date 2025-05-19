@@ -1,4 +1,4 @@
-package twocrypto
+package crypto
 
 import (
 	"time"

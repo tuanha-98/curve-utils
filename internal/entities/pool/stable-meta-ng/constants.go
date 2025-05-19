@@ -1,4 +1,4 @@
-package stable
+package stablemetang
 
 import (
 	"errors"
@@ -7,20 +7,19 @@ import (
 )
 
 const (
-	DexType       = "curve-stable"
-	MaxLoopLimit  = 256
-	MaxTokenCount = 8
+	DexType                 = "curve-stable-meta-ng"
+	MaxLoopLimit            = 256
+	N_COINS                 = 2
+	MAX_METAPOOL_COIN_INDEX = N_COINS - 1
 )
 
 var (
-	U_1e10 = uint256.MustFromDecimal("10000000000")
-	U_1e18 = uint256.MustFromDecimal("1000000000000000000")
-
-	Precision      = U_1e18
-	FeeDenominator = U_1e10
+	Precision      = uint256.MustFromDecimal("1000000000000000000")
+	FeeDenominator = uint256.MustFromDecimal("10000000000")
 )
 
 var (
+	ErrInvalidBasePool              = errors.New("invalid base pool")
 	ErrInvalidReserve               = errors.New("invalid reserve")
 	ErrInvalidStoredRates           = errors.New("invalid stored rates")
 	ErrInvalidNumToken              = errors.New("invalid number of token")
@@ -31,11 +30,8 @@ var (
 	ErrTokenFromEqualsTokenTo       = errors.New("can't compare token to itself")
 	ErrTokenIndexesOutOfRange       = errors.New("token index out of range")
 	ErrAmountOutNotConverge         = errors.New("approximation did not converge")
-	ErrTokenNotFound                = errors.New("token not found")
-	ErrWithdrawMoreThanAvailable    = errors.New("cannot withdraw more than available")
-	ErrD1LowerThanD0                = errors.New("d1 <= d0")
-	ErrDenominatorZero              = errors.New("denominator should not be 0")
-	ErrReserveTooSmall              = errors.New("reserve too small")
-	ErrInvalidFee                   = errors.New("invalid fee")
-	ErrNewReserveInvalid            = errors.New("invalid new reserve")
+
+	ErrTokenToUnderlyingNotSupported = errors.New("not support exchange from base pool token to its underlying")
+	ErrAllBasePoolTokens             = errors.New("base pool swap should be done at base pool")
+	ErrAllMetaPoolTokens             = errors.New("meta pool swap should be done using GetDy")
 )

@@ -1,4 +1,4 @@
-package twocrypto
+package crypto
 
 import (
 	"errors"
@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	DexType      = "curve-twocrypto"
+	DexType      = "curve-crypto"
 	MaxLoopLimit = 256
 	NumTokens    = 2
 )

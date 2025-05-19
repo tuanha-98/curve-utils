@@ -64,44 +64,6 @@ func (p *Pool) _A() *uint256.Int {
 	return a1
 }
 
-// func (p *Pool) getD(xp []*m.Uint256, amp *m.Uint256) (*m.Uint256, error) {
-// 	n := new(m.Uint256).SetUint64(uint64(len(xp)))
-// 	ann := new(m.Uint256).Mul(amp, n)
-// 	S := new(m.Uint256).SetUint64(0)
-// 	for _, x := range xp {
-// 		S.Add(S, x)
-// 	}
-
-// 	if S.IsZero() {
-// 		return new(m.Uint256).SetUint64(0), nil
-// 	}
-
-// 	D := new(m.Uint256).Set(S)
-// 	for i := 0; i < 255; i++ {
-// 		D_P := new(m.Uint256).Set(D)
-// 		for _, x := range xp {
-// 			D_P = new(m.Uint256).Div(new(m.Uint256).Mul(D_P, D), new(m.Uint256).Mul(x, n))
-// 		}
-// 		D_prev := new(m.Uint256).Set(D)
-// 		numerator := new(m.Uint256).Add(new(m.Uint256).Div(new(m.Uint256).Mul(ann, S), p.A_precise), new(m.Uint256).Mul(D_P, n))
-// 		denominator := new(m.Uint256).Add(
-// 			new(m.Uint256).Div(new(m.Uint256).Mul(new(m.Uint256).Sub(ann, p.A_precise), D), p.A_precise),
-// 			new(m.Uint256).Mul(new(m.Uint256).Add(n, new(m.Uint256).SetUint64(1)), D_P))
-// 		D = new(m.Uint256).Div(new(m.Uint256).Mul(numerator, D), denominator)
-
-// 		if D.Cmp(D_prev) > 0 {
-// 			if new(m.Uint256).Sub(D, D_prev).Cmp(new(m.Uint256).SetUint64(1)) <= 0 {
-// 				return D, nil
-// 			}
-// 		} else {
-// 			if new(m.Uint256).Sub(D_prev, D).Cmp(new(m.Uint256).SetUint64(1)) <= 0 {
-// 				return D, nil
-// 			}
-// 		}
-// 	}
-// 	return nil, fmt.Errorf("getD did not converge")
-// }
-
 func (p *Pool) getD(
 	xp []uint256.Int, a *uint256.Int,
 	// output
@@ -247,4 +209,267 @@ func (p *Pool) getY(
 	}
 
 	return ErrAmountOutNotConverge
+}
+
+func (p *Pool) getYD(
+	A *uint256.Int,
+	i int,
+	xp []uint256.Int,
+	D *uint256.Int,
+	// output
+	y *uint256.Int,
+) error {
+	if i >= p.NumTokens {
+		return ErrTokenIndexOutOfRange
+	}
+	var c, S uint256.Int
+	c.Set(D)
+	S.Clear()
+	var Ann = number.Mul(A, &p.NumTokensU256)
+	for _i := 0; _i < p.NumTokens; _i += 1 {
+		if _i != i {
+			// S.Add(&S, &xp[_i])
+			number.SafeAddZ(&S, &xp[_i], &S)
+			c.Div(
+				number.Mul(&c, D),
+				number.Mul(&xp[i], &p.NumTokensU256),
+			)
+		}
+	}
+	if Ann.IsZero() {
+		return ErrZero
+	}
+	c.Div(
+		number.Mul(number.Mul(&c, D), p.Extra.APrecision),
+		number.Mul(Ann, &p.NumTokensU256),
+	)
+	var b = number.Add(
+		&S,
+		number.Div(number.Mul(D, p.Extra.APrecision), Ann),
+	)
+	var yPrev uint256.Int
+	y.Set(D)
+	for _i := 0; _i < MaxLoopLimit; _i += 1 {
+		yPrev.Set(y)
+		y.Div(
+			number.Add(
+				number.Mul(y, y),
+				&c,
+			),
+			number.Sub(
+				number.Add(
+					number.Add(y, y),
+					b,
+				),
+				D,
+			),
+		)
+		if number.WithinDelta(y, &yPrev, 1) {
+			return nil
+		}
+	}
+	return ErrAmountOutNotConverge
+}
+
+func (p *Pool) GetDyByX(
+	i, j int,
+	x *uint256.Int,
+	xp []uint256.Int,
+	// output
+	dy *uint256.Int,
+	adminFee *uint256.Int,
+) error {
+	var y uint256.Int
+	var err = p.getY(i, j, x, xp, nil, &y)
+	if err != nil {
+		return err
+	}
+	number.SafeSubZ(&xp[j], &y, dy)
+	if dy.Sign() <= 0 {
+		return ErrZero
+	}
+	dy.SubUint64(dy, 1)
+	var dynamicFee, dyFee uint256.Int
+	p.DynamicFee(
+		number.Div(number.SafeAdd(&xp[i], x), number.Number_2),
+		number.Div(number.SafeAdd(&xp[j], &y), number.Number_2),
+		p.Extra.SwapFee,
+		&dynamicFee,
+	)
+	dyFee.Div(
+		number.SafeMul(dy, &dynamicFee),
+		FeeDenominator,
+	)
+
+	dy.Div(number.SafeMul(number.SafeSub(dy, &dyFee), Precision), &p.Extra.RateMultipliers[j])
+
+	adminFee.Div(
+		number.SafeMul(
+			number.Div(
+				number.SafeMul(&dyFee, p.Extra.AdminFee),
+				FeeDenominator,
+			),
+			Precision,
+		),
+		&p.Extra.RateMultipliers[j],
+	)
+
+	return nil
+}
+
+func (p *Pool) CalculateWithdrawOneCoin(
+	burnAmount *uint256.Int,
+	i int,
+	// output
+	dy *uint256.Int, dyFee *uint256.Int,
+) error {
+	var amp = p._A()
+	var xp = XpMem(p.Extra.RateMultipliers, p.Reserves)
+
+	var D0, D1, newY, newYD uint256.Int
+	var err = p.getD(xp, amp, &D0)
+	if err != nil {
+		return err
+	}
+	var totalSupply = &p.LpSupply
+	number.SafeSubZ(&D0, number.Div(number.Mul(burnAmount, &D0), totalSupply), &D1)
+	err = p.getYD(amp, i, xp, &D1, &newY)
+	if err != nil {
+		return err
+	}
+	var baseFee = number.Div(
+		number.Mul(p.Extra.SwapFee, &p.NumTokensU256),
+		number.Mul(number.Number_4, uint256.NewInt(uint64(p.NumTokens-1))),
+	)
+	var xpReduced [MaxTokenCount]uint256.Int
+	var ys = number.Div(number.SafeAdd(&D0, &D1), uint256.NewInt(uint64(p.NumTokens*2)))
+
+	var dxExpected, xavg, dynamicFee uint256.Int
+	for j := 0; j < p.NumTokens; j++ {
+		if j == i {
+			number.SafeSubZ(number.Div(number.SafeMul(&xp[j], &D1), &D0), &newY, &dxExpected)
+			xavg.Div(number.SafeAdd(&xp[j], &newY), number.Number_2)
+		} else {
+			number.SafeSubZ(&xp[j], number.Div(number.SafeMul(&xp[j], &D1), &D0), &dxExpected)
+			xavg.Set(&xp[j])
+		}
+		p.DynamicFee(&xavg, ys, baseFee, &dynamicFee)
+		number.SafeSubZ(&xp[j], number.Div(number.SafeMul(&dynamicFee, &dxExpected), FeeDenominator), &xpReduced[j])
+	}
+
+	err = p.getYD(amp, i, xpReduced[:p.NumTokens], &D1, &newYD)
+	if err != nil {
+		return err
+	}
+	number.SafeSubZ(&xpReduced[i], &newYD, dy)
+
+	var dy0 = number.Div(number.SafeMul(number.SafeSub(&xp[i], &newY), Precision), &p.Extra.RateMultipliers[i])
+	if dy.Sign() <= 0 {
+		return ErrZero
+	}
+
+	dy.Div(number.SafeMul(number.SafeSub(dy, number.Number_1), Precision), &p.Extra.RateMultipliers[i])
+	number.SafeSubZ(dy0, dy, dyFee)
+
+	return nil
+}
+
+func (p *Pool) CalculateTokenAmount(
+	amounts []uint256.Int,
+	deposit bool,
+
+	// output
+	mintAmount *uint256.Int,
+	feeAmounts []uint256.Int,
+) error {
+	var a = p._A()
+	var d0, d1, d2 uint256.Int
+	var xp = XpMem(p.Extra.RateMultipliers, p.Reserves)
+
+	// Initial invariant
+	err := p.getD(xp, a, &d0)
+	if err != nil {
+		return err
+	}
+
+	var newBalances [MaxTokenCount]uint256.Int
+	for i := 0; i < p.NumTokens; i++ {
+		if deposit {
+			number.SafeAddZ(&p.Reserves[i], &amounts[i], &newBalances[i])
+		} else {
+			number.SafeSubZ(&p.Reserves[i], &amounts[i], &newBalances[i])
+		}
+	}
+
+	// Invariant after change
+	xp = XpMem(p.Extra.RateMultipliers, newBalances[:p.NumTokens])
+	err = p.getD(xp, a, &d1)
+	if err != nil {
+		return err
+	}
+
+	// We need to recalculate the invariant accounting for fees
+	// to calculate fair user's share
+	var totalSupply = &p.LpSupply
+	if !totalSupply.IsZero() {
+		// Only account for fees if we are not the first to deposit
+		var baseFee = number.Div(
+			number.Mul(p.Extra.SwapFee, &p.NumTokensU256),
+			uint256.NewInt(4*uint64(p.NumTokens-1)),
+		)
+		var _dynamic_fee_i, difference, xs, ys uint256.Int
+		// ys: uint256 = (D0 + D1) / N_COINS
+		ys.Div(number.SafeAdd(&d0, &d1), &p.NumTokensU256)
+		for i := 0; i < p.NumTokens; i++ {
+			// ideal_balance: uint256 = D1 * old_balances[i] / D0
+			ideal_balance := number.Div(number.SafeMul(&d1, &p.Reserves[i]), &d0)
+			if ideal_balance.Cmp(&newBalances[i]) > 0 {
+				difference.Sub(ideal_balance, &newBalances[i])
+			} else {
+				difference.Sub(&newBalances[i], ideal_balance)
+			}
+
+			// xs = old_balances[i] + new_balance
+			number.SafeAddZ(&p.Reserves[i], &newBalances[i], &xs)
+
+			// this line is from `add_liquidity` method, the `calc_token_amount` method doesn't have it (might be a bug)
+			// xs = unsafe_div(rates[i] * (old_balances[i] + new_balance), PRECISION)
+			xs.Div(number.SafeMul(&p.Extra.RateMultipliers[i], &xs), Precision)
+
+			// _dynamic_fee_i = self._dynamic_fee(xs, ys, base_fee, fee_multiplier)
+			p.DynamicFee(&xs, &ys, baseFee, &_dynamic_fee_i)
+
+			// new_balances[i] -= _dynamic_fee_i * difference / FEE_DENOMINATOR
+			fee := number.Div(number.SafeMul(&_dynamic_fee_i, &difference), FeeDenominator)
+			number.SafeSubZ(&newBalances[i], fee, &newBalances[i])
+
+			// record fee so we can update balance later
+			// self.admin_balances[i] += unsafe_div(fees[i] * admin_fee, FEE_DENOMINATOR)
+			feeAmounts[i].Div(number.SafeMul(fee, p.Extra.AdminFee), FeeDenominator)
+		}
+
+		for i := 0; i < p.NumTokens; i++ {
+			// xp[idx] = rates[idx] * new_balances[idx] / PRECISION
+			xp[i].Div(number.SafeMul(&p.Extra.RateMultipliers[i], &newBalances[i]), Precision)
+		}
+		// D2 = self.get_D(xp, amp, N_COINS)
+		err = p.getD(xp, a, &d2)
+		if err != nil {
+			return err
+		}
+	} else {
+		// Take the dust if there was any
+		mintAmount.Set(&d1)
+		return nil
+	}
+
+	var diff uint256.Int
+	if deposit {
+		number.SafeSubZ(&d2, &d0, &diff)
+	} else {
+		number.SafeSubZ(&d0, &d2, &diff)
+	}
+	// return diff * total_supply / D0
+	mintAmount.Div(number.Mul(&diff, totalSupply), &d0)
+	return nil
 }

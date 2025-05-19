@@ -10,7 +10,6 @@ import (
 	"github.com/holiman/uint256"
 	triCrytoContract "github.com/tuanha-98/curve-utils/contract/tricryptoswap"
 	token "github.com/tuanha-98/curve-utils/internal/entities/token"
-	"github.com/tuanha-98/curve-utils/internal/utils/toolkit/number"
 )
 
 func NewContract(client *ethclient.Client, poolAddress common.Address) (*triCrytoContract.ContractCaller, error) {
@@ -79,8 +78,6 @@ func TestGetDYTriCryptoPool(t *testing.T) {
 	}
 	tokens := []token.Token{*token1, *token2, *token3}
 
-	precisions := []uint256.Int{*new(uint256.Int).Exp(number.Number_10, uint256.NewInt(uint64(18-token1.Decimals))), *new(uint256.Int).Exp(number.Number_10, uint256.NewInt(uint64(18-token2.Decimals))), *new(uint256.Int).Exp(number.Number_10, uint256.NewInt(uint64(18-token3.Decimals)))}
-
 	price_scale_0, err := contract.PriceScale(nil, big.NewInt(int64(0)))
 	if err != nil {
 		t.Fatalf("Failed to get price_scale: %v", err)
@@ -128,7 +125,7 @@ func TestGetDYTriCryptoPool(t *testing.T) {
 
 	pool := NewPool(
 		cryptoPoolAddr,
-		"TwoCryptoSwap",
+		"TriCryptoSwap",
 		xp,
 		tokens,
 		*uint256.MustFromBig(initialAGamma),
@@ -138,7 +135,6 @@ func TestGetDYTriCryptoPool(t *testing.T) {
 		*uint256.MustFromBig(midFee),
 		*uint256.MustFromBig(outFee),
 		price_scale,
-		precisions,
 		initialAGammaTime.Int64(),
 		futureAGammaTime.Int64(),
 	)
@@ -222,8 +218,6 @@ func TestGetDYTriCryptoNGPool(t *testing.T) {
 	}
 	tokens := []token.Token{*token1, *token2, *token3}
 
-	precisions := []uint256.Int{*new(uint256.Int).Exp(number.Number_10, uint256.NewInt(uint64(18-token1.Decimals))), *new(uint256.Int).Exp(number.Number_10, uint256.NewInt(uint64(18-token2.Decimals))), *new(uint256.Int).Exp(number.Number_10, uint256.NewInt(uint64(18-token3.Decimals)))}
-
 	price_scale_0, err := contract.PriceScale(nil, big.NewInt(int64(0)))
 	if err != nil {
 		t.Fatalf("Failed to get price_scale: %v", err)
@@ -271,7 +265,7 @@ func TestGetDYTriCryptoNGPool(t *testing.T) {
 
 	pool := NewPool(
 		cryptoPoolAddr,
-		"TwoCryptoSwap",
+		DexType,
 		xp,
 		tokens,
 		*uint256.MustFromBig(initialAGamma),
@@ -281,7 +275,6 @@ func TestGetDYTriCryptoNGPool(t *testing.T) {
 		*uint256.MustFromBig(midFee),
 		*uint256.MustFromBig(outFee),
 		price_scale,
-		precisions,
 		initialAGammaTime.Int64(),
 		futureAGammaTime.Int64(),
 	)

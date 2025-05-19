@@ -8,7 +8,7 @@ import (
 
 const (
 	DexType       = "curve-stable-ng"
-	MaxLoopLimit  = 256
+	MaxLoopLimit  = 255
 	MaxTokenCount = 8
 )
 
