@@ -3,6 +3,7 @@ package token
 import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/holiman/uint256"
 	erc20 "github.com/tuanha-98/curve-utils/contract/erc20"
 )
 
@@ -45,12 +46,17 @@ func NewToken(address common.Address) (*Token, error) {
 		if err != nil {
 			return nil, err
 		}
+		totalSupply, err := tokenContract.TotalSupply(nil)
+		if err != nil {
+			return nil, err
+		}
 
 		return &Token{
-			Address:  address.String(),
-			Name:     name,
-			Symbol:   symbol,
-			Decimals: decimals,
+			Address:     address.String(),
+			Name:        name,
+			Symbol:      symbol,
+			Decimals:    decimals,
+			TotalSupply: *uint256.MustFromBig(totalSupply),
 		}, nil
 	}
 }

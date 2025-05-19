@@ -125,7 +125,7 @@ func TestGetDYTriCryptoPool(t *testing.T) {
 
 	pool := NewPool(
 		cryptoPoolAddr,
-		"TwoCryptoSwap",
+		"TriCryptoSwap",
 		xp,
 		tokens,
 		*uint256.MustFromBig(initialAGamma),
@@ -265,7 +265,7 @@ func TestGetDYTriCryptoNGPool(t *testing.T) {
 
 	pool := NewPool(
 		cryptoPoolAddr,
-		"TwoCryptoSwap",
+		DexType,
 		xp,
 		tokens,
 		*uint256.MustFromBig(initialAGamma),

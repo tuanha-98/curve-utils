@@ -109,7 +109,7 @@ func TestGetDYTwoCryptoNGPool(t *testing.T) {
 
 	pool := NewPool(
 		cryptoPoolAddr,
-		"TwoCryptoSwap",
+		DexType,
 		xp,
 		tokens,
 		*uint256.MustFromBig(initialAGamma),

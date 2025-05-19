@@ -24,6 +24,7 @@ type (
 		precisionMultipliers []uint256.Int
 		Address, Exchange    string
 		Reserves             []uint256.Int
+		LpSupply             uint256.Int
 		NumTokens            int
 		NumTokensU256        uint256.Int
 		Tokens               []token.Token
@@ -31,13 +32,22 @@ type (
 	}
 )
 
-func NewPool(address, exchange string, rate_multipliers, reserves []uint256.Int, tokens []token.Token, a_precision, initial_a, future_a, swap_fee, admin_fee uint256.Int, initial_a_time, future_a_time int64) *Pool {
+func (p *Pool) GetTokens() []token.Token {
+	return p.Tokens
+}
+
+func (p *Pool) XpMem(rate_multipliers []uint256.Int, reserves []uint256.Int) []uint256.Int {
+	return XpMem(rate_multipliers, reserves)
+}
+
+func NewPool(address, exchange string, rate_multipliers, reserves []uint256.Int, tokens []token.Token, a_precision, initial_a, future_a, swap_fee, admin_fee, lp_supply uint256.Int, initial_a_time, future_a_time int64) *Pool {
 	numtokens := len(tokens)
 
 	pool := &Pool{
 		Address:       address,
 		Exchange:      exchange,
 		Reserves:      reserves,
+		LpSupply:      lp_supply,
 		NumTokens:     numtokens,
 		NumTokensU256: *number.SetUint64(uint64(numtokens)),
 		Tokens:        tokens,

@@ -39,6 +39,16 @@ func TestGetDYNgPool(t *testing.T) {
 		t.Fatalf("Failed to get APrecise: %v", err)
 	}
 
+	LpToken, err := contract.LpToken(nil)
+	if err != nil {
+		t.Fatalf("Failed to get LPToken: %v", err)
+	}
+
+	lpToken, err := token.NewToken(LpToken)
+	if err != nil {
+		t.Fatalf("Failed to create token: %v", err)
+	}
+
 	A, err := contract.A(nil)
 	if err != nil {
 		t.Fatalf("Failed to get A: %v", err)
@@ -101,7 +111,7 @@ func TestGetDYNgPool(t *testing.T) {
 
 	pool := NewPool(
 		stablePoolAddr,
-		"Stable",
+		DexType,
 		nil,
 		xp,
 		tokens,
@@ -110,6 +120,7 @@ func TestGetDYNgPool(t *testing.T) {
 		*uint256.MustFromBig(FutureA),
 		*uint256.MustFromBig(fee),
 		*uint256.MustFromBig(adminFee),
+		lpToken.TotalSupply,
 		InitialATime.Int64(),
 		FutureATime.Int64(),
 	)

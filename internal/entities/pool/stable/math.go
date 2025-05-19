@@ -64,44 +64,6 @@ func (p *Pool) _A() *uint256.Int {
 	return a1
 }
 
-// func (p *Pool) getD(xp []*m.Uint256, amp *m.Uint256) (*m.Uint256, error) {
-// 	n := new(m.Uint256).SetUint64(uint64(len(xp)))
-// 	ann := new(m.Uint256).Mul(amp, n)
-// 	S := new(m.Uint256).SetUint64(0)
-// 	for _, x := range xp {
-// 		S.Add(S, x)
-// 	}
-
-// 	if S.IsZero() {
-// 		return new(m.Uint256).SetUint64(0), nil
-// 	}
-
-// 	D := new(m.Uint256).Set(S)
-// 	for i := 0; i < 255; i++ {
-// 		D_P := new(m.Uint256).Set(D)
-// 		for _, x := range xp {
-// 			D_P = new(m.Uint256).Div(new(m.Uint256).Mul(D_P, D), new(m.Uint256).Mul(x, n))
-// 		}
-// 		D_prev := new(m.Uint256).Set(D)
-// 		numerator := new(m.Uint256).Add(new(m.Uint256).Div(new(m.Uint256).Mul(ann, S), p.A_precise), new(m.Uint256).Mul(D_P, n))
-// 		denominator := new(m.Uint256).Add(
-// 			new(m.Uint256).Div(new(m.Uint256).Mul(new(m.Uint256).Sub(ann, p.A_precise), D), p.A_precise),
-// 			new(m.Uint256).Mul(new(m.Uint256).Add(n, new(m.Uint256).SetUint64(1)), D_P))
-// 		D = new(m.Uint256).Div(new(m.Uint256).Mul(numerator, D), denominator)
-
-// 		if D.Cmp(D_prev) > 0 {
-// 			if new(m.Uint256).Sub(D, D_prev).Cmp(new(m.Uint256).SetUint64(1)) <= 0 {
-// 				return D, nil
-// 			}
-// 		} else {
-// 			if new(m.Uint256).Sub(D_prev, D).Cmp(new(m.Uint256).SetUint64(1)) <= 0 {
-// 				return D, nil
-// 			}
-// 		}
-// 	}
-// 	return nil, fmt.Errorf("getD did not converge")
-// }
-
 func (p *Pool) getD(
 	xp []uint256.Int, a *uint256.Int,
 	// output
@@ -161,6 +123,11 @@ func (p *Pool) getD(
 	return ErrDDoesNotConverge
 }
 
+func (p *Pool) get_D_mem(rates []uint256.Int, balances []uint256.Int, amp *uint256.Int, D *uint256.Int) error {
+	var xp = XpMem(rates, balances)
+	return p.getD(xp, amp, D)
+}
+
 func (p *Pool) getY(
 	i, j int, x *uint256.Int, xp []uint256.Int, dCached *uint256.Int,
 	// output
@@ -170,7 +137,7 @@ func (p *Pool) getY(
 		return ErrTokenFromEqualsTokenTo
 	}
 	if i >= p.NumTokens && j >= p.NumTokens {
-		return ErrTokenIndexOutOfRange
+		return ErrTokenIndexesOutOfRange
 	}
 
 	var a = p._A()
@@ -247,4 +214,174 @@ func (p *Pool) getY(
 	}
 
 	return ErrAmountOutNotConverge
+}
+
+func (p *Pool) getYD(
+	a *uint256.Int,
+	tokenIndex int,
+	xp []uint256.Int,
+	d *uint256.Int,
+
+	//output
+	y *uint256.Int,
+) error {
+	var numTokens = len(xp)
+	if tokenIndex >= numTokens {
+		return ErrTokenNotFound
+	}
+	var c, s uint256.Int
+	c.Set(d)
+	s.Clear()
+	var nA = number.Mul(a, &p.NumTokensU256)
+	for i := 0; i < numTokens; i++ {
+		if i != tokenIndex {
+			s.Add(&s, &xp[i])
+			c.Div(
+				number.Mul(&c, d),
+				number.Mul(&xp[i], &p.NumTokensU256),
+			)
+		}
+	}
+	if nA.IsZero() {
+		return ErrZero
+	}
+	c.Div(
+		number.Mul(number.Mul(&c, d), p.Extra.APrecision),
+		number.Mul(nA, &p.NumTokensU256),
+	)
+	var b = number.Add(
+		&s,
+		number.Div(number.Mul(d, p.Extra.APrecision), nA),
+	)
+	var yPrev uint256.Int
+	y.Set(d)
+	for i := 0; i < MaxLoopLimit; i++ {
+		yPrev.Set(y)
+		y.Div(
+			number.Add(
+				number.Mul(y, y),
+				&c,
+			),
+			number.Sub(
+				number.Add(
+					number.Add(y, y),
+					b,
+				),
+				d,
+			),
+		)
+		if number.WithinDelta(y, &yPrev, 1) {
+			return nil
+		}
+	}
+	return ErrAmountOutNotConverge
+}
+
+func (p *Pool) CalculateWithdrawOneCoin(
+	tokenAmount *uint256.Int,
+	i int,
+
+	// output
+	dy *uint256.Int, dyFee *uint256.Int,
+) error {
+	var amp = p._A()
+	var xp = XpMem(p.Extra.RateMultipliers, p.Reserves)
+	var D0, newY, newYD uint256.Int
+	err := p.getD(xp, amp, &D0)
+	if err != nil {
+		return err
+	}
+	var totalSupply = &p.LpSupply
+	var D1 = number.Sub(&D0, number.Div(number.Mul(tokenAmount, &D0), totalSupply))
+	err = p.getYD(amp, i, xp, D1, &newY)
+	if err != nil {
+		return err
+	}
+	var nCoins = len(p.Reserves)
+	var xpReduced [MaxTokenCount]uint256.Int
+	var nCoinBI = number.SetUint64(uint64(nCoins))
+	var fee = number.Div(number.Mul(p.Extra.SwapFee, nCoinBI), number.Mul(uint256.NewInt(4), number.SubUint64(nCoinBI, 1)))
+	for j := 0; j < nCoins; j += 1 {
+		var dxExpected uint256.Int
+		if j == i {
+			dxExpected.Sub(number.Div(number.Mul(&xp[j], D1), &D0), &newY)
+		} else {
+			dxExpected.Sub(&xp[j], number.Div(number.Mul(&xp[j], D1), &D0))
+		}
+		xpReduced[j].Sub(&xp[j], number.Div(number.Mul(fee, &dxExpected), FeeDenominator))
+	}
+	err = p.getYD(amp, i, xpReduced[:nCoins], D1, &newYD)
+	if err != nil {
+		return err
+	}
+	dy.Sub(&xpReduced[i], &newYD)
+	if dy.Sign() <= 0 {
+		return ErrZero
+	}
+	dy.Div(number.SubUint64(dy, 1), &p.precisionMultipliers[i])
+	var dy0 = number.Div(number.Sub(&xp[i], &newY), &p.precisionMultipliers[i])
+	dyFee.Sub(dy0, dy)
+	return nil
+}
+
+func (p *Pool) CalculateTokenAmount(
+	amounts []uint256.Int,
+	deposit bool,
+
+	// output
+	mintAmount *uint256.Int,
+	feeAmounts []uint256.Int,
+) error {
+	var numTokens = len(p.Tokens)
+	var a = p._A()
+	var d0, d1, d2 uint256.Int
+	err := p.get_D_mem(p.Extra.RateMultipliers, p.Reserves, a, &d0)
+	if err != nil {
+		return err
+	}
+	var balances1 [MaxTokenCount]uint256.Int
+	for i := 0; i < numTokens; i++ {
+		if deposit {
+			balances1[i].Add(&p.Reserves[i], &amounts[i])
+		} else {
+			if p.Reserves[i].Cmp(&amounts[i]) < 0 {
+				return ErrWithdrawMoreThanAvailable
+			}
+			balances1[i].Sub(&p.Reserves[i], &amounts[i])
+		}
+	}
+
+	err = p.get_D_mem(p.Extra.RateMultipliers, balances1[:], a, &d1)
+	if err != nil {
+		return err
+	}
+	// in SC, this method won't take fee into account, so the result is different than the actual add_liquidity method
+	// we'll copy that code here
+
+	// We need to recalculate the invariant accounting for fees
+	// to calculate fair user's share
+	var totalSupply = p.LpSupply
+	var difference uint256.Int
+	if !totalSupply.IsZero() {
+		var _fee = number.Div(number.Mul(p.Extra.SwapFee, &p.NumTokensU256),
+			number.Mul(number.Number_4, uint256.NewInt(uint64(p.NumTokens-1))))
+		var _admin_fee = p.Extra.AdminFee
+		for i := 0; i < p.NumTokens; i += 1 {
+			var ideal_balance = number.Div(number.Mul(&d1, &p.Reserves[i]), &d0)
+			if ideal_balance.Cmp(&balances1[i]) > 0 {
+				difference.Sub(ideal_balance, &balances1[i])
+			} else {
+				difference.Sub(&balances1[i], ideal_balance)
+			}
+			var fee = number.Div(number.Mul(_fee, &difference), FeeDenominator)
+			feeAmounts[i].Set(number.Div(number.Mul(fee, _admin_fee), FeeDenominator))
+			balances1[i].Sub(&balances1[i], fee)
+		}
+		_ = p.get_D_mem(p.Extra.RateMultipliers, balances1[:p.NumTokens], a, &d2)
+		mintAmount.Div(number.Mul(&totalSupply, number.Sub(&d2, &d0)), &d0)
+	} else {
+		mintAmount.Set(&d1)
+	}
+
+	return nil
 }
