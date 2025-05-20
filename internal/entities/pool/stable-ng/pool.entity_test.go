@@ -246,7 +246,7 @@ func TestGetDYNgPool(t *testing.T) {
 			balance := parameters[11+2*i].result.(*big.Int)
 			coin := parameters[12+2*i].result.(common.Address)
 			balances[i] = *uint256.MustFromBig(balance)
-			token, err := token.NewToken(coin)
+			token, err := token.NewToken(poolCtx, client, rpcManager, coin)
 			if err != nil {
 				results <- PoolResult{poolAddr, fmt.Errorf("failed to create token%d: %v", i, err)}
 				return
