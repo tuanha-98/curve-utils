@@ -85,19 +85,18 @@ func (p *Pool) getD(
 	var D_P, Ann, Ann_mul_S_div_APrec, Ann_sub_APrec, Dprev uint256.Int
 	D.Set(&S)
 	Ann.Mul(a, &p.NumTokensU256)
-	Ann_mul_S_div_APrec.Div(number.SafeMul(&Ann, &S), p.Extra.APrecision)
+	Ann_mul_S_div_APrec.Div(number.Mul(&Ann, &S), p.Extra.APrecision)
 	Ann_sub_APrec.Sub(&Ann, p.Extra.APrecision)
 
 	numTokensPlus1 := uint256.NewInt(uint64(p.NumTokens + 1))
 	numTokensPow := uint256.NewInt(uint64(math.Pow(float64(p.NumTokens), float64(p.NumTokens))))
-
-	for i := 0; i < 255; i += 1 {
+	for i := 0; i < 255; i++ {
 		D_P.Set(D)
 
-		for j := range xp {
+		for _, x := range xp {
 			D_P.Div(
 				number.SafeMul(&D_P, D),
-				&xp[j],
+				&x,
 			)
 		}
 
@@ -145,6 +144,7 @@ func (p *Pool) getY(
 		d.Set(dCached)
 	} else {
 		err := p.getD(xp, a, &d)
+
 		if err != nil {
 			return err
 		}
@@ -155,11 +155,11 @@ func (p *Pool) getY(
 	var _x, s uint256.Int
 	s.Clear()
 
-	for _i := 0; _i < p.NumTokens; _i += 1 {
+	for _i := 0; _i < p.NumTokens; _i++ {
 		if _i == i {
 			_x.Set(x)
 		} else if _i != j {
-			_x.Set(&xp[i])
+			_x.Set(&xp[_i])
 		} else {
 			continue
 		}
@@ -186,10 +186,10 @@ func (p *Pool) getY(
 		&s,
 		number.Div(number.SafeMul(&d, p.Extra.APrecision), Ann),
 	)
-
 	var yPrev uint256.Int
+	yPrev.Clear()
 	y.Set(&d)
-	for i := 0; i < 255; i += 1 {
+	for i := 0; i < 255; i++ {
 		yPrev.Set(y)
 
 		y.Div(
@@ -280,6 +280,7 @@ func (p *Pool) GetDyByX(
 	adminFee *uint256.Int,
 ) error {
 	var y uint256.Int
+
 	var err = p.getY(i, j, x, xp, nil, &y)
 	if err != nil {
 		return err
