@@ -164,7 +164,7 @@ func (p *Pool) getY(
 		if _i == i {
 			_x.Set(x)
 		} else if _i != j {
-			_x.Set(&xp[i])
+			_x.Set(&xp[_i])
 		} else {
 			continue
 		}
