@@ -232,7 +232,7 @@ func (p *Pool) getYD(
 			number.SafeAddZ(&S, &xp[_i], &S)
 			c.Div(
 				number.Mul(&c, D),
-				number.Mul(&xp[i], &p.NumTokensU256),
+				number.Mul(&xp[_i], &p.NumTokensU256),
 			)
 		}
 	}
