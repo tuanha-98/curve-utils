@@ -1,15 +1,18 @@
 package crypto
 
 import (
+	"context"
 	"fmt"
 	"math/big"
 	"testing"
+	"time"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/holiman/uint256"
 	twoCrytoContract "github.com/tuanha-98/curve-utils/contract/twocryptoswap"
 	token "github.com/tuanha-98/curve-utils/internal/entities/token"
+	"github.com/tuanha-98/curve-utils/internal/entities/tracer"
 )
 
 func NewContract(client *ethclient.Client, poolAddress common.Address) (*twoCrytoContract.ContractCaller, error) {
@@ -21,14 +24,28 @@ func NewContract(client *ethclient.Client, poolAddress common.Address) (*twoCryt
 }
 
 func TestGetDYTwoCryptoPool(t *testing.T) {
+	rpcs := []string{
+		"https://eth.drpc.org",
+		"https://eth.blockrazor.xyz",
+		"https://rpc.therpc.io/ethereum",
+		"https://eth-pokt.nodies.app",
+		"https://mainnet.gateway.tenderly.co",
+		"https://ethereum-rpc.publicnode.com",
+	}
+
+	rpcManager := tracer.NewRPCManager(rpcs)
+	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Minute)
+	defer cancel()
+
+	poolCtx, poolCancel := context.WithTimeout(ctx, 20*time.Second)
+	defer poolCancel()
+	client, err := rpcManager.Dial(poolCtx)
+	if err != nil {
+		t.Fatalf("failed to connect to RPC: %v", err)
+	}
+
 	// Pool addresses
 	cryptoPoolAddr := "0xB576491F1E6e5E62f1d8F26062Ee822B40B0E0d4"
-
-	// Connect to Ethereum node
-	client, err := ethclient.Dial("https://ethereum-rpc.publicnode.com")
-	if err != nil {
-		t.Fatalf("Failed to connect to Ethereum client: %v", err)
-	}
 
 	// Create a new contract instance
 	contract, _ := NewContract(client, common.HexToAddress(cryptoPoolAddr))
@@ -56,11 +73,11 @@ func TestGetDYTwoCryptoPool(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to get coin: %v", err)
 	}
-	token1, err := token.NewToken(x)
+	token1, err := token.NewToken(poolCtx, client, rpcManager, x)
 	if err != nil {
 		t.Fatalf("Failed to create token: %v", err)
 	}
-	token2, err := token.NewToken(y)
+	token2, err := token.NewToken(poolCtx, client, rpcManager, y)
 	if err != nil {
 		t.Fatalf("Failed to create token: %v", err)
 	}
