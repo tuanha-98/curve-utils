@@ -97,14 +97,24 @@ func (p *PoolSimulator) getD(
 	for i := 0; i < 255; i += 1 {
 		D_P.Set(D)
 
-		for j := range xp {
-			D_P.Div(
-				number.SafeMul(&D_P, D),
-				&xp[j],
-			)
+		switch p.Static.PoolType {
+		case PoolTypeAave:
+		case PoolTypeCompound:
+			for j := range xp {
+				D_P.Div(
+					number.SafeMul(&D_P, D),
+					number.SafeAdd(number.Mul(&xp[j], &p.NumTokensU256), number.Number_1),
+				)
+			}
+		default:
+			for j := range xp {
+				D_P.Div(
+					number.SafeMul(&D_P, D),
+					&xp[j],
+				)
+			}
+			D_P.Div(&D_P, numTokensPow)
 		}
-
-		D_P.Div(&D_P, numTokensPow)
 
 		Dprev.Set(D)
 

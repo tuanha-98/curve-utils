@@ -11,7 +11,7 @@ const (
 	MaxLoopLimit  = 256
 	MaxTokenCount = 8
 
-	PoolTypeBase     = "plain"
+	PoolTypePlain    = "plain"
 	PoolTypeMeta     = "meta"
 	PoolTypeAave     = "aave"
 	PoolTypeOracle   = "oracle"

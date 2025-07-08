@@ -129,6 +129,34 @@ func (p *PoolSimulator) FeeCalculate(dy, fee *uint256.Int) {
 	)
 }
 
+func (p *PoolSimulator) DynamicFee(xpi, xpj, swapFee, feeOutput *uint256.Int) {
+	_off_peg_fee_multiplier := p.Extra.OffPegFeeMultiplier
+	if _off_peg_fee_multiplier.Cmp(FeeDenominator) <= 0 {
+		feeOutput.Set(swapFee)
+		return
+	}
+
+	sum := number.SafeAdd(xpi, xpj)
+	prod := number.SafeMul(xpi, xpj)
+	xps2 := number.SafeMul(sum, sum)
+	feeOutput.Div(
+		number.Mul(_off_peg_fee_multiplier, swapFee),
+		number.Add(
+			number.Div(
+				number.SafeMul(
+					number.SafeMul(
+						number.Sub(_off_peg_fee_multiplier, FeeDenominator),
+						number.Number_4,
+					),
+					prod,
+				),
+				xps2,
+			),
+			FeeDenominator,
+		),
+	)
+}
+
 func (p *PoolSimulator) GetDy(
 	i, j int, dx *uint256.Int,
 	// output
@@ -149,10 +177,16 @@ func (p *PoolSimulator) GetDy(
 	dy.SubUint64(dy, 1)
 	var fee uint256.Int
 
-	p.FeeCalculate(dy, &fee)
-	if dy.Cmp(&fee) < 0 {
-		return ErrInvalidReserve
+	switch p.Static.PoolType {
+	case PoolTypeAave:
+		p.DynamicFee(&xp[i], &xp[j], p.Extra.SwapFee, &fee)
+	default:
+		p.FeeCalculate(dy, &fee)
 	}
+	// p.FeeCalculate(dy, &fee)
+	// if dy.Cmp(&fee) < 0 {
+	// 	return ErrInvalidReserve
+	// }
 
 	dy.Div(number.Mul(dy.Sub(dy, &fee), Precision), &p.Extra.RateMultipliers[j])
 	return nil
