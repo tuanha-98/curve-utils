@@ -1,0 +1,159 @@
+package curvev1
+
+import (
+	"fmt"
+	"strconv"
+
+	"github.com/holiman/uint256"
+	"github.com/tuanha-98/curve-utils/internal/entities"
+	token "github.com/tuanha-98/curve-utils/internal/entities/token"
+	"github.com/tuanha-98/curve-utils/internal/utils/toolkit/number"
+)
+
+type BasePool interface {
+	GetTokens() []token.Token
+	XpMem(rates []uint256.Int, reserves []uint256.Int) []uint256.Int
+	CalculateTokenAmount(amounts []uint256.Int, deposit bool, mintAmount *uint256.Int, fees []uint256.Int) error
+	CalculateWithdrawOneCoin(tokenAmount *uint256.Int, index int, dy *uint256.Int, fee *uint256.Int) error
+}
+
+type (
+	Pool struct {
+		Address, Exchange string
+		Reserves          []uint256.Int
+		LpSupply          uint256.Int
+		NumTokens         int
+		NumTokensU256     uint256.Int
+		Tokens            []token.Token
+		Static            Static
+		Extra             Extra
+		BasePool          BasePool
+	}
+)
+
+type PoolSimulator struct {
+	Address, Exchange string
+	Reserves          []uint256.Int
+	LpSupply          uint256.Int
+	NumTokens         int
+	NumTokensU256     uint256.Int
+	Tokens            []token.Token
+	Static            Static
+	Extra             Extra
+}
+
+func (p *PoolSimulator) GetTokens() []token.Token {
+	return p.Tokens
+}
+
+func (p *PoolSimulator) XpMem(rate_multipliers []uint256.Int, reserves []uint256.Int) []uint256.Int {
+	return XpMem(rate_multipliers, reserves)
+}
+
+func NewPool(
+	entityPool entities.Pool,
+) (*PoolSimulator, error) {
+	var aPrecision, initialA, futureA, swapFee, adminFee, offPegFeeMultiplier, lpSupply uint256.Int
+
+	lpSupply.SetFromDecimal(entityPool.TotalSupply)
+	swapFee.SetFromDecimal(entityPool.Fee.SwapFee)
+	adminFee.SetFromDecimal(entityPool.Fee.AdminFee)
+	aPrecision.SetFromDecimal(entityPool.Multipliers.APrecision)
+	offPegFeeMultiplier.SetFromDecimal(entityPool.Fee.OffPegFeeMultiplier)
+
+	initialA.SetFromDecimal(entityPool.Amplification.Initial)
+	futureA.SetFromDecimal(entityPool.Amplification.Future)
+	initialATime, _ := strconv.ParseInt(entityPool.Amplification.InitialTime, 10, 64)
+	fmt.Println("initialATime", initialATime)
+	futureATime, _ := strconv.ParseInt(entityPool.Amplification.FutureTime, 10, 64)
+	fmt.Println("futureATime", futureATime)
+
+	rateMultipliers := make([]uint256.Int, entityPool.Ncoins)
+	for i, rmStr := range entityPool.Multipliers.RateMultipliers {
+		rateMultipliers[i].SetFromDecimal(rmStr)
+	}
+
+	precisionMultipliers := make([]uint256.Int, entityPool.Ncoins)
+	for i, pStr := range entityPool.Multipliers.PrecisionMultipliers {
+		precisionMultipliers[i].SetFromDecimal(pStr)
+	}
+
+	reserves := make([]uint256.Int, entityPool.Ncoins)
+	for i, rStr := range entityPool.Reserves {
+		reserves[i].SetFromDecimal(rStr)
+	}
+
+	tokens := make([]token.Token, entityPool.Ncoins)
+	for i, t := range entityPool.Tokens {
+		tokens[i] = token.Token{
+			Address:  t.ID,
+			Name:     t.Symbol,
+			Symbol:   t.Symbol,
+			Decimals: uint8(t.Decimals),
+		}
+	}
+
+	pool := &PoolSimulator{
+		Address:       entityPool.Address,
+		Exchange:      "CurveV1",
+		Reserves:      reserves,
+		LpSupply:      lpSupply,
+		NumTokens:     entityPool.Ncoins,
+		NumTokensU256: *number.SetUint64(uint64(entityPool.Ncoins)),
+		Tokens:        tokens,
+		Static: Static{
+			PoolType:   entityPool.Type,
+			APrecision: &aPrecision,
+		},
+
+		Extra: Extra{
+			InitialA:             &initialA,
+			FutureA:              &futureA,
+			InitialATime:         initialATime,
+			FutureATime:          futureATime,
+			SwapFee:              &swapFee,
+			AdminFee:             &adminFee,
+			OffPegFeeMultiplier:  &offPegFeeMultiplier,
+			RateMultipliers:      rateMultipliers,
+			PrecisionMultipliers: precisionMultipliers,
+		},
+	}
+
+	return pool, nil
+}
+
+func (p *PoolSimulator) FeeCalculate(dy, fee *uint256.Int) {
+	fee.Div(
+		number.SafeMul(dy, p.Extra.SwapFee),
+		FeeDenominator,
+	)
+}
+
+func (p *PoolSimulator) GetDy(
+	i, j int, dx *uint256.Int,
+	// output
+	dy *uint256.Int,
+) error {
+	var xp = XpMem(p.Extra.RateMultipliers, p.Reserves)
+	var x = number.SafeAdd(&xp[i], number.Div(number.Mul(dx, &p.Extra.RateMultipliers[i]), Precision))
+	var y uint256.Int
+	var err = p.getY(i, j, x, xp, nil, &y)
+	if err != nil {
+		return err
+	}
+
+	number.SafeSubZ(&xp[j], &y, dy)
+	if dy.Sign() <= 0 {
+		return ErrZero
+	}
+	dy.SubUint64(dy, 1)
+	var fee uint256.Int
+
+	p.FeeCalculate(dy, &fee)
+	if dy.Cmp(&fee) < 0 {
+		return ErrInvalidReserve
+	}
+
+	dy.Div(number.Mul(dy.Sub(dy, &fee), Precision), &p.Extra.RateMultipliers[j])
+	return nil
+}
