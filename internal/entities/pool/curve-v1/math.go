@@ -1,7 +1,6 @@
 package curvev1
 
 import (
-	"fmt"
 	"math"
 	"time"
 
@@ -10,6 +9,22 @@ import (
 )
 
 var NowFunc = time.Now
+
+func xp(
+	precisions []uint256.Int,
+	balances []uint256.Int,
+) []uint256.Int {
+	xp := make([]uint256.Int, 0)
+	var numTokens = len(balances)
+	if numTokens != len(precisions) {
+		return nil
+	}
+	for i := 0; i < numTokens; i++ {
+		result := number.SafeMul(&balances[i], &precisions[i])
+		xp = append(xp, *result)
+	}
+	return xp
+}
 
 func XpMem(
 	rates []uint256.Int,
@@ -99,6 +114,7 @@ func (p *PoolSimulator) getD(
 
 		switch p.Static.PoolType {
 		case PoolTypeAave:
+			fallthrough
 		case PoolTypeCompound:
 			for j := range xp {
 				D_P.Div(
@@ -155,7 +171,6 @@ func (p *PoolSimulator) getY(
 
 	var a = p._A()
 
-	fmt.Println("getY: a =", a)
 	if a == nil {
 		return ErrInvalidAValue
 	}
@@ -209,11 +224,11 @@ func (p *PoolSimulator) getY(
 
 	var yPrev uint256.Int
 	y.Set(&d)
-	for i := 0; i < 255; i += 1 {
+	for i := 0; i < MaxLoopLimit; i += 1 {
 		yPrev.Set(y)
 
 		y.Div(
-			number.SafeAdd(number.SafeMul(y, y), c),
+			number.SafeAdd(number.SafeMul(y, y), c), // this overflows if y is too big
 			number.SafeSub(
 				number.SafeAdd(
 					number.SafeAdd(y, y),

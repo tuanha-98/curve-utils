@@ -80,8 +80,8 @@ func TestGetDYStablePool(t *testing.T) {
 
 				maxAllowedDiff := uint256.NewInt(2)
 				if diff.Cmp(maxAllowedDiff) > 0 {
-					t.Errorf("GetDy mismatch for pool %s: got %s, want %s (diff: %s wei) (testCase: indexIn: %d, indexOut: %d)",
-						poolResult.Pool.Address, amountOut.String(), expectAmountOut.String(), diff.String(), testCase.IndexIn, testCase.IndexOut)
+					t.Errorf("GetDy mismatch for pool %s: got %s, want %s (diff: %s wei)",
+						poolResult.Pool.Address, amountOut.String(), expectAmountOut.String(), diff.String())
 				} else {
 					t.Logf("GetDy success for pool %s: got %s, want %s",
 						poolResult.Pool.Address, amountOut.String(), expectAmountOut.String())

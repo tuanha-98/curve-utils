@@ -1,7 +1,6 @@
 package curvev1
 
 import (
-	"fmt"
 	"strconv"
 
 	"github.com/holiman/uint256"
@@ -64,9 +63,7 @@ func NewPool(
 	initialA.SetFromDecimal(entityPool.Amplification.Initial)
 	futureA.SetFromDecimal(entityPool.Amplification.Future)
 	initialATime, _ := strconv.ParseInt(entityPool.Amplification.InitialTime, 10, 64)
-	fmt.Println("initialATime", initialATime)
 	futureATime, _ := strconv.ParseInt(entityPool.Amplification.FutureTime, 10, 64)
-	fmt.Println("futureATime", futureATime)
 
 	rateMultipliers := make([]uint256.Int, entityPool.Ncoins)
 	for i, rmStr := range entityPool.Multipliers.RateMultipliers {
@@ -162,32 +159,39 @@ func (p *PoolSimulator) GetDy(
 	// output
 	dy *uint256.Int,
 ) error {
-	var xp = XpMem(p.Extra.RateMultipliers, p.Reserves)
-	var x = number.SafeAdd(&xp[i], number.Div(number.Mul(dx, &p.Extra.RateMultipliers[i]), Precision))
-	var y uint256.Int
-	var err = p.getY(i, j, x, xp, nil, &y)
-	if err != nil {
-		return err
-	}
-
-	number.SafeSubZ(&xp[j], &y, dy)
-	if dy.Sign() <= 0 {
-		return ErrZero
-	}
-	dy.SubUint64(dy, 1)
-	var fee uint256.Int
-
 	switch p.Static.PoolType {
 	case PoolTypeAave:
-		p.DynamicFee(&xp[i], &xp[j], p.Extra.SwapFee, &fee)
+		var xp = xp(p.Extra.PrecisionMultipliers, p.Reserves)
+		var x = number.SafeAdd(&xp[i], number.Mul(dx, &p.Extra.PrecisionMultipliers[i]))
+		var y uint256.Int
+		var err = p.getY(i, j, x, xp, nil, &y)
+		if err != nil {
+			return err
+		}
+		dy.Div(number.Sub(&xp[j], &y), &p.Extra.PrecisionMultipliers[j])
+		var fee uint256.Int
+		p.DynamicFee(number.Div(number.Add(&xp[i], x), number.Number_2), number.Div(number.Add(&xp[j], &y), number.Number_2), p.Extra.SwapFee, &fee)
+		fee.Div(number.Mul(&fee, dy), FeeDenominator)
+		dy.Sub(dy, &fee)
 	default:
+		var xp = XpMem(p.Extra.RateMultipliers, p.Reserves)
+		var x = number.SafeAdd(&xp[i], number.Div(number.Mul(dx, &p.Extra.RateMultipliers[i]), Precision))
+		var y uint256.Int
+		var err = p.getY(i, j, x, xp, nil, &y)
+		if err != nil {
+			return err
+		}
+		number.SafeSubZ(&xp[j], &y, dy)
+		if dy.Sign() <= 0 {
+			return ErrZero
+		}
+		dy.SubUint64(dy, 1)
+		var fee uint256.Int
 		p.FeeCalculate(dy, &fee)
+		if dy.Cmp(&fee) < 0 {
+			return ErrInvalidReserve
+		}
+		dy.Div(number.Mul(dy.Sub(dy, &fee), Precision), &p.Extra.RateMultipliers[j])
 	}
-	// p.FeeCalculate(dy, &fee)
-	// if dy.Cmp(&fee) < 0 {
-	// 	return ErrInvalidReserve
-	// }
-
-	dy.Div(number.Mul(dy.Sub(dy, &fee), Precision), &p.Extra.RateMultipliers[j])
 	return nil
 }
