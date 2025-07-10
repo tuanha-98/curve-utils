@@ -27,7 +27,6 @@ type PoolJSON []struct {
 
 // ! Pool: 0x618788357d0ebd8a37e763adab3bc575d54c2c7d, 0x3e01dd8a5e1fb3481f0f589056b428fc308af0fb -> calculate wrong
 // ! Pool: 0xc61557c5d177bd7dc889a3b621eec333e168f68a -> contain token null with decimal 0 -> lead overflow when calculate dy
-// ! AND Kyber does not support these pool
 
 func TestGetDYUnderlyingMetaPool(t *testing.T) {
 	originCurveV1NowFunc := curvev1.NowFunc
