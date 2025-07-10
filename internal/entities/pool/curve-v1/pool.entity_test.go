@@ -52,6 +52,7 @@ func TestGetDYStablePool(t *testing.T) {
 
 	for _, poolResult := range result {
 		if poolResult.Pool.Type == PoolTypeMeta {
+			t.Logf("\033[33mSkipping META pool %s\033[0m", poolResult.Pool.Address)
 			continue
 		}
 
@@ -80,10 +81,10 @@ func TestGetDYStablePool(t *testing.T) {
 
 				maxAllowedDiff := uint256.NewInt(2)
 				if diff.Cmp(maxAllowedDiff) > 0 {
-					t.Errorf("GetDy mismatch for pool %s: got %s, want %s (diff: %s wei)",
+					t.Errorf("\033[31mGetDy FAILED for pool %s: calculated %s, expected %s (diff: %s wei)\033[0m",
 						poolResult.Pool.Address, amountOut.String(), expectAmountOut.String(), diff.String())
 				} else {
-					t.Logf("GetDy success for pool %s: got %s, want %s",
+					t.Logf("\033[32mGetDy SUCCESS for pool %s: calculated %s, expected %s\033[0m",
 						poolResult.Pool.Address, amountOut.String(), expectAmountOut.String())
 				}
 			}

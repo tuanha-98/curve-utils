@@ -52,6 +52,7 @@ func (p *PoolSimulator) _A() *uint256.Int {
 	var t1 = p.Extra.FutureATime
 	var a1 = p.Extra.FutureA
 	var now = NowFunc().Unix()
+
 	if t1 > now {
 		var t0 = p.Extra.InitialATime
 		var a0 = p.Extra.InitialA
@@ -327,11 +328,9 @@ func (p *PoolSimulator) CalculateWithdrawOneCoin(
 	if err != nil {
 		return err
 	}
-	var nCoins = len(p.Reserves)
 	var xpReduced [MaxTokenCount]uint256.Int
-	var nCoinBI = number.SetUint64(uint64(nCoins))
-	var fee = number.Div(number.Mul(p.Extra.SwapFee, nCoinBI), number.Mul(uint256.NewInt(4), number.SubUint64(nCoinBI, 1)))
-	for j := 0; j < nCoins; j += 1 {
+	var fee = number.Div(number.Mul(p.Extra.SwapFee, &p.NumTokensU256), number.Mul(number.Number_4, number.SubUint64(&p.NumTokensU256, 1)))
+	for j := 0; j < p.NumTokens; j++ {
 		var dxExpected uint256.Int
 		if j == i {
 			dxExpected.Sub(number.Div(number.Mul(&xp[j], D1), &D0), &newY)
@@ -340,7 +339,7 @@ func (p *PoolSimulator) CalculateWithdrawOneCoin(
 		}
 		xpReduced[j].Sub(&xp[j], number.Div(number.Mul(fee, &dxExpected), FeeDenominator))
 	}
-	err = p.getYD(amp, i, xpReduced[:nCoins], D1, &newYD)
+	err = p.getYD(amp, i, xpReduced[:p.NumTokens], D1, &newYD)
 	if err != nil {
 		return err
 	}
@@ -360,16 +359,15 @@ func (p *PoolSimulator) CalculateTokenAmount(
 
 	// output
 	mintAmount *uint256.Int,
-	feeAmounts []uint256.Int,
 ) error {
 	var numTokens = len(p.Tokens)
 	var a = p._A()
-	var d0, d1, d2 uint256.Int
+	var d0, d1 uint256.Int
 	err := p.get_D_mem(p.Extra.RateMultipliers, p.Reserves, a, &d0)
 	if err != nil {
 		return err
 	}
-	var balances1 [MaxTokenCount]uint256.Int
+	var balances1 = make([]uint256.Int, p.NumTokens)
 	for i := 0; i < numTokens; i++ {
 		if deposit {
 			balances1[i].Add(&p.Reserves[i], &amounts[i])
@@ -381,37 +379,20 @@ func (p *PoolSimulator) CalculateTokenAmount(
 		}
 	}
 
-	err = p.get_D_mem(p.Extra.RateMultipliers, balances1[:], a, &d1)
+	err = p.get_D_mem(p.Extra.RateMultipliers, balances1, a, &d1)
 	if err != nil {
 		return err
 	}
-	// in SC, this method won't take fee into account, so the result is different than the actual add_liquidity method
-	// we'll copy that code here
 
-	// We need to recalculate the invariant accounting for fees
-	// to calculate fair user's share
 	var totalSupply = p.LpSupply
-	var difference uint256.Int
-	if !totalSupply.IsZero() {
-		var _fee = number.Div(number.Mul(p.Extra.SwapFee, &p.NumTokensU256),
-			number.Mul(number.Number_4, uint256.NewInt(uint64(p.NumTokens-1))))
-		var _admin_fee = p.Extra.AdminFee
-		for i := 0; i < p.NumTokens; i += 1 {
-			var ideal_balance = number.Div(number.Mul(&d1, &p.Reserves[i]), &d0)
-			if ideal_balance.Cmp(&balances1[i]) > 0 {
-				difference.Sub(ideal_balance, &balances1[i])
-			} else {
-				difference.Sub(&balances1[i], ideal_balance)
-			}
-			var fee = number.Div(number.Mul(_fee, &difference), FeeDenominator)
-			feeAmounts[i].Set(number.Div(number.Mul(fee, _admin_fee), FeeDenominator))
-			balances1[i].Sub(&balances1[i], fee)
-		}
-		_ = p.get_D_mem(p.Extra.RateMultipliers, balances1[:p.NumTokens], a, &d2)
-		mintAmount.Div(number.Mul(&totalSupply, number.Sub(&d2, &d0)), &d0)
+	var diff uint256.Int
+
+	if deposit {
+		diff.Sub(&d1, &d0)
 	} else {
-		mintAmount.Set(&d1)
+		diff.Sub(&d0, &d1)
 	}
 
+	mintAmount.Set(number.Div(number.Mul(&totalSupply, &diff), &d0))
 	return nil
 }

@@ -15402,6 +15402,204 @@
   },
   {
     "pool": {
+      "id": "0xc61557c5d177bd7dc889a3b621eec333e168f68a",
+      "amplification": {
+        "initial": "5000",
+        "future": "5000",
+        "initialTime": "0",
+        "futureTime": "0"
+      },
+      "basePool": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7",
+      "fee": {
+        "swapFee": "4000000",
+        "adminFee": "5000000000",
+        "offPegFeeMultipliers": "0"
+      },
+      "kind": "meta",
+      "lpToken": "0xc61557c5d177bd7dc889a3b621eec333e168f68a",
+      "multipliers": {
+        "aPrecision": "100",
+        "precisions": [
+          "1000000000000000000",
+          "1"
+        ],
+        "rateMultipliers": [
+          "1000000000000000000000000000000000000",
+          "1039827331947996320"
+        ]
+      },
+      "ncoins": 2,
+      "reserves": [
+        "76056776232511152085",
+        "74162249338711320780"
+      ],
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "686cf4490159b409374c7a28"
+          },
+          "id": "0x29b41fe7d754b8b43d4060bb43734e436b0b9a33",
+          "decimals": 0,
+          "symbol": null
+        },
+        {
+          "_id": {
+            "$oid": "686cf4490159b409374c7a29"
+          },
+          "id": "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490",
+          "decimals": 18,
+          "symbol": "3Crv"
+        }
+      ],
+      "underlyingTokens": [
+        {
+          "_id": {
+            "$oid": "686cf4490159b409374c7a24"
+          },
+          "id": "0x29b41fe7d754b8b43d4060bb43734e436b0b9a33",
+          "decimals": 0,
+          "symbol": null
+        },
+        {
+          "_id": {
+            "$oid": "686cf4490159b409374c7a25"
+          },
+          "id": "0x6b175474e89094c44da98b954eedeac495271d0f",
+          "decimals": 18,
+          "symbol": "DAI"
+        },
+        {
+          "_id": {
+            "$oid": "686cf4490159b409374c7a26"
+          },
+          "id": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "decimals": 6,
+          "symbol": "USDC"
+        },
+        {
+          "_id": {
+            "$oid": "686cf4490159b409374c7a27"
+          },
+          "id": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "decimals": 6,
+          "symbol": "USDT"
+        }
+      ],
+      "totalSupply": "151941378682174951594"
+    },
+    "testCases": [
+      {
+        "in": "0x29b41fe7d754b8b43d4060bb43734e436b0b9a33",
+        "indexIn": 0,
+        "out": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "indexOut": 1,
+        "amountIn": "1521135524650223041",
+        "expectedAmountOut": "1520302326974334668",
+        "swappable": true
+      },
+      {
+        "in": "0x29b41fe7d754b8b43d4060bb43734e436b0b9a33",
+        "indexIn": 0,
+        "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexOut": 2,
+        "amountIn": "1521135524650223041",
+        "expectedAmountOut": "1520274",
+        "swappable": true
+      },
+      {
+        "in": "0x29b41fe7d754b8b43d4060bb43734e436b0b9a33",
+        "indexIn": 0,
+        "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexOut": 3,
+        "amountIn": "1521135524650223041",
+        "expectedAmountOut": "1520097",
+        "swappable": true
+      },
+      {
+        "in": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "indexIn": 1,
+        "out": "0x29b41fe7d754b8b43d4060bb43734e436b0b9a33",
+        "indexOut": 0,
+        "amountIn": "3518900093606879370980768",
+        "expectedAmountOut": "76026353521292714965",
+        "swappable": true
+      },
+      {
+        "in": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "indexIn": 1,
+        "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexOut": 2,
+        "amountIn": "3518900093606879370980768",
+        "expectedAmountOut": "3518283343209",
+        "swappable": true
+      },
+      {
+        "in": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "indexIn": 1,
+        "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexOut": 3,
+        "amountIn": "3518900093606879370980768",
+        "expectedAmountOut": "3517887519876",
+        "swappable": true
+      },
+      {
+        "in": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexIn": 2,
+        "out": "0x29b41fe7d754b8b43d4060bb43734e436b0b9a33",
+        "indexOut": 0,
+        "amountIn": "2605513172258",
+        "expectedAmountOut": "76026353520694992752",
+        "swappable": true
+      },
+      {
+        "in": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexIn": 2,
+        "out": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "indexOut": 1,
+        "amountIn": "2605513172258",
+        "expectedAmountOut": "2605142528327364961106167",
+        "swappable": true
+      },
+      {
+        "in": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexIn": 2,
+        "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexOut": 3,
+        "amountIn": "2605513172258",
+        "expectedAmountOut": "2604816531709",
+        "swappable": true
+      },
+      {
+        "in": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexIn": 3,
+        "out": "0x29b41fe7d754b8b43d4060bb43734e436b0b9a33",
+        "indexOut": 0,
+        "amountIn": "864169231856",
+        "expectedAmountOut": "76026353509992476987",
+        "swappable": true
+      },
+      {
+        "in": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexIn": 3,
+        "out": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "indexOut": 1,
+        "amountIn": "864169231856",
+        "expectedAmountOut": "864137417877884798572461",
+        "swappable": true
+      },
+      {
+        "in": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexIn": 3,
+        "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexOut": 2,
+        "amountIn": "864169231856",
+        "expectedAmountOut": "864124261379",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
       "id": "0xe9123cbc5d1ea65301d417193c40a72ac8d53501",
       "amplification": {
         "initial": "80000",

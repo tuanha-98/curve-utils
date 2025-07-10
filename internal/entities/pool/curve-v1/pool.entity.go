@@ -9,26 +9,9 @@ import (
 	"github.com/tuanha-98/curve-utils/internal/utils/toolkit/number"
 )
 
-type BasePool interface {
-	GetTokens() []token.Token
-	XpMem(rates []uint256.Int, reserves []uint256.Int) []uint256.Int
-	CalculateTokenAmount(amounts []uint256.Int, deposit bool, mintAmount *uint256.Int, fees []uint256.Int) error
-	CalculateWithdrawOneCoin(tokenAmount *uint256.Int, index int, dy *uint256.Int, fee *uint256.Int) error
+type FeeInfo struct {
+	SwapFee, AdminFee, OffPegFeeMultiplier uint256.Int
 }
-
-type (
-	Pool struct {
-		Address, Exchange string
-		Reserves          []uint256.Int
-		LpSupply          uint256.Int
-		NumTokens         int
-		NumTokensU256     uint256.Int
-		Tokens            []token.Token
-		Static            Static
-		Extra             Extra
-		BasePool          BasePool
-	}
-)
 
 type PoolSimulator struct {
 	Address, Exchange string
@@ -47,6 +30,14 @@ func (p *PoolSimulator) GetTokens() []token.Token {
 
 func (p *PoolSimulator) XpMem(rate_multipliers []uint256.Int, reserves []uint256.Int) []uint256.Int {
 	return XpMem(rate_multipliers, reserves)
+}
+
+func (p *PoolSimulator) GetFeeInfo() FeeInfo {
+	return FeeInfo{
+		SwapFee:             *p.Extra.SwapFee,
+		AdminFee:            *p.Extra.AdminFee,
+		OffPegFeeMultiplier: *p.Extra.OffPegFeeMultiplier,
+	}
 }
 
 func NewPool(
