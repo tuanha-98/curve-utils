@@ -1,36 +1,30 @@
 package entities
 
 type Pool struct {
-	Address       string `json:"id"`
-	Amplification struct {
-		Initial     string `json:"initial"`
-		Future      string `json:"future"`
-		InitialTime string `json:"initialTime"`
-		FutureTime  string `json:"futureTime"`
-	} `json:"amplification"`
-	BasePool string `json:"basePool,omitempty"`
-	Fee      struct {
-		SwapFee             string `json:"swapFee"`
-		AdminFee            string `json:"adminFee"`
-		OffPegFeeMultiplier string `json:"offPegFeeMultipliers"`
-	} `json:"fee"`
-	Type        string `json:"kind,omitempty"`
-	LpToken     string `json:"lpToken,omitempty"`
-	Multipliers struct {
-		APrecision           string   `json:"aPrecision"`
-		PrecisionMultipliers []string `json:"precisions"`
-		RateMultipliers      []string `json:"rateMultipliers"`
-	} `json:"multipliers"`
-	Ncoins   int      `json:"ncoins,omitempty"`
-	Reserves []string `json:"reserves,omitempty"`
-	Tokens   []struct {
+	Address string `json:"id"`
+	Tokens  []struct {
 		ID       string `json:"id"`
 		Symbol   string `json:"symbol"`
 		Decimals int    `json:"decimals"`
 	} `json:"tokens"`
-	TotalSupply string `json:"totalSupply,omitempty"`
+	NTokens         int      `json:"nTokens,omitempty"`
+	BasePoolAddress string   `json:"basePoolAddress,omitempty"`
+	Reserves        []string `json:"reserves,omitempty"`
+	TotalSupply     string   `json:"totalSupply,omitempty"`
+	SwapFee         string   `json:"swapFee"`
+	AdminFee        string   `json:"adminFee"`
+	OffPegFee       string   `json:"offPegFee"`
+	InitialA        string   `json:"initialA"`
+	FutureA         string   `json:"futureA"`
+	InitialATime    string   `json:"initialATime"`
+	FutureATime     string   `json:"futureATime"`
+	APrecision      string   `json:"APrecision"`
+	Precisions      []string `json:"precisions"`
+	Rates           []string `json:"rates"`
+	Kind            string   `json:"kind,omitempty"`
+	LpTokenAddress  string   `json:"lpTokenAddress,omitempty"`
 }
 
 func (p *Pool) IsMeta() bool {
-	return len(p.BasePool) > 0
+	return len(p.BasePoolAddress) > 0
 }

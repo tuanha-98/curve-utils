@@ -30,12 +30,12 @@ func TestGetDYStablePool(t *testing.T) {
 	defer func() { NowFunc = originNowFunc }()
 
 	NowFunc = func() time.Time {
-		return time.Unix(1751958839, 0)
+		return time.Unix(1752226775, 0)
 	}
 
 	jsonFile, err := os.Open("data/curvev1_pools_with_testcases.json")
 	if err != nil {
-		t.Fatalf("Failed to open curvev1_pools_with_testcases.json: %v", err)
+		t.Fatalf("Failed to open curve.json: %v", err)
 	}
 
 	defer jsonFile.Close()
@@ -51,7 +51,7 @@ func TestGetDYStablePool(t *testing.T) {
 	}
 
 	for _, poolResult := range result {
-		if poolResult.Pool.Type == PoolTypeMeta {
+		if poolResult.Pool.Kind == PoolTypeMeta {
 			t.Logf("\033[33mSkipping META pool %s\033[0m", poolResult.Pool.Address)
 			continue
 		}

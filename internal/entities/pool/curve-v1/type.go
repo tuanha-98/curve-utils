@@ -14,11 +14,11 @@ type (
 		InitialATime int64
 		FutureATime  int64
 
-		SwapFee             *uint256.Int
-		AdminFee            *uint256.Int
-		OffPegFeeMultiplier *uint256.Int
+		SwapFee   *uint256.Int
+		AdminFee  *uint256.Int
+		OffPegFee *uint256.Int
 
-		RateMultipliers      []uint256.Int
-		PrecisionMultipliers []uint256.Int
+		Rates      []uint256.Int
+		Precisions []uint256.Int
 	}
 )

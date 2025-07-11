@@ -25,35 +25,19 @@ type PoolJSON []struct {
 	}
 }
 
-// ! Pool: 0x618788357d0ebd8a37e763adab3bc575d54c2c7d, 0x3e01dd8a5e1fb3481f0f589056b428fc308af0fb -> calculate wrong
-// ! Pool: 0xc61557c5d177bd7dc889a3b621eec333e168f68a -> contain token null with decimal 0 -> lead overflow when calculate dy
+// ! Pool: 0x618788357d0ebd8a37e763adab3bc575d54c2c7d -> calculate wrong
 
 func TestGetDYUnderlyingMetaPool(t *testing.T) {
-	originCurveV1NowFunc := curvev1.NowFunc
-	originCurveV1MetaNowFunc := NowFunc
-	defer func() {
-		curvev1.NowFunc = originCurveV1NowFunc
-		NowFunc = originCurveV1MetaNowFunc
-	}()
-
 	curvev1.NowFunc = func() time.Time {
-		return time.Unix(1751958839, 0)
+		return time.Unix(1752226775, 0)
 	}
 	NowFunc = func() time.Time {
-		return time.Unix(1751958839, 0)
+		return time.Unix(1752226775, 0)
 	}
 
-	// ! This data is contains 3 pools above lead wrong or overflow dy calculation
-	// jsonFile, err := os.Open("data/curvev1_pools_with_testcases.json")
-	// if err != nil {
-	// 	t.Fatalf("Failed to open curvev1_pools_with_testcases.json: %v", err)
-	// }
-
-	// defer jsonFile.Close()
-
-	jsonFile, err := os.Open("data/testcases_remove_unsupported.json")
+	jsonFile, err := os.Open("data/curvev1_pools_with_testcases.json")
 	if err != nil {
-		t.Fatalf("Failed to open testcases_remove_unsupported.json: %v", err)
+		t.Fatalf("Failed to open curvev1_pools_with_testcases.json: %v", err)
 	}
 
 	defer jsonFile.Close()
@@ -69,12 +53,12 @@ func TestGetDYUnderlyingMetaPool(t *testing.T) {
 	}
 
 	for _, poolResult := range result {
-		if poolResult.Pool.Type != PoolTypeMeta {
+		if poolResult.Pool.Kind != PoolTypeMeta {
 			t.Logf("\033[33mSkipping NOT META pool %s\033[0m", poolResult.Pool.Address)
 			continue
 		}
 
-		basePoolAddress := poolResult.Pool.BasePool
+		basePoolAddress := poolResult.Pool.BasePoolAddress
 		var basePool *entities.Pool
 
 		for _, bp := range result {

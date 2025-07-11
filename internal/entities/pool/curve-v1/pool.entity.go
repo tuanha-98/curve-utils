@@ -10,7 +10,7 @@ import (
 )
 
 type FeeInfo struct {
-	SwapFee, AdminFee, OffPegFeeMultiplier uint256.Int
+	SwapFee, AdminFee, OffPegFee uint256.Int
 }
 
 type PoolSimulator struct {
@@ -34,44 +34,44 @@ func (p *PoolSimulator) XpMem(rate_multipliers []uint256.Int, reserves []uint256
 
 func (p *PoolSimulator) GetFeeInfo() FeeInfo {
 	return FeeInfo{
-		SwapFee:             *p.Extra.SwapFee,
-		AdminFee:            *p.Extra.AdminFee,
-		OffPegFeeMultiplier: *p.Extra.OffPegFeeMultiplier,
+		SwapFee:   *p.Extra.SwapFee,
+		AdminFee:  *p.Extra.AdminFee,
+		OffPegFee: *p.Extra.OffPegFee,
 	}
 }
 
 func NewPool(
 	entityPool entities.Pool,
 ) (*PoolSimulator, error) {
-	var aPrecision, initialA, futureA, swapFee, adminFee, offPegFeeMultiplier, lpSupply uint256.Int
+	var aPrecision, initialA, futureA, swapFee, adminFee, offPegFee, lpSupply uint256.Int
 
 	lpSupply.SetFromDecimal(entityPool.TotalSupply)
-	swapFee.SetFromDecimal(entityPool.Fee.SwapFee)
-	adminFee.SetFromDecimal(entityPool.Fee.AdminFee)
-	aPrecision.SetFromDecimal(entityPool.Multipliers.APrecision)
-	offPegFeeMultiplier.SetFromDecimal(entityPool.Fee.OffPegFeeMultiplier)
+	swapFee.SetFromDecimal(entityPool.SwapFee)
+	adminFee.SetFromDecimal(entityPool.AdminFee)
+	aPrecision.SetFromDecimal(entityPool.APrecision)
+	offPegFee.SetFromDecimal(entityPool.OffPegFee)
 
-	initialA.SetFromDecimal(entityPool.Amplification.Initial)
-	futureA.SetFromDecimal(entityPool.Amplification.Future)
-	initialATime, _ := strconv.ParseInt(entityPool.Amplification.InitialTime, 10, 64)
-	futureATime, _ := strconv.ParseInt(entityPool.Amplification.FutureTime, 10, 64)
+	initialA.SetFromDecimal(entityPool.InitialA)
+	futureA.SetFromDecimal(entityPool.FutureA)
+	initialATime, _ := strconv.ParseInt(entityPool.InitialATime, 10, 64)
+	futureATime, _ := strconv.ParseInt(entityPool.FutureATime, 10, 64)
 
-	rateMultipliers := make([]uint256.Int, entityPool.Ncoins)
-	for i, rmStr := range entityPool.Multipliers.RateMultipliers {
-		rateMultipliers[i].SetFromDecimal(rmStr)
+	rates := make([]uint256.Int, entityPool.NTokens)
+	for i, rmStr := range entityPool.Rates {
+		rates[i].SetFromDecimal(rmStr)
 	}
 
-	precisionMultipliers := make([]uint256.Int, entityPool.Ncoins)
-	for i, pStr := range entityPool.Multipliers.PrecisionMultipliers {
-		precisionMultipliers[i].SetFromDecimal(pStr)
+	precisions := make([]uint256.Int, entityPool.NTokens)
+	for i, pStr := range entityPool.Precisions {
+		precisions[i].SetFromDecimal(pStr)
 	}
 
-	reserves := make([]uint256.Int, entityPool.Ncoins)
+	reserves := make([]uint256.Int, entityPool.NTokens)
 	for i, rStr := range entityPool.Reserves {
 		reserves[i].SetFromDecimal(rStr)
 	}
 
-	tokens := make([]token.Token, entityPool.Ncoins)
+	tokens := make([]token.Token, entityPool.NTokens)
 	for i, t := range entityPool.Tokens {
 		tokens[i] = token.Token{
 			Address:  t.ID,
@@ -86,24 +86,24 @@ func NewPool(
 		Exchange:      "CurveV1",
 		Reserves:      reserves,
 		LpSupply:      lpSupply,
-		NumTokens:     entityPool.Ncoins,
-		NumTokensU256: *number.SetUint64(uint64(entityPool.Ncoins)),
+		NumTokens:     entityPool.NTokens,
+		NumTokensU256: *number.SetUint64(uint64(entityPool.NTokens)),
 		Tokens:        tokens,
 		Static: Static{
-			PoolType:   entityPool.Type,
+			PoolType:   entityPool.Kind,
 			APrecision: &aPrecision,
 		},
 
 		Extra: Extra{
-			InitialA:             &initialA,
-			FutureA:              &futureA,
-			InitialATime:         initialATime,
-			FutureATime:          futureATime,
-			SwapFee:              &swapFee,
-			AdminFee:             &adminFee,
-			OffPegFeeMultiplier:  &offPegFeeMultiplier,
-			RateMultipliers:      rateMultipliers,
-			PrecisionMultipliers: precisionMultipliers,
+			InitialA:     &initialA,
+			FutureA:      &futureA,
+			InitialATime: initialATime,
+			FutureATime:  futureATime,
+			SwapFee:      &swapFee,
+			AdminFee:     &adminFee,
+			OffPegFee:    &offPegFee,
+			Rates:        rates,
+			Precisions:   precisions,
 		},
 	}
 
@@ -118,7 +118,7 @@ func (p *PoolSimulator) FeeCalculate(dy, fee *uint256.Int) {
 }
 
 func (p *PoolSimulator) DynamicFee(xpi, xpj, swapFee, feeOutput *uint256.Int) {
-	_off_peg_fee_multiplier := p.Extra.OffPegFeeMultiplier
+	_off_peg_fee_multiplier := p.Extra.OffPegFee
 	if _off_peg_fee_multiplier.Cmp(FeeDenominator) <= 0 {
 		feeOutput.Set(swapFee)
 		return
@@ -152,21 +152,21 @@ func (p *PoolSimulator) GetDy(
 ) error {
 	switch p.Static.PoolType {
 	case PoolTypeAave:
-		var xp = xp(p.Extra.PrecisionMultipliers, p.Reserves)
-		var x = number.SafeAdd(&xp[i], number.Mul(dx, &p.Extra.PrecisionMultipliers[i]))
+		var xp = xp(p.Extra.Precisions, p.Reserves)
+		var x = number.SafeAdd(&xp[i], number.Mul(dx, &p.Extra.Precisions[i]))
 		var y uint256.Int
 		var err = p.getY(i, j, x, xp, nil, &y)
 		if err != nil {
 			return err
 		}
-		dy.Div(number.Sub(&xp[j], &y), &p.Extra.PrecisionMultipliers[j])
+		dy.Div(number.Sub(&xp[j], &y), &p.Extra.Precisions[j])
 		var fee uint256.Int
 		p.DynamicFee(number.Div(number.Add(&xp[i], x), number.Number_2), number.Div(number.Add(&xp[j], &y), number.Number_2), p.Extra.SwapFee, &fee)
 		fee.Div(number.Mul(&fee, dy), FeeDenominator)
 		dy.Sub(dy, &fee)
 	default:
-		var xp = XpMem(p.Extra.RateMultipliers, p.Reserves)
-		var x = number.SafeAdd(&xp[i], number.Div(number.Mul(dx, &p.Extra.RateMultipliers[i]), Precision))
+		var xp = XpMem(p.Extra.Rates, p.Reserves)
+		var x = number.SafeAdd(&xp[i], number.Div(number.Mul(dx, &p.Extra.Rates[i]), Precision))
 		var y uint256.Int
 		var err = p.getY(i, j, x, xp, nil, &y)
 		if err != nil {
@@ -182,7 +182,7 @@ func (p *PoolSimulator) GetDy(
 		if dy.Cmp(&fee) < 0 {
 			return ErrInvalidReserve
 		}
-		dy.Div(number.Mul(dy.Sub(dy, &fee), Precision), &p.Extra.RateMultipliers[j])
+		dy.Div(number.Mul(dy.Sub(dy, &fee), Precision), &p.Extra.Rates[j])
 	}
 	return nil
 }

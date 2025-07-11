@@ -316,7 +316,7 @@ func (p *PoolSimulator) CalculateWithdrawOneCoin(
 	dy *uint256.Int, dyFee *uint256.Int,
 ) error {
 	var amp = p._A()
-	var xp = XpMem(p.Extra.RateMultipliers, p.Reserves)
+	var xp = XpMem(p.Extra.Rates, p.Reserves)
 	var D0, newY, newYD uint256.Int
 	err := p.getD(xp, amp, &D0)
 	if err != nil {
@@ -347,8 +347,8 @@ func (p *PoolSimulator) CalculateWithdrawOneCoin(
 	if dy.Sign() <= 0 {
 		return ErrZero
 	}
-	dy.Div(number.SubUint64(dy, 1), &p.Extra.PrecisionMultipliers[i])
-	var dy0 = number.Div(number.Sub(&xp[i], &newY), &p.Extra.PrecisionMultipliers[i])
+	dy.Div(number.SubUint64(dy, 1), &p.Extra.Precisions[i])
+	var dy0 = number.Div(number.Sub(&xp[i], &newY), &p.Extra.Precisions[i])
 	dyFee.Sub(dy0, dy)
 	return nil
 }
@@ -363,7 +363,7 @@ func (p *PoolSimulator) CalculateTokenAmount(
 	var numTokens = len(p.Tokens)
 	var a = p._A()
 	var d0, d1 uint256.Int
-	err := p.get_D_mem(p.Extra.RateMultipliers, p.Reserves, a, &d0)
+	err := p.get_D_mem(p.Extra.Rates, p.Reserves, a, &d0)
 	if err != nil {
 		return err
 	}
@@ -379,7 +379,7 @@ func (p *PoolSimulator) CalculateTokenAmount(
 		}
 	}
 
-	err = p.get_D_mem(p.Extra.RateMultipliers, balances1, a, &d1)
+	err = p.get_D_mem(p.Extra.Rates, balances1, a, &d1)
 	if err != nil {
 		return err
 	}

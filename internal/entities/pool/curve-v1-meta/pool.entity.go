@@ -76,7 +76,7 @@ func (p *PoolSimulator) GetDyUnderlying(
 ) error {
 	var maxCoins = p.NumTokens - 1
 	var baseNCoins = len(p.BasePool.GetTokens())
-	xp := p.BasePool.XpMem(p.Extra.RateMultipliers, p.Reserves)
+	xp := p.BasePool.XpMem(p.Extra.Rates, p.Reserves)
 
 	var base_i = i - maxCoins
 	var base_j = j - maxCoins
@@ -92,7 +92,7 @@ func (p *PoolSimulator) GetDyUnderlying(
 	var x *uint256.Int
 	var amountOut, withdrawDy, withdrawDyFee uint256.Int
 	if base_i < 0 {
-		x = number.SafeAdd(&xp[i], number.SafeMul(_dx, number.Div(&p.Extra.RateMultipliers[i], Precision)))
+		x = number.SafeAdd(&xp[i], number.SafeMul(_dx, number.Div(&p.Extra.Rates[i], Precision)))
 	} else {
 		if base_j < 0 {
 			var base_inputs = make([]uint256.Int, baseNCoins)
@@ -104,7 +104,7 @@ func (p *PoolSimulator) GetDyUnderlying(
 			if err != nil {
 				return err
 			}
-			x = number.Div(number.SafeMul(&amountOut, &p.Extra.RateMultipliers[maxCoins]), Precision)
+			x = number.Div(number.SafeMul(&amountOut, &p.Extra.Rates[maxCoins]), Precision)
 			feeInfo := p.BasePool.GetFeeInfo()
 			x = number.Sub(x, number.Div(number.Mul(x, &feeInfo.SwapFee), number.Mul(number.Number_2, FeeDenominator)))
 			x = number.SafeAdd(&xp[maxCoins], x)
@@ -136,9 +136,9 @@ func (p *PoolSimulator) GetDyUnderlying(
 	dy.Sub(dy, &fee)
 
 	if base_j < 0 {
-		dy.Set(number.Div(number.Mul(dy, Precision), &p.Extra.RateMultipliers[j]))
+		dy.Set(number.Div(number.Mul(dy, Precision), &p.Extra.Rates[j]))
 	} else {
-		if err := p.BasePool.CalculateWithdrawOneCoin(number.Div(number.Mul(dy, Precision), &p.Extra.RateMultipliers[maxCoins]), base_j, &withdrawDy, &withdrawDyFee); err != nil {
+		if err := p.BasePool.CalculateWithdrawOneCoin(number.Div(number.Mul(dy, Precision), &p.Extra.Rates[maxCoins]), base_j, &withdrawDy, &withdrawDyFee); err != nil {
 			return err
 		}
 		dy.Set(&withdrawDy)
