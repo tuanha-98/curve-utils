@@ -1,4 +1,4 @@
-package stableng
+package curvev1ng
 
 import (
 	"errors"
@@ -10,6 +10,10 @@ const (
 	DexType       = "curve-stable-ng"
 	MaxLoopLimit  = 255
 	MaxTokenCount = 8
+
+	PoolTypePlain  = "plain"
+	PoolTypeMeta   = "meta"
+	PoolTypeOracle = "oracle"
 )
 
 var (
