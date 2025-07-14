@@ -72,8 +72,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "5643860785346319417",
-        "expectedAmountOut": "5650822",
+        "amountIn": "7054825981682899271",
+        "expectedAmountOut": "7063094",
         "swappable": true
       },
       {
@@ -81,8 +81,8 @@
         "indexIn": 1,
         "out": "0x4591dbff62656e7859afe5e45f6f47d3669fbb28",
         "indexOut": 0,
-        "amountIn": "3616410",
-        "expectedAmountOut": "3608996243045715051",
+        "amountIn": "9041026",
+        "expectedAmountOut": "9020189233102004707",
         "swappable": true
       }
     ]
@@ -160,8 +160,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "169854478601583797130569",
-        "expectedAmountOut": "169957611827",
+        "amountIn": "226472638135445062840759",
+        "expectedAmountOut": "226604473152",
         "swappable": true
       },
       {
@@ -169,8 +169,8 @@
         "indexIn": 1,
         "out": "0x4c9edd5852cd905f086c759e8383e09bff1e68b3",
         "indexOut": 0,
-        "amountIn": "445402005547",
-        "expectedAmountOut": "444888507377535597648368",
+        "amountIn": "346423782092",
+        "expectedAmountOut": "346046179560684267865854",
         "swappable": true
       }
     ]
@@ -248,8 +248,8 @@
         "indexIn": 0,
         "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
         "indexOut": 1,
-        "amountIn": "588696390134808245",
-        "expectedAmountOut": "630664277960266302",
+        "amountIn": "1177392780269616490",
+        "expectedAmountOut": "1261054915153014024",
         "swappable": true
       },
       {
@@ -345,8 +345,8 @@
         "indexIn": 1,
         "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
         "indexOut": 0,
-        "amountIn": "106816798049506699475",
-        "expectedAmountOut": "106609940766906563834",
+        "amountIn": "42726719219802679790",
+        "expectedAmountOut": "42650502636097737204",
         "swappable": true
       }
     ]
@@ -424,8 +424,8 @@
         "indexIn": 0,
         "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
         "indexOut": 1,
-        "amountIn": "18021263820851599901",
-        "expectedAmountOut": "17179491780948728882",
+        "amountIn": "36042527641703199803",
+        "expectedAmountOut": "34224014243508232246",
         "swappable": true
       },
       {
@@ -433,8 +433,8 @@
         "indexIn": 1,
         "out": "0x0100546f2cd4c9d97f798ffc9755e47865ff7ee6",
         "indexOut": 0,
-        "amountIn": "18923994961447856043",
-        "expectedAmountOut": "19697555044157820909",
+        "amountIn": "7096498110542946016",
+        "expectedAmountOut": "7401074805212141167",
         "swappable": true
       }
     ]
@@ -512,8 +512,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "490148416",
-        "expectedAmountOut": "489880514",
+        "amountIn": "560169618",
+        "expectedAmountOut": "559825831",
         "swappable": true
       },
       {
@@ -521,8 +521,8 @@
         "indexIn": 1,
         "out": "0x6c3ea9036406852006290770bedfcaba0e23a0e8",
         "indexOut": 0,
-        "amountIn": "561717563",
-        "expectedAmountOut": "561351206",
+        "amountIn": "491502868",
+        "expectedAmountOut": "491215455",
         "swappable": true
       }
     ]
@@ -616,8 +616,8 @@
         "indexIn": 0,
         "out": "0x6b175474e89094c44da98b954eedeac495271d0f",
         "indexOut": 1,
-        "amountIn": "14110656890880243002239",
-        "expectedAmountOut": "14002629252231439470881",
+        "amountIn": "56442627563520972008957",
+        "expectedAmountOut": "55508493674389465606027",
         "swappable": true
       },
       {
@@ -625,8 +625,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 2,
-        "amountIn": "14110656890880243002239",
-        "expectedAmountOut": "14002808789",
+        "amountIn": "56442627563520972008957",
+        "expectedAmountOut": "55509205497",
         "swappable": true
       },
       {
@@ -634,8 +634,8 @@
         "indexIn": 0,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 3,
-        "amountIn": "14110656890880243002239",
-        "expectedAmountOut": "13997083263",
+        "amountIn": "56442627563520972008957",
+        "expectedAmountOut": "55486488033",
         "swappable": true
       },
       {
@@ -643,8 +643,8 @@
         "indexIn": 1,
         "out": "0x59d9356e565ab3a36dd77763fc0d87feaf85508c",
         "indexOut": 0,
-        "amountIn": "5959880696567794132796779",
-        "expectedAmountOut": "705389230988571095151884",
+        "amountIn": "6704865783638768399396377",
+        "expectedAmountOut": "705381639777273982744738",
         "swappable": true
       },
       {
@@ -652,8 +652,8 @@
         "indexIn": 1,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 2,
-        "amountIn": "5959880696567794132796779",
-        "expectedAmountOut": "5958932667852",
+        "amountIn": "6704865783638768399396377",
+        "expectedAmountOut": "6703782460565",
         "swappable": true
       },
       {
@@ -661,8 +661,8 @@
         "indexIn": 1,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 3,
-        "amountIn": "5959880696567794132796779",
-        "expectedAmountOut": "5956117288135",
+        "amountIn": "6704865783638768399396377",
+        "expectedAmountOut": "6700513138336",
         "swappable": true
       },
       {
@@ -670,8 +670,8 @@
         "indexIn": 2,
         "out": "0x59d9356e565ab3a36dd77763fc0d87feaf85508c",
         "indexOut": 0,
-        "amountIn": "2332364187949",
-        "expectedAmountOut": "705427846955688517278934",
+        "amountIn": "777454729316",
+        "expectedAmountOut": "704799818966169120160564",
         "swappable": true
       },
       {
@@ -679,8 +679,8 @@
         "indexIn": 2,
         "out": "0x6b175474e89094c44da98b954eedeac495271d0f",
         "indexOut": 1,
-        "amountIn": "2332364187949",
-        "expectedAmountOut": "2331970858656798557615618",
+        "amountIn": "777454729316",
+        "expectedAmountOut": "777327676004336164133930",
         "swappable": true
       },
       {
@@ -688,8 +688,8 @@
         "indexIn": 2,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 3,
-        "amountIn": "2332364187949",
-        "expectedAmountOut": "2331037547490",
+        "amountIn": "777454729316",
+        "expectedAmountOut": "777033206953",
         "swappable": true
       },
       {
@@ -697,8 +697,8 @@
         "indexIn": 3,
         "out": "0x59d9356e565ab3a36dd77763fc0d87feaf85508c",
         "indexOut": 0,
-        "amountIn": "307291971748",
-        "expectedAmountOut": "307708939435437217290703",
+        "amountIn": "2151043802238",
+        "expectedAmountOut": "705428355123891372887691",
         "swappable": true
       },
       {
@@ -706,8 +706,8 @@
         "indexIn": 3,
         "out": "0x6b175474e89094c44da98b954eedeac495271d0f",
         "indexOut": 1,
-        "amountIn": "307291971748",
-        "expectedAmountOut": "307357858840118874182327",
+        "amountIn": "2151043802238",
+        "expectedAmountOut": "2151447726004174274654296",
         "swappable": true
       },
       {
@@ -715,8 +715,8 @@
         "indexIn": 3,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 2,
-        "amountIn": "307291971748",
-        "expectedAmountOut": "307361179863",
+        "amountIn": "2151043802238",
+        "expectedAmountOut": "2151470777480",
         "swappable": true
       }
     ]
@@ -794,8 +794,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "82276039088",
-        "expectedAmountOut": "82264515891",
+        "amountIn": "575932273620",
+        "expectedAmountOut": "575842994666",
         "swappable": true
       },
       {
@@ -803,8 +803,8 @@
         "indexIn": 1,
         "out": "0x6c3ea9036406852006290770bedfcaba0e23a0e8",
         "indexOut": 0,
-        "amountIn": "411470843131",
-        "expectedAmountOut": "411440099049",
+        "amountIn": "274313895420",
+        "expectedAmountOut": "274294388800",
         "swappable": true
       }
     ]
@@ -882,8 +882,8 @@
         "indexIn": 0,
         "out": "0xae78736cd615f374d3085123a210448e74fc6393",
         "indexOut": 1,
-        "amountIn": "8340063290819297909",
-        "expectedAmountOut": "7310191720436727020",
+        "amountIn": "2780021096939765969",
+        "expectedAmountOut": "2437192258879611864",
         "swappable": true
       },
       {
@@ -891,8 +891,8 @@
         "indexIn": 1,
         "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
         "indexOut": 0,
-        "amountIn": "8120240312679544473",
-        "expectedAmountOut": "9256727660846697440",
+        "amountIn": "5413493541786362982",
+        "expectedAmountOut": "6171829396981461258",
         "swappable": true
       }
     ]
@@ -970,8 +970,8 @@
         "indexIn": 0,
         "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
         "indexOut": 1,
-        "amountIn": "10563168543097226",
-        "expectedAmountOut": "10624407706926624",
+        "amountIn": "21126337086194452",
+        "expectedAmountOut": "21246525483194241",
         "swappable": true
       },
       {
@@ -1058,8 +1058,8 @@
         "indexIn": 0,
         "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
         "indexOut": 1,
-        "amountIn": "26168003932514731171",
-        "expectedAmountOut": "28838619361127501661",
+        "amountIn": "32710004915643413964",
+        "expectedAmountOut": "36044378806496024752",
         "swappable": true
       },
       {
@@ -1067,8 +1067,8 @@
         "indexIn": 1,
         "out": "0xf1376bcef0f78459c0ed0ba5ddce976f1ddf51f4",
         "indexOut": 0,
-        "amountIn": "39267485642796163897",
-        "expectedAmountOut": "35567192533077117056",
+        "amountIn": "19633742821398081948",
+        "expectedAmountOut": "17788633349032284039",
         "swappable": true
       }
     ]
@@ -1146,8 +1146,8 @@
         "indexIn": 0,
         "out": "0xfae103dc9cf190ed75350761e95403b7b8afa6c0",
         "indexOut": 1,
-        "amountIn": "59037261997493830",
-        "expectedAmountOut": "56680988866551102",
+        "amountIn": "33735578284282188",
+        "expectedAmountOut": "32393895903022259",
         "swappable": true
       },
       {
@@ -1155,8 +1155,8 @@
         "indexIn": 1,
         "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
         "indexOut": 0,
-        "amountIn": "88718630852333917",
-        "expectedAmountOut": "92260781765635908",
+        "amountIn": "118291507803111890",
+        "expectedAmountOut": "122981786494708332",
         "swappable": true
       }
     ]
@@ -1272,8 +1272,8 @@
         "indexIn": 0,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 1,
-        "amountIn": "10556507999102956704",
-        "expectedAmountOut": "10534692",
+        "amountIn": "7037671999401971136",
+        "expectedAmountOut": "7023890",
         "swappable": true
       },
       {
@@ -1281,8 +1281,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 2,
-        "amountIn": "10556507999102956704",
-        "expectedAmountOut": "10537430",
+        "amountIn": "7037671999401971136",
+        "expectedAmountOut": "7025691",
         "swappable": true
       },
       {
@@ -1290,8 +1290,8 @@
         "indexIn": 0,
         "out": "0x6b175474e89094c44da98b954eedeac495271d0f",
         "indexOut": 3,
-        "amountIn": "10556507999102956704",
-        "expectedAmountOut": "10538771442803026276",
+        "amountIn": "7037671999401971136",
+        "expectedAmountOut": "7026574164750642203",
         "swappable": true
       },
       {
@@ -1299,8 +1299,8 @@
         "indexIn": 1,
         "out": "0xd77fd503a09269c93b5392ce699fe4883ee0e955",
         "indexOut": 0,
-        "amountIn": "3067298",
-        "expectedAmountOut": "3069907809335149414",
+        "amountIn": "6134596",
+        "expectedAmountOut": "6139248941082773083",
         "swappable": true
       },
       {
@@ -1308,8 +1308,8 @@
         "indexIn": 1,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 2,
-        "amountIn": "3067298",
-        "expectedAmountOut": "3066522",
+        "amountIn": "6134596",
+        "expectedAmountOut": "6132418",
         "swappable": true
       },
       {
@@ -1317,8 +1317,8 @@
         "indexIn": 1,
         "out": "0x6b175474e89094c44da98b954eedeac495271d0f",
         "indexOut": 3,
-        "amountIn": "3067298",
-        "expectedAmountOut": "3066901310839214652",
+        "amountIn": "6134596",
+        "expectedAmountOut": "6133183421232058471",
         "swappable": true
       },
       {
@@ -1326,8 +1326,8 @@
         "indexIn": 2,
         "out": "0xd77fd503a09269c93b5392ce699fe4883ee0e955",
         "indexOut": 0,
-        "amountIn": "3142162",
-        "expectedAmountOut": "3144053588750302888",
+        "amountIn": "18852973",
+        "expectedAmountOut": "18855701660686139760",
         "swappable": true
       },
       {
@@ -1335,8 +1335,8 @@
         "indexIn": 2,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 1,
-        "amountIn": "3142162",
-        "expectedAmountOut": "3139792",
+        "amountIn": "18852973",
+        "expectedAmountOut": "18828814",
         "swappable": true
       },
       {
@@ -1344,8 +1344,8 @@
         "indexIn": 2,
         "out": "0x6b175474e89094c44da98b954eedeac495271d0f",
         "indexOut": 3,
-        "amountIn": "3142162",
-        "expectedAmountOut": "3140972336589948135",
+        "amountIn": "18852973",
+        "expectedAmountOut": "18836295677071604145",
         "swappable": true
       },
       {
@@ -1353,8 +1353,8 @@
         "indexIn": 3,
         "out": "0xd77fd503a09269c93b5392ce699fe4883ee0e955",
         "indexOut": 0,
-        "amountIn": "19081444391866617584",
-        "expectedAmountOut": "19081884380556859598",
+        "amountIn": "6360481463955539194",
+        "expectedAmountOut": "6362949937020621437",
         "swappable": true
       },
       {
@@ -1362,8 +1362,8 @@
         "indexIn": 3,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 1,
-        "amountIn": "19081444391866617584",
-        "expectedAmountOut": "19054631",
+        "amountIn": "6360481463955539194",
+        "expectedAmountOut": "6354237",
         "swappable": true
       },
       {
@@ -1371,8 +1371,8 @@
         "indexIn": 3,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 2,
-        "amountIn": "19081444391866617584",
-        "expectedAmountOut": "19059722",
+        "amountIn": "6360481463955539194",
+        "expectedAmountOut": "6355858",
         "swappable": true
       }
     ]
@@ -1450,8 +1450,8 @@
         "indexIn": 0,
         "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
         "indexOut": 1,
-        "amountIn": "2378945639371275726",
-        "expectedAmountOut": "2375435217602293998",
+        "amountIn": "3058644393477354505",
+        "expectedAmountOut": "3053476774735860019",
         "swappable": true
       },
       {
@@ -1459,8 +1459,8 @@
         "indexIn": 1,
         "out": "0x35fa164735182de50811e8e2e824cfb9b6118ac2",
         "indexOut": 0,
-        "amountIn": "2228841970197826602",
-        "expectedAmountOut": "2228562324292703958",
+        "amountIn": "2865653961682919917",
+        "expectedAmountOut": "2864743494243019260",
         "swappable": true
       }
     ]
@@ -1540,7 +1540,62 @@
       "basePoolType": "curvev1ng",
       "blockTimestamp": 1752482243
     },
-    "testCases": []
+    "testCases": [
+      {
+        "in": "0x4591dbff62656e7859afe5e45f6f47d3669fbb28",
+        "indexIn": 0,
+        "out": "0x6c3ea9036406852006290770bedfcaba0e23a0e8",
+        "indexOut": 1,
+        "amountIn": "1094987507009796347",
+        "expectedAmountOut": "1092324",
+        "swappable": true
+      },
+      {
+        "in": "0x4591dbff62656e7859afe5e45f6f47d3669fbb28",
+        "indexIn": 0,
+        "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexOut": 2,
+        "amountIn": "1094987507009796347",
+        "expectedAmountOut": "1092274",
+        "swappable": true
+      },
+      {
+        "in": "0x6c3ea9036406852006290770bedfcaba0e23a0e8",
+        "indexIn": 1,
+        "out": "0x4591dbff62656e7859afe5e45f6f47d3669fbb28",
+        "indexOut": 0,
+        "amountIn": "329104156354",
+        "expectedAmountOut": "109411267955386045120",
+        "swappable": true
+      },
+      {
+        "in": "0x6c3ea9036406852006290770bedfcaba0e23a0e8",
+        "indexIn": 1,
+        "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexOut": 2,
+        "amountIn": "329104156354",
+        "expectedAmountOut": "329055647854",
+        "swappable": true
+      },
+      {
+        "in": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexIn": 2,
+        "out": "0x4591dbff62656e7859afe5e45f6f47d3669fbb28",
+        "indexOut": 0,
+        "amountIn": "137156947710",
+        "expectedAmountOut": "109411429469037755860",
+        "swappable": true
+      },
+      {
+        "in": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexIn": 2,
+        "out": "0x6c3ea9036406852006290770bedfcaba0e23a0e8",
+        "indexOut": 1,
+        "amountIn": "137156947710",
+        "expectedAmountOut": "137147691742",
+        "swappable": true
+      }
+    ]
   },
   {
     "pool": {
@@ -1631,8 +1686,8 @@
         "indexIn": 0,
         "out": "0x6b175474e89094c44da98b954eedeac495271d0f",
         "indexOut": 1,
-        "amountIn": "29437639762816800585",
-        "expectedAmountOut": "29729520180385598135",
+        "amountIn": "58875279525633601170",
+        "expectedAmountOut": "59435992014503630422",
         "swappable": true
       },
       {
@@ -1640,8 +1695,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 2,
-        "amountIn": "29437639762816800585",
-        "expectedAmountOut": "29729901",
+        "amountIn": "58875279525633601170",
+        "expectedAmountOut": "59436754",
         "swappable": true
       },
       {
@@ -1649,8 +1704,8 @@
         "indexIn": 0,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 3,
-        "amountIn": "29437639762816800585",
-        "expectedAmountOut": "29717748",
+        "amountIn": "58875279525633601170",
+        "expectedAmountOut": "59412458",
         "swappable": true
       },
       {
@@ -1658,8 +1713,8 @@
         "indexIn": 1,
         "out": "0x466a756e9a7401b5e2444a3fcb3c2c12fbea0a54",
         "indexOut": 0,
-        "amountIn": "6704865783638768399396377",
-        "expectedAmountOut": "735352498297272963816",
+        "amountIn": "3724925435354871332997987",
+        "expectedAmountOut": "735352701554318165375",
         "swappable": true
       },
       {
@@ -1667,8 +1722,8 @@
         "indexIn": 1,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 2,
-        "amountIn": "6704865783638768399396377",
-        "expectedAmountOut": "6703782460565",
+        "amountIn": "3724925435354871332997987",
+        "expectedAmountOut": "3724360760074",
         "swappable": true
       },
       {
@@ -1676,8 +1731,8 @@
         "indexIn": 1,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 3,
-        "amountIn": "6704865783638768399396377",
-        "expectedAmountOut": "6700513138336",
+        "amountIn": "3724925435354871332997987",
+        "expectedAmountOut": "3722750579075",
         "swappable": true
       },
       {
@@ -1685,8 +1740,8 @@
         "indexIn": 2,
         "out": "0x466a756e9a7401b5e2444a3fcb3c2c12fbea0a54",
         "indexOut": 0,
-        "amountIn": "6997092563849",
-        "expectedAmountOut": "735352487628157521810",
+        "amountIn": "1554909458633",
+        "expectedAmountOut": "735353326999355314888",
         "swappable": true
       },
       {
@@ -1694,8 +1749,8 @@
         "indexIn": 2,
         "out": "0x6b175474e89094c44da98b954eedeac495271d0f",
         "indexOut": 1,
-        "amountIn": "6997092563849",
-        "expectedAmountOut": "6995801081196535436124685",
+        "amountIn": "1554909458633",
+        "expectedAmountOut": "1554651301613856584601355",
         "swappable": true
       },
       {
@@ -1703,8 +1758,8 @@
         "indexIn": 2,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 3,
-        "amountIn": "6997092563849",
-        "expectedAmountOut": "6992417385075",
+        "amountIn": "1554909458633",
+        "expectedAmountOut": "1554046235012",
         "swappable": true
       },
       {
@@ -1712,8 +1767,8 @@
         "indexIn": 3,
         "out": "0x466a756e9a7401b5e2444a3fcb3c2c12fbea0a54",
         "indexOut": 0,
-        "amountIn": "614583943496",
-        "expectedAmountOut": "735354876585124900248",
+        "amountIn": "921875915245",
+        "expectedAmountOut": "735354038650354388902",
         "swappable": true
       },
       {
@@ -1721,8 +1776,8 @@
         "indexIn": 3,
         "out": "0x6b175474e89094c44da98b954eedeac495271d0f",
         "indexOut": 1,
-        "amountIn": "614583943496",
-        "expectedAmountOut": "614712869929914197587619",
+        "amountIn": "921875915245",
+        "expectedAmountOut": "922065108110966264255194",
         "swappable": true
       },
       {
@@ -1730,8 +1785,8 @@
         "indexIn": 3,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 2,
-        "amountIn": "614583943496",
-        "expectedAmountOut": "614719500515",
+        "amountIn": "921875915245",
+        "expectedAmountOut": "922075038111",
         "swappable": true
       }
     ]
@@ -1809,8 +1864,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "220293549205186333491442",
-        "expectedAmountOut": "4226608",
+        "amountIn": "1321761295231118000948652",
+        "expectedAmountOut": "23384904",
         "swappable": true
       },
       {
@@ -1818,8 +1873,8 @@
         "indexIn": 1,
         "out": "0xd60eea80c83779a8a5bfcdac1f3323548e6bb62d",
         "indexOut": 0,
-        "amountIn": "13366986",
-        "expectedAmountOut": "649881935490494816426887",
+        "amountIn": "9547847",
+        "expectedAmountOut": "470878188973245020649797",
         "swappable": true
       }
     ]
@@ -1906,8 +1961,8 @@
         "indexIn": 1,
         "out": "0x4c9edd5852cd905f086c759e8383e09bff1e68b3",
         "indexOut": 0,
-        "amountIn": "6510855449814756460197",
-        "expectedAmountOut": "6502915251072520957453",
+        "amountIn": "4340570299876504306798",
+        "expectedAmountOut": "4335420860464145647013",
         "swappable": true
       }
     ]
@@ -1985,8 +2040,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "774751702921393886621",
-        "expectedAmountOut": "777765192",
+        "amountIn": "602584657827750800705",
+        "expectedAmountOut": "605143492",
         "swappable": true
       },
       {
@@ -1994,8 +2049,8 @@
         "indexIn": 1,
         "out": "0x35282d87011f87508d457f08252bc5bfa52e10a0",
         "indexOut": 0,
-        "amountIn": "115313756",
-        "expectedAmountOut": "114556011349072450622",
+        "amountIn": "807196295",
+        "expectedAmountOut": "800604540218227734755",
         "swappable": true
       }
     ]
@@ -2073,8 +2128,8 @@
         "indexIn": 0,
         "out": "0x1ce0d1e19c9514230ff8cd1dabac2555fb92122b",
         "indexOut": 1,
-        "amountIn": "12010",
-        "expectedAmountOut": "12039",
+        "amountIn": "9007",
+        "expectedAmountOut": "9029",
         "swappable": true
       },
       {
@@ -2082,8 +2137,8 @@
         "indexIn": 1,
         "out": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
         "indexOut": 0,
-        "amountIn": "104991",
-        "expectedAmountOut": "104425",
+        "amountIn": "83993",
+        "expectedAmountOut": "83580",
         "swappable": true
       }
     ]
@@ -2161,8 +2216,8 @@
         "indexIn": 0,
         "out": "0xd9a442856c234a39a81a089c06451ebaa4306a72",
         "indexOut": 1,
-        "amountIn": "1073855213962642437",
-        "expectedAmountOut": "1025965889705669662",
+        "amountIn": "954537967966793277",
+        "expectedAmountOut": "912010508982205466",
         "swappable": true
       },
       {
@@ -2170,8 +2225,8 @@
         "indexIn": 1,
         "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
         "indexOut": 0,
-        "amountIn": "2031781060924959020",
-        "expectedAmountOut": "2122127761852502353",
+        "amountIn": "3657205909664926236",
+        "expectedAmountOut": "3814712769035945006",
         "swappable": true
       }
     ]
@@ -2249,8 +2304,8 @@
         "indexIn": 0,
         "out": "0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee",
         "indexOut": 1,
-        "amountIn": "24227057463930203083",
-        "expectedAmountOut": "22606403863139178862",
+        "amountIn": "60567643659825507708",
+        "expectedAmountOut": "56515256388804402210",
         "swappable": true
       },
       {
@@ -2353,8 +2408,8 @@
         "indexIn": 0,
         "out": "0x6b175474e89094c44da98b954eedeac495271d0f",
         "indexOut": 1,
-        "amountIn": "432431392573624326424",
-        "expectedAmountOut": "429182389328829259469",
+        "amountIn": "864862785147248652848",
+        "expectedAmountOut": "857318571134085028234",
         "swappable": true
       },
       {
@@ -2362,8 +2417,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 2,
-        "amountIn": "432431392573624326424",
-        "expectedAmountOut": "429187891",
+        "amountIn": "864862785147248652848",
+        "expectedAmountOut": "857329562",
         "swappable": true
       },
       {
@@ -2371,8 +2426,8 @@
         "indexIn": 0,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 3,
-        "amountIn": "432431392573624326424",
-        "expectedAmountOut": "429012455",
+        "amountIn": "864862785147248652848",
+        "expectedAmountOut": "856979115",
         "swappable": true
       },
       {
@@ -2380,8 +2435,8 @@
         "indexIn": 1,
         "out": "0xcfc5bd99915aaa815401c5a41a927ab7a38d29cf",
         "indexOut": 0,
-        "amountIn": "5959880696567794132796779",
-        "expectedAmountOut": "14402958061664537475301",
+        "amountIn": "2979940348283897066398389",
+        "expectedAmountOut": "14403064446526331492948",
         "swappable": true
       },
       {
@@ -2389,8 +2444,8 @@
         "indexIn": 1,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 2,
-        "amountIn": "5959880696567794132796779",
-        "expectedAmountOut": "5958932667852",
+        "amountIn": "2979940348283897066398389",
+        "expectedAmountOut": "2979496009292",
         "swappable": true
       },
       {
@@ -2398,8 +2453,8 @@
         "indexIn": 1,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 3,
-        "amountIn": "5959880696567794132796779",
-        "expectedAmountOut": "5956117288135",
+        "amountIn": "2979940348283897066398389",
+        "expectedAmountOut": "2978242958615",
         "swappable": true
       },
       {
@@ -2407,8 +2462,8 @@
         "indexIn": 2,
         "out": "0xcfc5bd99915aaa815401c5a41a927ab7a38d29cf",
         "indexOut": 0,
-        "amountIn": "1554909458633",
-        "expectedAmountOut": "14403251030951407983218",
+        "amountIn": "5442183105216",
+        "expectedAmountOut": "14402968326728467025754",
         "swappable": true
       },
       {
@@ -2416,8 +2471,8 @@
         "indexIn": 2,
         "out": "0x6b175474e89094c44da98b954eedeac495271d0f",
         "indexOut": 1,
-        "amountIn": "1554909458633",
-        "expectedAmountOut": "1554651301613856584601355",
+        "amountIn": "5442183105216",
+        "expectedAmountOut": "5441207855111107019741958",
         "swappable": true
       },
       {
@@ -2425,8 +2480,8 @@
         "indexIn": 2,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 3,
-        "amountIn": "1554909458633",
-        "expectedAmountOut": "1554046235012",
+        "amountIn": "5442183105216",
+        "expectedAmountOut": "5438748136741",
         "swappable": true
       },
       {
@@ -2531,8 +2586,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "8630710197641580047511",
-        "expectedAmountOut": "8629796648",
+        "amountIn": "25892130592924740142533",
+        "expectedAmountOut": "25889152724",
         "swappable": true
       },
       {
@@ -2540,8 +2595,8 @@
         "indexIn": 1,
         "out": "0x66a1e37c9b0eaddca17d3662d6c05f4decf3e110",
         "indexOut": 0,
-        "amountIn": "63095387047",
-        "expectedAmountOut": "63073992984324299425445",
+        "amountIn": "42063591364",
+        "expectedAmountOut": "42049862916726297005584",
         "swappable": true
       }
     ]
@@ -2619,8 +2674,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "56188790199224441963004",
-        "expectedAmountOut": "56111242322",
+        "amountIn": "224755160796897767852018",
+        "expectedAmountOut": "224418272274",
         "swappable": true
       },
       {
@@ -2628,8 +2683,8 @@
         "indexIn": 1,
         "out": "0xaf37c1167910ebc994e266949387d2c7c326b879",
         "indexOut": 0,
-        "amountIn": "54180828854",
-        "expectedAmountOut": "54208698404669249185635",
+        "amountIn": "72241105139",
+        "expectedAmountOut": "72277527126121885123986",
         "swappable": true
       }
     ]
@@ -2707,8 +2762,8 @@
         "indexIn": 0,
         "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
         "indexOut": 1,
-        "amountIn": "5641509463884848534",
-        "expectedAmountOut": "5796116848347531815",
+        "amountIn": "4029649617060606096",
+        "expectedAmountOut": "4141083218461149002",
         "swappable": true
       },
       {
@@ -2716,8 +2771,8 @@
         "indexIn": 1,
         "out": "0x917cee801a67f933f2e6b33fc0cd1ed2d5909d88",
         "indexOut": 0,
-        "amountIn": "3445736852184956179",
-        "expectedAmountOut": "3348831171115849879",
+        "amountIn": "689147370436991235",
+        "expectedAmountOut": "670015130881596371",
         "swappable": true
       }
     ]
@@ -2795,8 +2850,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "299897131398581011882895",
-        "expectedAmountOut": "299830908704",
+        "amountIn": "149948565699290505941447",
+        "expectedAmountOut": "149923844100",
         "swappable": true
       },
       {
@@ -2804,8 +2859,8 @@
         "indexIn": 1,
         "out": "0xa0d69e286b938e21cbf7e51d71f6a4c8918f482f",
         "indexOut": 0,
-        "amountIn": "404639731651",
-        "expectedAmountOut": "404294237355357403454754",
+        "amountIn": "462445407601",
+        "expectedAmountOut": "462039548852351001114427",
         "swappable": true
       }
     ]
@@ -2902,8 +2957,8 @@
         "indexIn": 0,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 1,
-        "amountIn": "849267341",
-        "expectedAmountOut": "848605192",
+        "amountIn": "424633670",
+        "expectedAmountOut": "424347808",
         "swappable": true
       },
       {
@@ -2911,8 +2966,8 @@
         "indexIn": 0,
         "out": "0xd3043d66afe00344c115f7f81d18277c5c718ff8",
         "indexOut": 2,
-        "amountIn": "849267341",
-        "expectedAmountOut": "849171731",
+        "amountIn": "424633670",
+        "expectedAmountOut": "424625265",
         "swappable": true
       },
       {
@@ -2920,8 +2975,8 @@
         "indexIn": 1,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 0,
-        "amountIn": "1027954932",
-        "expectedAmountOut": "1027452843",
+        "amountIn": "822363945",
+        "expectedAmountOut": "822004365",
         "swappable": true
       },
       {
@@ -2929,8 +2984,8 @@
         "indexIn": 1,
         "out": "0xd3043d66afe00344c115f7f81d18277c5c718ff8",
         "indexOut": 2,
-        "amountIn": "1027954932",
-        "expectedAmountOut": "1027962347",
+        "amountIn": "822363945",
+        "expectedAmountOut": "822407993",
         "swappable": true
       },
       {
@@ -3026,8 +3081,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "753528499861761443505135",
-        "expectedAmountOut": "751702393625",
+        "amountIn": "322940785655040618645058",
+        "expectedAmountOut": "322268198581",
         "swappable": true
       },
       {
@@ -3035,8 +3090,8 @@
         "indexIn": 1,
         "out": "0x73a15fed60bf67631dc6cd7bc5b6e8da8190acf5",
         "indexOut": 0,
-        "amountIn": "107857690203",
-        "expectedAmountOut": "108029964484156748585421",
+        "amountIn": "215715380407",
+        "expectedAmountOut": "216047808504307464942364",
         "swappable": true
       }
     ]
@@ -3114,8 +3169,8 @@
         "indexIn": 0,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 1,
-        "amountIn": "9698885050183453667787",
-        "expectedAmountOut": "9684161168",
+        "amountIn": "5388269472324140926548",
+        "expectedAmountOut": "5381318345",
         "swappable": true
       },
       {
@@ -3123,8 +3178,8 @@
         "indexIn": 1,
         "out": "0xbdc7c08592ee4aa51d06c27ee23d5087d65adbcd",
         "indexOut": 0,
-        "amountIn": "8577453400",
-        "expectedAmountOut": "8575659866293320293509",
+        "amountIn": "953050377",
+        "expectedAmountOut": "953209303762884057690",
         "swappable": true
       }
     ]
@@ -3202,8 +3257,8 @@
         "indexIn": 0,
         "out": "0x9eead9ce15383caeed975427340b3a369410cfbf",
         "indexOut": 1,
-        "amountIn": "169844019",
-        "expectedAmountOut": "170771154",
+        "amountIn": "237781626",
+        "expectedAmountOut": "239045729",
         "swappable": true
       },
       {
@@ -3290,8 +3345,8 @@
         "indexIn": 0,
         "out": "0x085780639cc2cacd35e474e71f4d000e2405d8f6",
         "indexOut": 1,
-        "amountIn": "229655977336",
-        "expectedAmountOut": "229832512678065343765913",
+        "amountIn": "535863947117",
+        "expectedAmountOut": "536252257681226054403013",
         "swappable": true
       },
       {
@@ -3299,8 +3354,8 @@
         "indexIn": 1,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 0,
-        "amountIn": "527884751051876419347668",
-        "expectedAmountOut": "527292020297",
+        "amountIn": "1407692669471670451593782",
+        "expectedAmountOut": "1405853760244",
         "swappable": true
       }
     ]
@@ -3378,8 +3433,8 @@
         "indexIn": 0,
         "out": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
         "indexOut": 1,
-        "amountIn": "94901065",
-        "expectedAmountOut": "91905576",
+        "amountIn": "35587899",
+        "expectedAmountOut": "34681227",
         "swappable": true
       },
       {
@@ -3387,8 +3442,8 @@
         "indexIn": 1,
         "out": "0xf469fbd2abcd6b9de8e169d128226c0fc90a012e",
         "indexOut": 0,
-        "amountIn": "30581852",
-        "expectedAmountOut": "31199870",
+        "amountIn": "20387901",
+        "expectedAmountOut": "20813341",
         "swappable": true
       }
     ]
@@ -3466,8 +3521,8 @@
         "indexIn": 0,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 1,
-        "amountIn": "1606469094719402925790",
-        "expectedAmountOut": "1605027855",
+        "amountIn": "6425876378877611703161",
+        "expectedAmountOut": "6419028734",
         "swappable": true
       },
       {
@@ -3475,8 +3530,8 @@
         "indexIn": 1,
         "out": "0x15700b564ca08d9439c58ca5053166e8317aa138",
         "indexOut": 0,
-        "amountIn": "11086521630",
-        "expectedAmountOut": "11089480806067458163299",
+        "amountIn": "4157445611",
+        "expectedAmountOut": "4159523374740458554881",
         "swappable": true
       }
     ]
@@ -3554,8 +3609,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "126885668880164610062263",
-        "expectedAmountOut": "126785301611",
+        "amountIn": "50754267552065844024905",
+        "expectedAmountOut": "50722236198",
         "swappable": true
       },
       {
@@ -3563,8 +3618,8 @@
         "indexIn": 1,
         "out": "0x15700b564ca08d9439c58ca5053166e8317aa138",
         "indexOut": 0,
-        "amountIn": "46602910376",
-        "expectedAmountOut": "46613615853103902207885",
+        "amountIn": "116507275940",
+        "expectedAmountOut": "116517345017075985302856",
         "swappable": true
       }
     ]
@@ -3651,8 +3706,8 @@
         "indexIn": 1,
         "out": "0x15700b564ca08d9439c58ca5053166e8317aa138",
         "indexOut": 0,
-        "amountIn": "472377035812903102616",
-        "expectedAmountOut": "472600988296900160911",
+        "amountIn": "2125696661158063961775",
+        "expectedAmountOut": "2126008004531297421700",
         "swappable": true
       }
     ]
@@ -3730,8 +3785,8 @@
         "indexIn": 0,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 1,
-        "amountIn": "3926816609",
-        "expectedAmountOut": "3607043716",
+        "amountIn": "560973801",
+        "expectedAmountOut": "523150624",
         "swappable": true
       },
       {
@@ -3739,8 +3794,8 @@
         "indexIn": 1,
         "out": "0x2bd1f344a2398340c2b1119da98816ea723f5f0f",
         "indexOut": 0,
-        "amountIn": "1493851908",
-        "expectedAmountOut": "1582538781",
+        "amountIn": "1120388931",
+        "expectedAmountOut": "1188436887",
         "swappable": true
       }
     ]
@@ -3827,8 +3882,8 @@
         "indexIn": 1,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 0,
-        "amountIn": "971047",
-        "expectedAmountOut": "972703",
+        "amountIn": "8739423",
+        "expectedAmountOut": "8752633",
         "swappable": true
       }
     ]
@@ -3906,8 +3961,8 @@
         "indexIn": 0,
         "out": "0x00000000efe302beaa2b3e6e1b18d08d69a9012a",
         "indexOut": 1,
-        "amountIn": "287571675",
-        "expectedAmountOut": "287373604",
+        "amountIn": "143785837",
+        "expectedAmountOut": "143694050",
         "swappable": true
       },
       {
@@ -3915,8 +3970,8 @@
         "indexIn": 1,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 0,
-        "amountIn": "339636223",
-        "expectedAmountOut": "339729930",
+        "amountIn": "396242260",
+        "expectedAmountOut": "396344344",
         "swappable": true
       }
     ]
@@ -4010,8 +4065,8 @@
         "indexIn": 0,
         "out": "0x6b175474e89094c44da98b954eedeac495271d0f",
         "indexOut": 1,
-        "amountIn": "406976847698830646448",
-        "expectedAmountOut": "246023897038931944107",
+        "amountIn": "542635796931774195264",
+        "expectedAmountOut": "302714576088658130130",
         "swappable": true
       },
       {
@@ -4019,8 +4074,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 2,
-        "amountIn": "406976847698830646448",
-        "expectedAmountOut": "246027051",
+        "amountIn": "542635796931774195264",
+        "expectedAmountOut": "302718457",
         "swappable": true
       },
       {
@@ -4028,8 +4083,8 @@
         "indexIn": 0,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 3,
-        "amountIn": "406976847698830646448",
-        "expectedAmountOut": "245926485",
+        "amountIn": "542635796931774195264",
+        "expectedAmountOut": "302594717",
         "swappable": true
       },
       {
@@ -4064,8 +4119,8 @@
         "indexIn": 2,
         "out": "0x4d55a36902a6546a79ec4c9c315241de746d5fc3",
         "indexOut": 0,
-        "amountIn": "6997092563849",
-        "expectedAmountOut": "13555125369632463189559",
+        "amountIn": "4664728375899",
+        "expectedAmountOut": "13555166200298101391678",
         "swappable": true
       },
       {
@@ -4073,8 +4128,8 @@
         "indexIn": 2,
         "out": "0x6b175474e89094c44da98b954eedeac495271d0f",
         "indexOut": 1,
-        "amountIn": "6997092563849",
-        "expectedAmountOut": "6995801081196535436124685",
+        "amountIn": "4664728375899",
+        "expectedAmountOut": "4663904858664730675491682",
         "swappable": true
       },
       {
@@ -4082,8 +4137,8 @@
         "indexIn": 2,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 3,
-        "amountIn": "6997092563849",
-        "expectedAmountOut": "6992417385075",
+        "amountIn": "4664728375899",
+        "expectedAmountOut": "4661863008293",
         "swappable": true
       },
       {
@@ -4091,8 +4146,8 @@
         "indexIn": 3,
         "out": "0x4d55a36902a6546a79ec4c9c315241de746d5fc3",
         "indexOut": 0,
-        "amountIn": "2151043802238",
-        "expectedAmountOut": "13555305447910272912565",
+        "amountIn": "2765627745735",
+        "expectedAmountOut": "13555248715798243254797",
         "swappable": true
       },
       {
@@ -4100,8 +4155,8 @@
         "indexIn": 3,
         "out": "0x6b175474e89094c44da98b954eedeac495271d0f",
         "indexOut": 1,
-        "amountIn": "2151043802238",
-        "expectedAmountOut": "2151447726004174274654296",
+        "amountIn": "2765627745735",
+        "expectedAmountOut": "2766124134641766692285609",
         "swappable": true
       },
       {
@@ -4109,8 +4164,8 @@
         "indexIn": 3,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 2,
-        "amountIn": "2151043802238",
-        "expectedAmountOut": "2151470777480",
+        "amountIn": "2765627745735",
+        "expectedAmountOut": "2766153718149",
         "swappable": true
       }
     ]
@@ -4188,8 +4243,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "12665460902892789686",
-        "expectedAmountOut": "12600364",
+        "amountIn": "4221820300964263228",
+        "expectedAmountOut": "4201620",
         "swappable": true
       },
       {
@@ -4197,8 +4252,8 @@
         "indexIn": 1,
         "out": "0x698978e0fc8f814989d8c23b8b9d3bdfabab4451",
         "indexOut": 0,
-        "amountIn": "8966672",
-        "expectedAmountOut": "8997181075737807227",
+        "amountIn": "2561906",
+        "expectedAmountOut": "2571170658318386676",
         "swappable": true
       }
     ]
@@ -4285,8 +4340,8 @@
         "indexIn": 1,
         "out": "0x8236a87084f8b84306f72007f36f2618a5634494",
         "indexOut": 0,
-        "amountIn": "24827002",
-        "expectedAmountOut": "24811871",
+        "amountIn": "37240504",
+        "expectedAmountOut": "37216061",
         "swappable": true
       }
     ]
@@ -4364,8 +4419,8 @@
         "indexIn": 0,
         "out": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
         "indexOut": 1,
-        "amountIn": "323158943",
-        "expectedAmountOut": "322901131",
+        "amountIn": "215439295",
+        "expectedAmountOut": "215280164",
         "swappable": true
       },
       {
@@ -4452,8 +4507,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "1123411501816730560439968",
-        "expectedAmountOut": "1122045925670",
+        "amountIn": "421279313181273960164988",
+        "expectedAmountOut": "420835085995",
         "swappable": true
       },
       {
@@ -4461,8 +4516,8 @@
         "indexIn": 1,
         "out": "0xbdc7c08592ee4aa51d06c27ee23d5087d65adbcd",
         "indexOut": 0,
-        "amountIn": "555336042784",
-        "expectedAmountOut": "555701296352416554564500",
+        "amountIn": "347085026740",
+        "expectedAmountOut": "347325112585417441636105",
         "swappable": true
       }
     ]
@@ -4540,8 +4595,8 @@
         "indexIn": 0,
         "out": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
         "indexOut": 1,
-        "amountIn": "5502",
-        "expectedAmountOut": "5500",
+        "amountIn": "6419",
+        "expectedAmountOut": "6417",
         "swappable": true
       },
       {
@@ -4549,8 +4604,8 @@
         "indexIn": 1,
         "out": "0x8db2350d78abc13f5673a411d4700bcf87864dde",
         "indexOut": 0,
-        "amountIn": "10092",
-        "expectedAmountOut": "10083",
+        "amountIn": "2242",
+        "expectedAmountOut": "2240",
         "swappable": true
       }
     ]
@@ -4628,8 +4683,8 @@
         "indexIn": 0,
         "out": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
         "indexOut": 1,
-        "amountIn": "348083077176331",
-        "expectedAmountOut": "34789",
+        "amountIn": "261062307882248",
+        "expectedAmountOut": "26093",
         "swappable": true
       },
       {
@@ -4637,8 +4692,8 @@
         "indexIn": 1,
         "out": "0x7a56e1c57c7475ccf742a1832b028f0456652f97",
         "indexOut": 0,
-        "amountIn": "12738",
-        "expectedAmountOut": "127352293467234",
+        "amountIn": "8492",
+        "expectedAmountOut": "84904315954505",
         "swappable": true
       }
     ]
@@ -4716,8 +4771,8 @@
         "indexIn": 0,
         "out": "0x7c1156e515aa1a2e851674120074968c905aaf37",
         "indexOut": 1,
-        "amountIn": "195826910166",
-        "expectedAmountOut": "195824001438818947709233",
+        "amountIn": "326378183610",
+        "expectedAmountOut": "326360766598937041777171",
         "swappable": true
       },
       {
@@ -4725,8 +4780,8 @@
         "indexIn": 1,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 0,
-        "amountIn": "350597154699463106371199",
-        "expectedAmountOut": "350474924674",
+        "amountIn": "560955447519140970193919",
+        "expectedAmountOut": "560723570197",
         "swappable": true
       }
     ]
@@ -4804,8 +4859,8 @@
         "indexIn": 0,
         "out": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
         "indexOut": 1,
-        "amountIn": "255600716",
-        "expectedAmountOut": "255992818",
+        "amountIn": "85200238",
+        "expectedAmountOut": "85341468",
         "swappable": true
       },
       {
@@ -4813,8 +4868,8 @@
         "indexIn": 1,
         "out": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
         "indexOut": 0,
-        "amountIn": "238817902",
-        "expectedAmountOut": "238238132",
+        "amountIn": "398029837",
+        "expectedAmountOut": "396996585",
         "swappable": true
       }
     ]
@@ -4892,8 +4947,8 @@
         "indexIn": 0,
         "out": "0x270b7748cdf8243bfe68face7230ef0fce695389",
         "indexOut": 1,
-        "amountIn": "49322065860631644",
-        "expectedAmountOut": "49349591101348432",
+        "amountIn": "98644131721263289",
+        "expectedAmountOut": "98692513280970351",
         "swappable": true
       },
       {
@@ -4901,8 +4956,8 @@
         "indexIn": 1,
         "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
         "indexOut": 0,
-        "amountIn": "192118033759581305",
-        "expectedAmountOut": "191851447217009315",
+        "amountIn": "256157378346108407",
+        "expectedAmountOut": "255770014391071131",
         "swappable": true
       }
     ]
@@ -4980,8 +5035,8 @@
         "indexIn": 0,
         "out": "0xfd03723a9a3abe0562451496a9a394d2c4bad4ab",
         "indexOut": 1,
-        "amountIn": "692142961",
-        "expectedAmountOut": "690493473041204699472",
+        "amountIn": "461428640",
+        "expectedAmountOut": "460363619549148457288",
         "swappable": true
       },
       {
@@ -4989,8 +5044,8 @@
         "indexIn": 1,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 0,
-        "amountIn": "158989025874493622566",
-        "expectedAmountOut": "159260850",
+        "amountIn": "794945129372468112832",
+        "expectedAmountOut": "796152010",
         "swappable": true
       }
     ]
@@ -5068,8 +5123,8 @@
         "indexIn": 0,
         "out": "0xc139190f447e929f090edeb554d95abb8b18ac1c",
         "indexOut": 1,
-        "amountIn": "738411087707",
-        "expectedAmountOut": "738162781886380038266042",
+        "amountIn": "210974596487",
+        "expectedAmountOut": "210918286142742259295623",
         "swappable": true
       },
       {
@@ -5077,8 +5132,8 @@
         "indexIn": 1,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 0,
-        "amountIn": "660668413235643902983348",
-        "expectedAmountOut": "660639570125",
+        "amountIn": "188762403781612543709528",
+        "expectedAmountOut": "188765329095",
         "swappable": true
       }
     ]
@@ -5156,8 +5211,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "6000442657277385155",
-        "expectedAmountOut": "6112037",
+        "amountIn": "16001180419406360413",
+        "expectedAmountOut": "16283509",
         "swappable": true
       },
       {
@@ -5165,8 +5220,8 @@
         "indexIn": 1,
         "out": "0x7f4b66ff703336cfc35b901144614496ae0b0d27",
         "indexOut": 0,
-        "amountIn": "48600915",
-        "expectedAmountOut": "47332905989865380380",
+        "amountIn": "32400610",
+        "expectedAmountOut": "31634854518352991589",
         "swappable": true
       }
     ]
@@ -5244,8 +5299,8 @@
         "indexIn": 0,
         "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
         "indexOut": 1,
-        "amountIn": "111515422055652569485",
-        "expectedAmountOut": "117063180183011452701",
+        "amountIn": "148687229407536759314",
+        "expectedAmountOut": "156071098750745249059",
         "swappable": true
       },
       {
@@ -5253,8 +5308,8 @@
         "indexIn": 1,
         "out": "0x657d9aba1dbb59e53f9f3ecaa878447dcfc96dcb",
         "indexOut": 0,
-        "amountIn": "86577757850250430319",
-        "expectedAmountOut": "82425215505886876192",
+        "amountIn": "14429626308375071719",
+        "expectedAmountOut": "13739370811154708373",
         "swappable": true
       }
     ]
@@ -5332,8 +5387,8 @@
         "indexIn": 0,
         "out": "0x8292bb45bf1ee4d140127049757c2e0ff06317ed",
         "indexOut": 1,
-        "amountIn": "1416702662528",
-        "expectedAmountOut": "1416488778538784521644787",
+        "amountIn": "566681065011",
+        "expectedAmountOut": "566603376059251126959684",
         "swappable": true
       },
       {
@@ -5341,8 +5396,8 @@
         "indexIn": 1,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 0,
-        "amountIn": "2947824585220150196303526",
-        "expectedAmountOut": "2946860505789",
+        "amountIn": "982608195073383398767842",
+        "expectedAmountOut": "982322187244",
         "swappable": true
       }
     ]
@@ -5420,8 +5475,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "1718890158612236269040879",
-        "expectedAmountOut": "1753011021199",
+        "amountIn": "644583809479588600890329",
+        "expectedAmountOut": "657408952815",
         "swappable": true
       },
       {
@@ -5517,8 +5572,8 @@
         "indexIn": 1,
         "out": "0xf3527ef8de265eaa3716fb312c12847bfba66cef",
         "indexOut": 0,
-        "amountIn": "11707544106",
-        "expectedAmountOut": "11722999605090720704329",
+        "amountIn": "14634430132",
+        "expectedAmountOut": "14653489375223498786941",
         "swappable": true
       }
     ]
@@ -5596,8 +5651,8 @@
         "indexIn": 0,
         "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
         "indexOut": 1,
-        "amountIn": "795669551152670",
-        "expectedAmountOut": "939898326786273",
+        "amountIn": "994586938940838",
+        "expectedAmountOut": "1173159930409840",
         "swappable": true
       },
       {
@@ -5605,8 +5660,8 @@
         "indexIn": 1,
         "out": "0xa4f6b2cdcb67bf8f48baa459a333d2667aa4b100",
         "indexOut": 0,
-        "amountIn": "13941899813457220",
-        "expectedAmountOut": "10093952660790936",
+        "amountIn": "4647299937819073",
+        "expectedAmountOut": "3766614758419746",
         "swappable": true
       }
     ]
@@ -5684,8 +5739,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "11994574464411760578728",
-        "expectedAmountOut": "143122897",
+        "amountIn": "15992765952549014104971",
+        "expectedAmountOut": "182563464",
         "swappable": true
       },
       {
@@ -5693,8 +5748,8 @@
         "indexIn": 1,
         "out": "0x634ed807647e07a7c038ef1956a58adbc6695f88",
         "indexOut": 0,
-        "amountIn": "72807699",
-        "expectedAmountOut": "4934583417710181764085",
+        "amountIn": "54605774",
+        "expectedAmountOut": "3760696091556224214037",
         "swappable": true
       }
     ]
@@ -5772,8 +5827,8 @@
         "indexIn": 0,
         "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
         "indexOut": 1,
-        "amountIn": "243472951749366471",
-        "expectedAmountOut": "208412343320542995",
+        "amountIn": "97389180699746588",
+        "expectedAmountOut": "86461956509536961",
         "swappable": true
       },
       {
@@ -5781,8 +5836,8 @@
         "indexIn": 1,
         "out": "0x8ccb64623cda445aa0ce7c0caef99486ebd155ba",
         "indexOut": 0,
-        "amountIn": "45910876200039503",
-        "expectedAmountOut": "50416312462885968",
+        "amountIn": "22955438100019751",
+        "expectedAmountOut": "25295848135142114",
         "swappable": true
       }
     ]
@@ -5860,8 +5915,8 @@
         "indexIn": 0,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 1,
-        "amountIn": "1158467179378216672878",
-        "expectedAmountOut": "1157829408",
+        "amountIn": "8109270255647516710148",
+        "expectedAmountOut": "8104092143",
         "swappable": true
       },
       {
@@ -5869,8 +5924,8 @@
         "indexIn": 1,
         "out": "0x7cd017ca5ddb86861fa983a34b5f495c6f898c41",
         "indexOut": 0,
-        "amountIn": "3367231136",
-        "expectedAmountOut": "3367538260517874107772",
+        "amountIn": "1683615568",
+        "expectedAmountOut": "1683800347334968963731",
         "swappable": true
       }
     ]
@@ -5948,8 +6003,8 @@
         "indexIn": 0,
         "out": "0x20157dbabb84e3bbfe68c349d0d44e48ae7b5ad2",
         "indexOut": 1,
-        "amountIn": "6227670",
-        "expectedAmountOut": "6245819",
+        "amountIn": "9341505",
+        "expectedAmountOut": "9368311",
         "swappable": true
       },
       {
@@ -5957,8 +6012,8 @@
         "indexIn": 1,
         "out": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
         "indexOut": 0,
-        "amountIn": "13775461",
-        "expectedAmountOut": "13720253",
+        "amountIn": "6887730",
+        "expectedAmountOut": "6860873",
         "swappable": true
       }
     ]
@@ -6036,8 +6091,8 @@
         "indexIn": 0,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 1,
-        "amountIn": "1626135320559417190",
-        "expectedAmountOut": "1694389",
+        "amountIn": "813067660279708595",
+        "expectedAmountOut": "848232",
         "swappable": true
       },
       {
@@ -6045,8 +6100,8 @@
         "indexIn": 1,
         "out": "0x8166137a9e049897d10e7e4de73ee37fedc9d9b7",
         "indexOut": 0,
-        "amountIn": "9788520",
-        "expectedAmountOut": "9164032193065536236",
+        "amountIn": "1398360",
+        "expectedAmountOut": "1335582225673333180",
         "swappable": true
       }
     ]
@@ -6124,8 +6179,8 @@
         "indexIn": 0,
         "out": "0xde17a000ba631c5d7c2bd9fb692efea52d90dee2",
         "indexOut": 1,
-        "amountIn": "1832968603",
-        "expectedAmountOut": "1839197133636554600562",
+        "amountIn": "916484301",
+        "expectedAmountOut": "919716804017678195857",
         "swappable": true
       },
       {
@@ -6133,8 +6188,8 @@
         "indexIn": 1,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 0,
-        "amountIn": "8213286526701547107802",
-        "expectedAmountOut": "8157922418",
+        "amountIn": "2053321631675386776950",
+        "expectedAmountOut": "2042423821",
         "swappable": true
       }
     ]
@@ -6212,8 +6267,8 @@
         "indexIn": 0,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 1,
-        "amountIn": "60061310735",
-        "expectedAmountOut": "60041099139",
+        "amountIn": "240245242941",
+        "expectedAmountOut": "240134930892",
         "swappable": true
       },
       {
@@ -6221,8 +6276,8 @@
         "indexIn": 1,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 0,
-        "amountIn": "30003645653",
-        "expectedAmountOut": "30011630794",
+        "amountIn": "15001822826",
+        "expectedAmountOut": "15005903840",
         "swappable": true
       }
     ]
@@ -6300,8 +6355,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "9892730698679734539043",
-        "expectedAmountOut": "9854966683",
+        "amountIn": "14839096048019601808564",
+        "expectedAmountOut": "14776368952",
         "swappable": true
       },
       {
@@ -6309,8 +6364,8 @@
         "indexIn": 1,
         "out": "0xb01dd87b29d187f3e3a4bf6cdaebfb97f3d9ab98",
         "indexOut": 0,
-        "amountIn": "2541336818",
-        "expectedAmountOut": "2546576389529763121361",
+        "amountIn": "8894678863",
+        "expectedAmountOut": "8908929815370211461810",
         "swappable": true
       }
     ]
@@ -6388,8 +6443,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "150810000000000000000",
-        "expectedAmountOut": "150704865",
+        "amountIn": "201080000000000000000",
+        "expectedAmountOut": "200919854",
         "swappable": true
       },
       {
@@ -6397,8 +6452,8 @@
         "indexIn": 1,
         "out": "0x1623a55e0ba2384afd7511d6d7f77cf28790b5c5",
         "indexOut": 0,
-        "amountIn": "50270000",
-        "expectedAmountOut": "50244916521795672530",
+        "amountIn": "351890000",
+        "expectedAmountOut": "351504365964204890636",
         "swappable": true
       }
     ]
@@ -6476,8 +6531,8 @@
         "indexIn": 0,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 1,
-        "amountIn": "106138553668390867684",
-        "expectedAmountOut": "106353519",
+        "amountIn": "955246983015517809160",
+        "expectedAmountOut": "957013431",
         "swappable": true
       },
       {
@@ -6485,8 +6540,8 @@
         "indexIn": 1,
         "out": "0x4274cd7277c7bb0806bd5fe84b9adae466a8da0a",
         "indexOut": 0,
-        "amountIn": "1075011279",
-        "expectedAmountOut": "1072234346487302606791",
+        "amountIn": "1791685466",
+        "expectedAmountOut": "1786662313038811778262",
         "swappable": true
       }
     ]
@@ -6564,8 +6619,8 @@
         "indexIn": 0,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 1,
-        "amountIn": "9675323216799905892241",
-        "expectedAmountOut": "9660855007",
+        "amountIn": "1935064643359981178448",
+        "expectedAmountOut": "1932178405",
         "swappable": true
       },
       {
@@ -6573,8 +6628,8 @@
         "indexIn": 1,
         "out": "0x86c4d4e958baf7e911c05f3772066c30ba2d4618",
         "indexOut": 0,
-        "amountIn": "17005782403",
-        "expectedAmountOut": "16979966175660812537373",
+        "amountIn": "14880059603",
+        "expectedAmountOut": "14857486937565255394530",
         "swappable": true
       }
     ]
@@ -6652,8 +6707,8 @@
         "indexIn": 0,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 1,
-        "amountIn": "144902369",
-        "expectedAmountOut": "88261650",
+        "amountIn": "64401052",
+        "expectedAmountOut": "55265608",
         "swappable": true
       },
       {
@@ -6661,8 +6716,8 @@
         "indexIn": 1,
         "out": "0x2bd1f344a2398340c2b1119da98816ea723f5f0f",
         "indexOut": 0,
-        "amountIn": "4969264",
-        "expectedAmountOut": "5303951",
+        "amountIn": "1987705",
+        "expectedAmountOut": "2125604",
         "swappable": true
       }
     ]
@@ -6740,8 +6795,8 @@
         "indexIn": 0,
         "out": "0x4c9edd5852cd905f086c759e8383e09bff1e68b3",
         "indexOut": 1,
-        "amountIn": "8640806419",
-        "expectedAmountOut": "8636669489171228014884",
+        "amountIn": "43204032098",
+        "expectedAmountOut": "43178263424067686976555",
         "swappable": true
       },
       {
@@ -6749,8 +6804,8 @@
         "indexIn": 1,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 0,
-        "amountIn": "10761883636873184243366",
-        "expectedAmountOut": "10765434636",
+        "amountIn": "14349178182497578991155",
+        "expectedAmountOut": "14353810961",
         "swappable": true
       }
     ]
@@ -6828,8 +6883,8 @@
         "indexIn": 0,
         "out": "0xfa2b947eec368f42195f24f36d2af29f7c24cec2",
         "indexOut": 1,
-        "amountIn": "321890496526",
-        "expectedAmountOut": "321830062186895960470354",
+        "amountIn": "482835744790",
+        "expectedAmountOut": "482736168714108823388849",
         "swappable": true
       },
       {
@@ -6837,8 +6892,8 @@
         "indexIn": 1,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 0,
-        "amountIn": "186927297645602259150725",
-        "expectedAmountOut": "186838516831",
+        "amountIn": "560781892936806777452177",
+        "expectedAmountOut": "560489306711",
         "swappable": true
       }
     ]
@@ -6916,8 +6971,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "563425602353250237310",
-        "expectedAmountOut": "563389667",
+        "amountIn": "422569201764937677982",
+        "expectedAmountOut": "422546314",
         "swappable": true
       },
       {
@@ -6925,8 +6980,8 @@
         "indexIn": 1,
         "out": "0x8238884ec9668ef77b90c6dff4d1a9f4f4823bfe",
         "indexOut": 0,
-        "amountIn": "910758003",
-        "expectedAmountOut": "910540552407411546397",
+        "amountIn": "607172002",
+        "expectedAmountOut": "607040088403715473443",
         "swappable": true
       }
     ]
@@ -7004,8 +7059,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "228754153741432021352215",
-        "expectedAmountOut": "228708681627",
+        "amountIn": "203337025547939574535302",
+        "expectedAmountOut": "203298074103",
         "swappable": true
       },
       {
@@ -7092,8 +7147,8 @@
         "indexIn": 0,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 1,
-        "amountIn": "565694476801472543488",
-        "expectedAmountOut": "565344598",
+        "amountIn": "377129651200981695658",
+        "expectedAmountOut": "376913767",
         "swappable": true
       },
       {
@@ -7101,8 +7156,8 @@
         "indexIn": 1,
         "out": "0x2a8e1e676ec238d8a992307b495b45b3feaa5e86",
         "indexOut": 0,
-        "amountIn": "74882266",
-        "expectedAmountOut": "74902146106233470287",
+        "amountIn": "299529066",
+        "expectedAmountOut": "299596739071410792490",
         "swappable": true
       }
     ]
@@ -7180,8 +7235,8 @@
         "indexIn": 0,
         "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
         "indexOut": 1,
-        "amountIn": "123986258331946038170",
-        "expectedAmountOut": "123967930824482992761",
+        "amountIn": "743917549991676229025",
+        "expectedAmountOut": "743781394932556014750",
         "swappable": true
       },
       {
@@ -7189,8 +7244,8 @@
         "indexIn": 1,
         "out": "0x856c4efb76c1d1ae02e20ceb03a2a6a08b0b8dc3",
         "indexOut": 0,
-        "amountIn": "1049695345207085767651",
-        "expectedAmountOut": "1049572013711625791681",
+        "amountIn": "583164080670603204250",
+        "expectedAmountOut": "583110682208219730508",
         "swappable": true
       }
     ]
@@ -7268,8 +7323,8 @@
         "indexIn": 0,
         "out": "0xb8b295df2cd735b15be5eb419517aa626fc43cd5",
         "indexOut": 1,
-        "amountIn": "20847614282576800279362",
-        "expectedAmountOut": "20755328814216002102782",
+        "amountIn": "5211903570644200069840",
+        "expectedAmountOut": "5193386197635204847539",
         "swappable": true
       },
       {
@@ -7277,8 +7332,8 @@
         "indexIn": 1,
         "out": "0x514910771af9ca656af840dff83e8264ecf986ca",
         "indexOut": 0,
-        "amountIn": "5513753993160934610950",
-        "expectedAmountOut": "5529599876161343471478",
+        "amountIn": "7351671990881246147934",
+        "expectedAmountOut": "7372308102851659874606",
         "swappable": true
       }
     ]
@@ -7356,8 +7411,8 @@
         "indexIn": 0,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 1,
-        "amountIn": "820949052005659781348815",
-        "expectedAmountOut": "869148026372",
+        "amountIn": "2462847156016979344046445",
+        "expectedAmountOut": "2607101503010",
         "swappable": true
       },
       {
@@ -7365,8 +7420,8 @@
         "indexIn": 1,
         "out": "0xa3931d71877c0e7a3148cb7eb4463524fec27fbd",
         "indexOut": 0,
-        "amountIn": "581557422414",
-        "expectedAmountOut": "549250192304510624505123",
+        "amountIn": "508862744612",
+        "expectedAmountOut": "480595158537093680268667",
         "swappable": true
       }
     ]
@@ -7444,8 +7499,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "31392465266671342367156",
-        "expectedAmountOut": "31429589504",
+        "amountIn": "6278493053334268473431",
+        "expectedAmountOut": "6288244286",
         "swappable": true
       },
       {
@@ -7453,8 +7508,8 @@
         "indexIn": 1,
         "out": "0x4274cd7277c7bb0806bd5fe84b9adae466a8da0a",
         "indexOut": 0,
-        "amountIn": "7695908608",
-        "expectedAmountOut": "7676153282962916727341",
+        "amountIn": "61567268865",
+        "expectedAmountOut": "61356877308589909202896",
         "swappable": true
       }
     ]
@@ -7532,8 +7587,8 @@
         "indexIn": 0,
         "out": "0x294eecec65a0142e84aedfd8eb2fbea8c9a9fbad",
         "indexOut": 1,
-        "amountIn": "5583523286674382166",
-        "expectedAmountOut": "5570186270861430131",
+        "amountIn": "2791761643337191083",
+        "expectedAmountOut": "2785230101343473833",
         "swappable": true
       },
       {
@@ -7541,8 +7596,8 @@
         "indexIn": 1,
         "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
         "indexOut": 0,
-        "amountIn": "148788126798088155367",
-        "expectedAmountOut": "148164699625486634263",
+        "amountIn": "334773285295698349576",
+        "expectedAmountOut": "272973608148412489162",
         "swappable": true
       }
     ]
@@ -7620,8 +7675,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "6768312019453809317356",
-        "expectedAmountOut": "6765308192",
+        "amountIn": "10152468029180713976034",
+        "expectedAmountOut": "10147536332",
         "swappable": true
       },
       {
@@ -7629,8 +7684,8 @@
         "indexIn": 1,
         "out": "0xf8750b54d86be7ae9e32b4a0c826811198d63313",
         "indexOut": 0,
-        "amountIn": "1744508696",
-        "expectedAmountOut": "1744759418216904478923",
+        "amountIn": "2616763044",
+        "expectedAmountOut": "2617114752590608849481",
         "swappable": true
       }
     ]
@@ -7708,8 +7763,8 @@
         "indexIn": 0,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 1,
-        "amountIn": "27828880508942022",
-        "expectedAmountOut": "179145",
+        "amountIn": "97401081781297077",
+        "expectedAmountOut": "603802",
         "swappable": true
       },
       {
@@ -7796,8 +7851,8 @@
         "indexIn": 0,
         "out": "0x699e04f98de2fc395a7dcbf36b48ec837a976490",
         "indexOut": 1,
-        "amountIn": "79753632189",
-        "expectedAmountOut": "79255760051",
+        "amountIn": "59815224142",
+        "expectedAmountOut": "59446965448",
         "swappable": true
       },
       {
@@ -7805,8 +7860,8 @@
         "indexIn": 1,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 0,
-        "amountIn": "367138766064",
-        "expectedAmountOut": "368109744978",
+        "amountIn": "91784691516",
+        "expectedAmountOut": "92250360626",
         "swappable": true
       }
     ]
@@ -7893,8 +7948,8 @@
         "indexIn": 1,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 0,
-        "amountIn": "5299462727606208830042",
-        "expectedAmountOut": "5294400373",
+        "amountIn": "10598925455212417660084",
+        "expectedAmountOut": "10588699329",
         "swappable": true
       }
     ]
@@ -7972,8 +8027,8 @@
         "indexIn": 0,
         "out": "0x8a8980635e7f07fa875a9c4ccfa26afca95df1f9",
         "indexOut": 1,
-        "amountIn": "2475070985",
-        "expectedAmountOut": "2474101590174586359958",
+        "amountIn": "550015774",
+        "expectedAmountOut": "550165582185608720591",
         "swappable": true
       },
       {
@@ -7981,8 +8036,8 @@
         "indexIn": 1,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 0,
-        "amountIn": "2699999919329335985006",
-        "expectedAmountOut": "2693986071",
+        "amountIn": "899999973109778661668",
+        "expectedAmountOut": "898578700",
         "swappable": true
       }
     ]
@@ -8060,8 +8115,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "84337940799476649573257",
-        "expectedAmountOut": "84174220700",
+        "amountIn": "759041467195289846159313",
+        "expectedAmountOut": "756877990323",
         "swappable": true
       },
       {
@@ -8069,8 +8124,8 @@
         "indexIn": 1,
         "out": "0x6440f144b7e50d6a8439336510312d2f54beb01d",
         "indexOut": 0,
-        "amountIn": "73067384697",
-        "expectedAmountOut": "73135860847762223552808",
+        "amountIn": "438404308182",
+        "expectedAmountOut": "438610515948583425226636",
         "swappable": true
       }
     ]
@@ -8148,8 +8203,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "19213358356051617647755",
-        "expectedAmountOut": "21128785545",
+        "amountIn": "38426716712103235295510",
+        "expectedAmountOut": "42256679738",
         "swappable": true
       },
       {
@@ -8157,8 +8212,8 @@
         "indexIn": 1,
         "out": "0x19ebd191f7a24ece672ba13a302212b5ef7f35cb",
         "indexOut": 0,
-        "amountIn": "97672102281",
-        "expectedAmountOut": "88789462766582549077926",
+        "amountIn": "58603261368",
+        "expectedAmountOut": "53275722567834235471208",
         "swappable": true
       }
     ]
@@ -8385,8 +8440,8 @@
         "indexIn": 1,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 0,
-        "amountIn": "116190064",
-        "expectedAmountOut": "115028358",
+        "amountIn": "232380128",
+        "expectedAmountOut": "230053547",
         "swappable": true
       },
       {
@@ -8394,8 +8449,8 @@
         "indexIn": 1,
         "out": "0x1cdd2eab61112697626f7b4bb0e23da4febf7b7c",
         "indexOut": 2,
-        "amountIn": "116190064",
-        "expectedAmountOut": "114749492",
+        "amountIn": "232380128",
+        "expectedAmountOut": "229479984",
         "swappable": true
       },
       {
@@ -8403,8 +8458,8 @@
         "indexIn": 1,
         "out": "0xde60adfddaabaaac3dafa57b26acc91cb63728c4",
         "indexOut": 3,
-        "amountIn": "116190064",
-        "expectedAmountOut": "114935758839324414185",
+        "amountIn": "232380128",
+        "expectedAmountOut": "229865347156631613316",
         "swappable": true
       },
       {
@@ -8412,8 +8467,8 @@
         "indexIn": 1,
         "out": "0x41f7b8b9b897276b7aae926a9016935280b44e97",
         "indexOut": 4,
-        "amountIn": "116190064",
-        "expectedAmountOut": "114945407",
+        "amountIn": "232380128",
+        "expectedAmountOut": "229885059",
         "swappable": true
       },
       {
@@ -8421,8 +8476,8 @@
         "indexIn": 1,
         "out": "0x566957ef80f9fd5526cd2bef8be67035c0b81130",
         "indexOut": 5,
-        "amountIn": "116190064",
-        "expectedAmountOut": "115058963",
+        "amountIn": "232380128",
+        "expectedAmountOut": "230115266",
         "swappable": true
       },
       {
@@ -8430,8 +8485,8 @@
         "indexIn": 1,
         "out": "0x7cd167b101d2808cfd2c45d17b2e7ea9f46b74b6",
         "indexOut": 6,
-        "amountIn": "116190064",
-        "expectedAmountOut": "115042071181138750316",
+        "amountIn": "232380128",
+        "expectedAmountOut": "230081230795466235193",
         "swappable": true
       },
       {
@@ -8439,8 +8494,8 @@
         "indexIn": 2,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 0,
-        "amountIn": "129709342",
-        "expectedAmountOut": "128705207",
+        "amountIn": "345891580",
+        "expectedAmountOut": "343169359",
         "swappable": true
       },
       {
@@ -8448,8 +8503,8 @@
         "indexIn": 2,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "129709342",
-        "expectedAmountOut": "128703231",
+        "amountIn": "345891580",
+        "expectedAmountOut": "343164140",
         "swappable": true
       },
       {
@@ -8457,8 +8512,8 @@
         "indexIn": 2,
         "out": "0xde60adfddaabaaac3dafa57b26acc91cb63728c4",
         "indexOut": 3,
-        "amountIn": "129709342",
-        "expectedAmountOut": "128603293712942253224",
+        "amountIn": "345891580",
+        "expectedAmountOut": "342897242374245937944",
         "swappable": true
       },
       {
@@ -8466,8 +8521,8 @@
         "indexIn": 2,
         "out": "0x41f7b8b9b897276b7aae926a9016935280b44e97",
         "indexOut": 4,
-        "amountIn": "129709342",
-        "expectedAmountOut": "128613919",
+        "amountIn": "345891580",
+        "expectedAmountOut": "342925897",
         "swappable": true
       },
       {
@@ -8475,8 +8530,8 @@
         "indexIn": 2,
         "out": "0x566957ef80f9fd5526cd2bef8be67035c0b81130",
         "indexOut": 5,
-        "amountIn": "129709342",
-        "expectedAmountOut": "128738860",
+        "amountIn": "345891580",
+        "expectedAmountOut": "343257893",
         "swappable": true
       },
       {
@@ -8484,8 +8539,8 @@
         "indexIn": 2,
         "out": "0x7cd167b101d2808cfd2c45d17b2e7ea9f46b74b6",
         "indexOut": 6,
-        "amountIn": "129709342",
-        "expectedAmountOut": "128720287555658718387",
+        "amountIn": "345891580",
+        "expectedAmountOut": "343209112903465018269",
         "swappable": true
       },
       {
@@ -8493,8 +8548,8 @@
         "indexIn": 3,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 0,
-        "amountIn": "447330645579813727011",
-        "expectedAmountOut": "443165925",
+        "amountIn": "223665322789906863505",
+        "expectedAmountOut": "221593431",
         "swappable": true
       },
       {
@@ -8502,8 +8557,8 @@
         "indexIn": 3,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "447330645579813727011",
-        "expectedAmountOut": "443158935",
+        "amountIn": "223665322789906863505",
+        "expectedAmountOut": "221589973",
         "swappable": true
       },
       {
@@ -8511,8 +8566,8 @@
         "indexIn": 3,
         "out": "0x1cdd2eab61112697626f7b4bb0e23da4febf7b7c",
         "indexOut": 2,
-        "amountIn": "447330645579813727011",
-        "expectedAmountOut": "442022643",
+        "amountIn": "223665322789906863505",
+        "expectedAmountOut": "221047838",
         "swappable": true
       },
       {
@@ -8520,8 +8575,8 @@
         "indexIn": 3,
         "out": "0x41f7b8b9b897276b7aae926a9016935280b44e97",
         "indexOut": 4,
-        "amountIn": "447330645579813727011",
-        "expectedAmountOut": "442838287",
+        "amountIn": "223665322789906863505",
+        "expectedAmountOut": "221433012",
         "swappable": true
       },
       {
@@ -8529,8 +8584,8 @@
         "indexIn": 3,
         "out": "0x566957ef80f9fd5526cd2bef8be67035c0b81130",
         "indexOut": 5,
-        "amountIn": "447330645579813727011",
-        "expectedAmountOut": "443284294",
+        "amountIn": "223665322789906863505",
+        "expectedAmountOut": "221652225",
         "swappable": true
       },
       {
@@ -8538,8 +8593,8 @@
         "indexIn": 3,
         "out": "0x7cd167b101d2808cfd2c45d17b2e7ea9f46b74b6",
         "indexOut": 6,
-        "amountIn": "447330645579813727011",
-        "expectedAmountOut": "443219126429088706503",
+        "amountIn": "223665322789906863505",
+        "expectedAmountOut": "221619800788387155497",
         "swappable": true
       },
       {
@@ -8547,8 +8602,8 @@
         "indexIn": 4,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 0,
-        "amountIn": "619943059",
-        "expectedAmountOut": "614103992",
+        "amountIn": "232478647",
+        "expectedAmountOut": "230306490",
         "swappable": true
       },
       {
@@ -8556,8 +8611,8 @@
         "indexIn": 4,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "619943059",
-        "expectedAmountOut": "614094186",
+        "amountIn": "232478647",
+        "expectedAmountOut": "230302890",
         "swappable": true
       },
       {
@@ -8565,8 +8620,8 @@
         "indexIn": 4,
         "out": "0x1cdd2eab61112697626f7b4bb0e23da4febf7b7c",
         "indexOut": 2,
-        "amountIn": "619943059",
-        "expectedAmountOut": "612451857",
+        "amountIn": "232478647",
+        "expectedAmountOut": "229737800",
         "swappable": true
       },
       {
@@ -8574,8 +8629,8 @@
         "indexIn": 4,
         "out": "0xde60adfddaabaaac3dafa57b26acc91cb63728c4",
         "indexOut": 3,
-        "amountIn": "619943059",
-        "expectedAmountOut": "613585179781566408799",
+        "amountIn": "232478647",
+        "expectedAmountOut": "230119897354615860477",
         "swappable": true
       },
       {
@@ -8583,8 +8638,8 @@
         "indexIn": 4,
         "out": "0x566957ef80f9fd5526cd2bef8be67035c0b81130",
         "indexOut": 5,
-        "amountIn": "619943059",
-        "expectedAmountOut": "614269506",
+        "amountIn": "232478647",
+        "expectedAmountOut": "230367680",
         "swappable": true
       },
       {
@@ -8592,8 +8647,8 @@
         "indexIn": 4,
         "out": "0x7cd167b101d2808cfd2c45d17b2e7ea9f46b74b6",
         "indexOut": 6,
-        "amountIn": "619943059",
-        "expectedAmountOut": "614178507634640538580",
+        "amountIn": "232478647",
+        "expectedAmountOut": "230333936410844272181",
         "swappable": true
       },
       {
@@ -8601,8 +8656,8 @@
         "indexIn": 5,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 0,
-        "amountIn": "581383040",
-        "expectedAmountOut": "575383510",
+        "amountIn": "436037280",
+        "expectedAmountOut": "431544077",
         "swappable": true
       },
       {
@@ -8610,8 +8665,8 @@
         "indexIn": 5,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "581383040",
-        "expectedAmountOut": "575374037",
+        "amountIn": "436037280",
+        "expectedAmountOut": "431537087",
         "swappable": true
       },
       {
@@ -8619,8 +8674,8 @@
         "indexIn": 5,
         "out": "0x1cdd2eab61112697626f7b4bb0e23da4febf7b7c",
         "indexOut": 2,
-        "amountIn": "581383040",
-        "expectedAmountOut": "573798505",
+        "amountIn": "436037280",
+        "expectedAmountOut": "430403110",
         "swappable": true
       },
       {
@@ -8628,8 +8683,8 @@
         "indexIn": 5,
         "out": "0xde60adfddaabaaac3dafa57b26acc91cb63728c4",
         "indexOut": 3,
-        "amountIn": "581383040",
-        "expectedAmountOut": "574883375721977179774",
+        "amountIn": "436037280",
+        "expectedAmountOut": "431177903468993617381",
         "swappable": true
       },
       {
@@ -8637,8 +8692,8 @@
         "indexIn": 5,
         "out": "0x41f7b8b9b897276b7aae926a9016935280b44e97",
         "indexOut": 4,
-        "amountIn": "581383040",
-        "expectedAmountOut": "574936640",
+        "amountIn": "436037280",
+        "expectedAmountOut": "431216625",
         "swappable": true
       },
       {
@@ -8646,8 +8701,8 @@
         "indexIn": 5,
         "out": "0x7cd167b101d2808cfd2c45d17b2e7ea9f46b74b6",
         "indexOut": 6,
-        "amountIn": "581383040",
-        "expectedAmountOut": "575455525690628256219",
+        "amountIn": "436037280",
+        "expectedAmountOut": "431597284868992141725",
         "swappable": true
       },
       {
@@ -8655,8 +8710,8 @@
         "indexIn": 6,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 0,
-        "amountIn": "1028151014613174165510",
-        "expectedAmountOut": "1017633745",
+        "amountIn": "128518876826646770688",
+        "expectedAmountOut": "127216888",
         "swappable": true
       },
       {
@@ -8664,8 +8719,8 @@
         "indexIn": 6,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "1028151014613174165510",
-        "expectedAmountOut": "1017616231",
+        "amountIn": "128518876826646770688",
+        "expectedAmountOut": "127214897",
         "swappable": true
       },
       {
@@ -8673,8 +8728,8 @@
         "indexIn": 6,
         "out": "0x1cdd2eab61112697626f7b4bb0e23da4febf7b7c",
         "indexOut": 2,
-        "amountIn": "1028151014613174165510",
-        "expectedAmountOut": "1014444366",
+        "amountIn": "128518876826646770688",
+        "expectedAmountOut": "126907248",
         "swappable": true
       },
       {
@@ -8682,8 +8737,8 @@
         "indexIn": 6,
         "out": "0xde60adfddaabaaac3dafa57b26acc91cb63728c4",
         "indexOut": 3,
-        "amountIn": "1028151014613174165510",
-        "expectedAmountOut": "1016685038496701765659",
+        "amountIn": "128518876826646770688",
+        "expectedAmountOut": "127114197841182204003",
         "swappable": true
       },
       {
@@ -8691,8 +8746,8 @@
         "indexIn": 6,
         "out": "0x41f7b8b9b897276b7aae926a9016935280b44e97",
         "indexOut": 4,
-        "amountIn": "1028151014613174165510",
-        "expectedAmountOut": "1016788461",
+        "amountIn": "128518876826646770688",
+        "expectedAmountOut": "127124903",
         "swappable": true
       },
       {
@@ -8700,8 +8755,8 @@
         "indexIn": 6,
         "out": "0x566957ef80f9fd5526cd2bef8be67035c0b81130",
         "indexOut": 5,
-        "amountIn": "1028151014613174165510",
-        "expectedAmountOut": "1017927017",
+        "amountIn": "128518876826646770688",
+        "expectedAmountOut": "127250802",
         "swappable": true
       }
     ]
@@ -8788,8 +8843,8 @@
         "indexIn": 1,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 0,
-        "amountIn": "10678943191403739966540",
-        "expectedAmountOut": "11707623670",
+        "amountIn": "16018414787105609949810",
+        "expectedAmountOut": "17560577345",
         "swappable": true
       }
     ]
@@ -8867,8 +8922,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "1831449486973512891264",
-        "expectedAmountOut": "1830543245",
+        "amountIn": "9157247434867564456320",
+        "expectedAmountOut": "9149009485",
         "swappable": true
       },
       {
@@ -8876,8 +8931,8 @@
         "indexIn": 1,
         "out": "0x48f9e38f3070ad8945dfeae3fa70987722e3d89c",
         "indexOut": 0,
-        "amountIn": "5333524391",
-        "expectedAmountOut": "5332999022039914839212",
+        "amountIn": "14222731710",
+        "expectedAmountOut": "14214369330049078314247",
         "swappable": true
       }
     ]
@@ -8964,8 +9019,8 @@
         "indexIn": 1,
         "out": "0x04acaf8d2865c0714f79da09645c13fd2888977f",
         "indexOut": 0,
-        "amountIn": "290486784131332500468",
-        "expectedAmountOut": "291451335185747414111",
+        "amountIn": "580973568262665000937",
+        "expectedAmountOut": "582840880483678245435",
         "swappable": true
       }
     ]
@@ -9045,7 +9100,62 @@
       "basePoolType": "curvev1ng",
       "blockTimestamp": 1752482243
     },
-    "testCases": []
+    "testCases": [
+      {
+        "in": "0x85e30b8b263bc64d94b827ed450f2edfee8579da",
+        "indexIn": 0,
+        "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexOut": 1,
+        "amountIn": "459930608381360719251",
+        "expectedAmountOut": "525271779",
+        "swappable": true
+      },
+      {
+        "in": "0x85e30b8b263bc64d94b827ed450f2edfee8579da",
+        "indexIn": 0,
+        "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexOut": 2,
+        "amountIn": "459930608381360719251",
+        "expectedAmountOut": "525121232",
+        "swappable": true
+      },
+      {
+        "in": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexIn": 1,
+        "out": "0x85e30b8b263bc64d94b827ed450f2edfee8579da",
+        "indexOut": 0,
+        "amountIn": "270275898309",
+        "expectedAmountOut": "7648522062578294625514",
+        "swappable": true
+      },
+      {
+        "in": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexIn": 1,
+        "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexOut": 2,
+        "amountIn": "270275898309",
+        "expectedAmountOut": "270151140091",
+        "swappable": true
+      },
+      {
+        "in": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexIn": 2,
+        "out": "0x85e30b8b263bc64d94b827ed450f2edfee8579da",
+        "indexOut": 0,
+        "amountIn": "45005468480",
+        "expectedAmountOut": "7482463115067332048013",
+        "swappable": true
+      },
+      {
+        "in": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexIn": 2,
+        "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexOut": 1,
+        "amountIn": "45005468480",
+        "expectedAmountOut": "45016642950",
+        "swappable": true
+      }
+    ]
   },
   {
     "pool": {
@@ -9120,8 +9230,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "25489035482409981879167",
-        "expectedAmountOut": "25115669868",
+        "amountIn": "14160575268005545488426",
+        "expectedAmountOut": "13991820153",
         "swappable": true
       },
       {
@@ -9129,8 +9239,8 @@
         "indexIn": 1,
         "out": "0x5086bf358635b81d8c47c66d1c8b9e567db70c72",
         "indexOut": 0,
-        "amountIn": "5422790564",
-        "expectedAmountOut": "5465610776858796446009",
+        "amountIn": "4067092923",
+        "expectedAmountOut": "4100202372932930071745",
         "swappable": true
       }
     ]
@@ -9208,8 +9318,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "9738667649921553940012",
-        "expectedAmountOut": "9602868391",
+        "amountIn": "14608001474882330910018",
+        "expectedAmountOut": "14383481271",
         "swappable": true
       },
       {
@@ -9217,8 +9327,8 @@
         "indexIn": 1,
         "out": "0x09fd37d9aa613789c517e76df1c53aece2b60df4",
         "indexOut": 0,
-        "amountIn": "6226623736",
-        "expectedAmountOut": "6286690295714790341148",
+        "amountIn": "5534776654",
+        "expectedAmountOut": "5588880264992719776119",
         "swappable": true
       }
     ]
@@ -9296,8 +9406,8 @@
         "indexIn": 0,
         "out": "0x004e9c3ef86bc1ca1f0bb5c7662861ee93350568",
         "indexOut": 1,
-        "amountIn": "957847",
-        "expectedAmountOut": "969716",
+        "amountIn": "1915695",
+        "expectedAmountOut": "1938734",
         "swappable": true
       },
       {
@@ -9305,8 +9415,8 @@
         "indexIn": 1,
         "out": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
         "indexOut": 0,
-        "amountIn": "18149718",
-        "expectedAmountOut": "17628129",
+        "amountIn": "16133082",
+        "expectedAmountOut": "15722683",
         "swappable": true
       }
     ]
@@ -9384,8 +9494,8 @@
         "indexIn": 0,
         "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
         "indexOut": 1,
-        "amountIn": "47326855045770677742",
-        "expectedAmountOut": "49643916247120584771",
+        "amountIn": "23663427522885338871",
+        "expectedAmountOut": "24823940112373429381",
         "swappable": true
       },
       {
@@ -9393,8 +9503,8 @@
         "indexIn": 1,
         "out": "0xe72b141df173b999ae7c1adcbf60cc9833ce56a8",
         "indexOut": 0,
-        "amountIn": "25275758042613925361",
-        "expectedAmountOut": "24080642940307357311",
+        "amountIn": "10110303217045570144",
+        "expectedAmountOut": "9632640987590187234",
         "swappable": true
       }
     ]
@@ -9472,8 +9582,8 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 1,
-        "amountIn": "8291102114809418949253",
-        "expectedAmountOut": "8289865761",
+        "amountIn": "3316440845923767579701",
+        "expectedAmountOut": "3316046142",
         "swappable": true
       },
       {
@@ -9481,8 +9591,8 @@
         "indexIn": 1,
         "out": "0x76972f054ab43829064d31ff5f3acc5fabe57fe8",
         "indexOut": 0,
-        "amountIn": "6639314408",
-        "expectedAmountOut": "6638377980590863094919",
+        "amountIn": "3319657204",
+        "expectedAmountOut": "3319255614594389296927",
         "swappable": true
       }
     ]
@@ -9569,8 +9679,8 @@
         "indexIn": 1,
         "out": "0x3db228fe836d99ccb25ec4dfdc80ed6d2cddcb4b",
         "indexOut": 0,
-        "amountIn": "548062672",
-        "expectedAmountOut": "546005366405173520011",
+        "amountIn": "182687557",
+        "expectedAmountOut": "182035352574216157227",
         "swappable": true
       }
     ]
@@ -9724,7 +9834,7 @@
         "indexIn": 0,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 1,
-        "amountIn": "4797587065602926211304872",
+        "amountIn": "3598190299202194658478654",
         "swappable": false
       },
       {
@@ -9732,7 +9842,7 @@
         "indexIn": 0,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 2,
-        "amountIn": "4797587065602926211304872",
+        "amountIn": "3598190299202194658478654",
         "swappable": false
       },
       {
@@ -9740,7 +9850,7 @@
         "indexIn": 0,
         "out": "0x6b175474e89094c44da98b954eedeac495271d0f",
         "indexOut": 3,
-        "amountIn": "4797587065602926211304872",
+        "amountIn": "3598190299202194658478654",
         "swappable": false
       },
       {
@@ -9748,7 +9858,7 @@
         "indexIn": 0,
         "out": "0x0000000000085d4780b73119b644ae5ecd22b376",
         "indexOut": 4,
-        "amountIn": "4797587065602926211304872",
+        "amountIn": "3598190299202194658478654",
         "swappable": false
       },
       {
@@ -9756,7 +9866,7 @@
         "indexIn": 0,
         "out": "0x4fabb145d64652a948d72533023f6e7a623c7c53",
         "indexOut": 5,
-        "amountIn": "4797587065602926211304872",
+        "amountIn": "3598190299202194658478654",
         "swappable": false
       },
       {
@@ -9764,7 +9874,7 @@
         "indexIn": 1,
         "out": "0x5905c0290e59afbdc42a5480add9bd7b20cb3759",
         "indexOut": 0,
-        "amountIn": "879381",
+        "amountIn": "2345016",
         "swappable": false
       },
       {
@@ -9772,7 +9882,7 @@
         "indexIn": 1,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 2,
-        "amountIn": "879381",
+        "amountIn": "2345016",
         "swappable": false
       },
       {
@@ -9780,7 +9890,7 @@
         "indexIn": 1,
         "out": "0x6b175474e89094c44da98b954eedeac495271d0f",
         "indexOut": 3,
-        "amountIn": "879381",
+        "amountIn": "2345016",
         "swappable": false
       },
       {
@@ -9788,7 +9898,7 @@
         "indexIn": 1,
         "out": "0x0000000000085d4780b73119b644ae5ecd22b376",
         "indexOut": 4,
-        "amountIn": "879381",
+        "amountIn": "2345016",
         "swappable": false
       },
       {
@@ -9796,7 +9906,7 @@
         "indexIn": 1,
         "out": "0x4fabb145d64652a948d72533023f6e7a623c7c53",
         "indexOut": 5,
-        "amountIn": "879381",
+        "amountIn": "2345016",
         "swappable": false
       },
       {
@@ -9804,7 +9914,7 @@
         "indexIn": 2,
         "out": "0x5905c0290e59afbdc42a5480add9bd7b20cb3759",
         "indexOut": 0,
-        "amountIn": "1567866",
+        "amountIn": "522622",
         "swappable": false
       },
       {
@@ -9812,7 +9922,7 @@
         "indexIn": 2,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 1,
-        "amountIn": "1567866",
+        "amountIn": "522622",
         "swappable": false
       },
       {
@@ -9820,7 +9930,7 @@
         "indexIn": 2,
         "out": "0x6b175474e89094c44da98b954eedeac495271d0f",
         "indexOut": 3,
-        "amountIn": "1567866",
+        "amountIn": "522622",
         "swappable": false
       },
       {
@@ -9828,7 +9938,7 @@
         "indexIn": 2,
         "out": "0x0000000000085d4780b73119b644ae5ecd22b376",
         "indexOut": 4,
-        "amountIn": "1567866",
+        "amountIn": "522622",
         "swappable": false
       },
       {
@@ -9836,7 +9946,7 @@
         "indexIn": 2,
         "out": "0x4fabb145d64652a948d72533023f6e7a623c7c53",
         "indexOut": 5,
-        "amountIn": "1567866",
+        "amountIn": "522622",
         "swappable": false
       },
       {
@@ -9844,7 +9954,7 @@
         "indexIn": 3,
         "out": "0x5905c0290e59afbdc42a5480add9bd7b20cb3759",
         "indexOut": 0,
-        "amountIn": "886321855365022591",
+        "amountIn": "1181762473820030121",
         "swappable": false
       },
       {
@@ -9852,7 +9962,7 @@
         "indexIn": 3,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 1,
-        "amountIn": "886321855365022591",
+        "amountIn": "1181762473820030121",
         "swappable": false
       },
       {
@@ -9860,7 +9970,7 @@
         "indexIn": 3,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 2,
-        "amountIn": "886321855365022591",
+        "amountIn": "1181762473820030121",
         "swappable": false
       },
       {
@@ -9868,7 +9978,7 @@
         "indexIn": 3,
         "out": "0x0000000000085d4780b73119b644ae5ecd22b376",
         "indexOut": 4,
-        "amountIn": "886321855365022591",
+        "amountIn": "1181762473820030121",
         "swappable": false
       },
       {
@@ -9876,7 +9986,7 @@
         "indexIn": 3,
         "out": "0x4fabb145d64652a948d72533023f6e7a623c7c53",
         "indexOut": 5,
-        "amountIn": "886321855365022591",
+        "amountIn": "1181762473820030121",
         "swappable": false
       },
       {
@@ -9924,7 +10034,7 @@
         "indexIn": 5,
         "out": "0x5905c0290e59afbdc42a5480add9bd7b20cb3759",
         "indexOut": 0,
-        "amountIn": "877893297487503029",
+        "amountIn": "351157318995001211",
         "swappable": false
       },
       {
@@ -9932,7 +10042,7 @@
         "indexIn": 5,
         "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
         "indexOut": 1,
-        "amountIn": "877893297487503029",
+        "amountIn": "351157318995001211",
         "swappable": false
       },
       {
@@ -9940,7 +10050,7 @@
         "indexIn": 5,
         "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         "indexOut": 2,
-        "amountIn": "877893297487503029",
+        "amountIn": "351157318995001211",
         "swappable": false
       },
       {
@@ -9948,7 +10058,7 @@
         "indexIn": 5,
         "out": "0x6b175474e89094c44da98b954eedeac495271d0f",
         "indexOut": 3,
-        "amountIn": "877893297487503029",
+        "amountIn": "351157318995001211",
         "swappable": false
       },
       {
@@ -9956,7 +10066,7 @@
         "indexIn": 5,
         "out": "0x0000000000085d4780b73119b644ae5ecd22b376",
         "indexOut": 4,
-        "amountIn": "877893297487503029",
+        "amountIn": "351157318995001211",
         "swappable": false
       }
     ]
@@ -10053,8 +10163,8 @@
         "indexIn": 0,
         "out": "0x8236a87084f8b84306f72007f36f2618a5634494",
         "indexOut": 1,
-        "amountIn": "29556530",
-        "expectedAmountOut": "29526699",
+        "amountIn": "266008777",
+        "expectedAmountOut": "265672846",
         "swappable": true
       },
       {
@@ -10062,8 +10172,8 @@
         "indexIn": 0,
         "out": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
         "indexOut": 2,
-        "amountIn": "29556530",
-        "expectedAmountOut": "29537177",
+        "amountIn": "266008777",
+        "expectedAmountOut": "265783199",
         "swappable": true
       },
       {
@@ -10089,8 +10199,8 @@
         "indexIn": 2,
         "out": "0x657e8c867d8b37dcc18fa4caead9c45eb088c642",
         "indexOut": 0,
-        "amountIn": "47263049",
-        "expectedAmountOut": "47272153",
+        "amountIn": "141789149",
+        "expectedAmountOut": "141806593",
         "swappable": true
       },
       {
@@ -10098,8 +10208,8 @@
         "indexIn": 2,
         "out": "0x8236a87084f8b84306f72007f36f2618a5634494",
         "indexOut": 1,
-        "amountIn": "47263049",
-        "expectedAmountOut": "47234817",
+        "amountIn": "141789149",
+        "expectedAmountOut": "141689481",
         "swappable": true
       }
     ]
@@ -10177,8 +10287,8 @@
         "indexIn": 0,
         "out": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
         "indexOut": 1,
-        "amountIn": "200000",
-        "expectedAmountOut": "199896",
+        "amountIn": "800000",
+        "expectedAmountOut": "799535",
         "swappable": true
       },
       {
@@ -10186,8 +10296,8 @@
         "indexIn": 1,
         "out": "0x2cd3cdb3bd68eea0d3be81da707bc0c8743d7335",
         "indexOut": 0,
-        "amountIn": "800000",
-        "expectedAmountOut": "799535",
+        "amountIn": "200000",
+        "expectedAmountOut": "199896",
         "swappable": true
       }
     ]
