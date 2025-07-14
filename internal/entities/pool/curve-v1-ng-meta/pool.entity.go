@@ -80,23 +80,19 @@ func (p *PoolSimulator) GetDyUnderlying(
 	var x *uint256.Int
 	var amountOut, withdrawDy, withdrawDyFee uint256.Int
 	if base_i < 0 {
-		x = number.SafeAdd(&xp[i], number.SafeMul(_dx, number.Div(&p.Extra.Rates[i], Precision)))
+		x = number.SafeAdd(&xp[i], number.Div(number.Mul(_dx, &p.Extra.Rates[i]), Precision))
 	} else {
 		if j == 0 {
-			addLiquidityAmounts := make([]uint256.Int, baseNCoins)
-			// feeAmounts := make([]uint256.Int, baseNCoins)
+			var base_inputs = make([]uint256.Int, baseNCoins)
 			for k := 0; k < baseNCoins; k++ {
-				addLiquidityAmounts[k].Clear()
+				base_inputs[k].Clear()
 			}
-			addLiquidityAmounts[base_i].Set(_dx)
-
-			var mintAmount uint256.Int
-
-			if err := p.BasePool.CalculateTokenAmount(addLiquidityAmounts[:baseNCoins], true, &mintAmount); err != nil {
+			base_inputs[base_i].Set(_dx)
+			var err = p.BasePool.CalculateTokenAmount(base_inputs, true, &amountOut)
+			if err != nil {
 				return err
 			}
-
-			x = number.Div(number.SafeMul(&mintAmount, &p.Extra.Rates[maxCoins]), Precision)
+			x = number.Div(number.SafeMul(&amountOut, &p.Extra.Rates[maxCoins]), Precision)
 			number.SafeAddZ(x, &xp[maxCoins], x)
 		} else {
 			if err := p.BasePool.GetDy(base_i, base_j, _dx, dy); err != nil {
@@ -107,7 +103,6 @@ func (p *PoolSimulator) GetDyUnderlying(
 	}
 
 	err := p.PoolSimulator.GetDyByX(meta_i, meta_j, x, xp, &amountOut)
-
 	if err != nil {
 		return err
 	}

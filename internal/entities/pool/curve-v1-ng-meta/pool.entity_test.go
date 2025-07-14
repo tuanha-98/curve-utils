@@ -77,9 +77,6 @@ func TestGetDYUnderlyingMetaPool(t *testing.T) {
 			curvev1ng.NowFunc = func() time.Time {
 				return time.Unix(poolResult.Pool.BlockTimestamp, 0)
 			}
-			// NowFunc = func() time.Time {
-			// 	return time.Unix(poolResult.Pool.BlockTimestamp, 0)
-			// }
 
 			if testCase.Swappable {
 				var amountIn, amountOut uint256.Int
