@@ -92,7 +92,7 @@ func (p *PoolSimulator) GetDyUnderlying(
 	var x *uint256.Int
 	var amountOut, withdrawDy, withdrawDyFee uint256.Int
 	if base_i < 0 {
-		x = number.SafeAdd(&xp[i], number.SafeMul(_dx, number.Div(&p.Extra.Rates[i], Precision)))
+		x = number.SafeAdd(&xp[i], number.Div(number.Mul(_dx, &p.Extra.Rates[i]), Precision))
 	} else {
 		if base_j < 0 {
 			var base_inputs = make([]uint256.Int, baseNCoins)
