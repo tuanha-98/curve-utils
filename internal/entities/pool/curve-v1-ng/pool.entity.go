@@ -83,7 +83,7 @@ func NewPool(
 
 	pool := &PoolSimulator{
 		Address:       entityPool.Address,
-		Exchange:      "CurveV1",
+		Exchange:      "CurveV1NG",
 		Reserves:      reserves,
 		LpSupply:      lpSupply,
 		NumTokens:     entityPool.NTokens,
@@ -108,6 +108,13 @@ func NewPool(
 	}
 
 	return pool, nil
+}
+
+func (p *PoolSimulator) FeeCalculate(dy, fee *uint256.Int) {
+	fee.Div(
+		number.SafeMul(dy, p.Extra.SwapFee),
+		FeeDenominator,
+	)
 }
 
 func (p *PoolSimulator) DynamicFee(xpi, xpj, swapFee, feeOutput *uint256.Int) {
