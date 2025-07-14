@@ -27,10 +27,6 @@ type PoolJSON []struct {
 }
 
 func TestGetDYCurveV1NGPool(t *testing.T) {
-	NowFunc = func() time.Time {
-		return time.Unix(1752226127, 0)
-	}
-
 	jsonFile, err := os.Open("data/curvev1_pools_with_testcases.json")
 	if err != nil {
 		t.Fatalf("Failed to open curvev1_pools_with_testcases.json: %v", err)
@@ -60,12 +56,16 @@ func TestGetDYCurveV1NGPool(t *testing.T) {
 		}
 
 		for _, testCase := range poolResult.TestCases {
+			NowFunc = func() time.Time {
+				return time.Unix(poolResult.Pool.BlockTimestamp, 0)
+			}
+
 			if testCase.Swappable {
-				var amountIn, amountOut, feeAdmin uint256.Int
+				var amountIn, amountOut uint256.Int
 				amountIn.SetFromDecimal(testCase.AmountIn)
 
 				fmt.Println("Testing pool:", poolResult.Pool.Address)
-				err := pool.GetDy(testCase.IndexIn, testCase.IndexOut, &amountIn, &amountOut, &feeAdmin)
+				err := pool.GetDy(testCase.IndexIn, testCase.IndexOut, &amountIn, &amountOut)
 				if err != nil {
 					t.Errorf("Failed to calculate GetDy for pool %s: %v", poolResult.Pool.Address, err)
 					continue

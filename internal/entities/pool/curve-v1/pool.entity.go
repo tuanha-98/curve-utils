@@ -9,10 +9,6 @@ import (
 	"github.com/tuanha-98/curve-utils/internal/utils/toolkit/number"
 )
 
-type FeeInfo struct {
-	SwapFee, AdminFee, OffPegFee uint256.Int
-}
-
 type PoolSimulator struct {
 	Address, Exchange string
 	Reserves          []uint256.Int
@@ -24,16 +20,20 @@ type PoolSimulator struct {
 	Extra             Extra
 }
 
-func (p *PoolSimulator) GetTokens() []token.Token {
-	return p.Tokens
+func (p *PoolSimulator) GetNumTokens() int {
+	return p.NumTokens
+}
+
+func (p *PoolSimulator) GetBasePoolType() string {
+	return "curvev1"
 }
 
 func (p *PoolSimulator) XpMem(rate_multipliers []uint256.Int, reserves []uint256.Int) []uint256.Int {
 	return XpMem(rate_multipliers, reserves)
 }
 
-func (p *PoolSimulator) GetFeeInfo() FeeInfo {
-	return FeeInfo{
+func (p *PoolSimulator) GetFeeInfo() entities.FeeInfo {
+	return entities.FeeInfo{
 		SwapFee:   *p.Extra.SwapFee,
 		AdminFee:  *p.Extra.AdminFee,
 		OffPegFee: *p.Extra.OffPegFee,

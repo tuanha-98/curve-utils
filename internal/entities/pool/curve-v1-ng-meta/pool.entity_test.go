@@ -1,4 +1,4 @@
-package curvev1meta
+package curvev1ngmeta
 
 import (
 	"encoding/json"
@@ -10,6 +10,7 @@ import (
 	"github.com/holiman/uint256"
 	"github.com/tuanha-98/curve-utils/internal/entities"
 	curvev1 "github.com/tuanha-98/curve-utils/internal/entities/pool/curve-v1"
+	curvev1ng "github.com/tuanha-98/curve-utils/internal/entities/pool/curve-v1-ng"
 )
 
 type PoolJSON []struct {
@@ -25,7 +26,6 @@ type PoolJSON []struct {
 	}
 }
 
-// ! Pool: 0x618788357d0ebd8a37e763adab3bc575d54c2c7d -> calculate wrong
 func TestGetDYUnderlyingMetaPool(t *testing.T) {
 	jsonFile, err := os.Open("data/curvev1_pools_with_testcases.json")
 	if err != nil {
@@ -74,9 +74,12 @@ func TestGetDYUnderlyingMetaPool(t *testing.T) {
 			curvev1.NowFunc = func() time.Time {
 				return time.Unix(poolResult.Pool.BlockTimestamp, 0)
 			}
-			NowFunc = func() time.Time {
+			curvev1ng.NowFunc = func() time.Time {
 				return time.Unix(poolResult.Pool.BlockTimestamp, 0)
 			}
+			// NowFunc = func() time.Time {
+			// 	return time.Unix(poolResult.Pool.BlockTimestamp, 0)
+			// }
 
 			if testCase.Swappable {
 				var amountIn, amountOut uint256.Int

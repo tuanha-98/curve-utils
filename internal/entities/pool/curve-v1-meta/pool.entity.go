@@ -13,8 +13,8 @@ type Static = curvev1.Static
 type Extra = curvev1.Extra
 
 type BasePool interface {
-	GetTokens() []token.Token
-	GetFeeInfo() curvev1.FeeInfo
+	GetNumTokens() int
+	GetFeeInfo() entities.FeeInfo
 	GetDy(i, j int, dx, dy *uint256.Int) error
 	XpMem(rates []uint256.Int, reserves []uint256.Int) []uint256.Int
 	CalculateTokenAmount(amounts []uint256.Int, deposit bool, mintAmount *uint256.Int) error
@@ -75,7 +75,7 @@ func (p *PoolSimulator) GetDyUnderlying(
 	dy *uint256.Int,
 ) error {
 	var maxCoins = p.NumTokens - 1
-	var baseNCoins = len(p.BasePool.GetTokens())
+	var baseNCoins = p.BasePool.GetNumTokens()
 	xp := p.BasePool.XpMem(p.Extra.Rates, p.Reserves)
 
 	var base_i = i - maxCoins

@@ -26,12 +26,6 @@ type PoolJSON []struct {
 }
 
 func TestGetDYStablePool(t *testing.T) {
-	originNowFunc := NowFunc
-	defer func() { NowFunc = originNowFunc }()
-
-	NowFunc = func() time.Time {
-		return time.Unix(1752226775, 0)
-	}
 
 	jsonFile, err := os.Open("data/curvev1_pools_with_testcases.json")
 	if err != nil {
@@ -54,6 +48,10 @@ func TestGetDYStablePool(t *testing.T) {
 		if poolResult.Pool.Kind == PoolTypeMeta {
 			t.Logf("\033[33mSkipping META pool %s\033[0m", poolResult.Pool.Address)
 			continue
+		}
+
+		NowFunc = func() time.Time {
+			return time.Unix(poolResult.Pool.BlockTimestamp, 0)
 		}
 
 		pool, err := NewPool(poolResult.Pool)

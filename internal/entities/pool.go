@@ -1,5 +1,7 @@
 package entities
 
+import "github.com/holiman/uint256"
+
 type Pool struct {
 	Address string `json:"id"`
 	Tokens  []struct {
@@ -23,8 +25,18 @@ type Pool struct {
 	Rates           []string `json:"rates"`
 	Kind            string   `json:"kind,omitempty"`
 	LpTokenAddress  string   `json:"lpTokenAddress,omitempty"`
+	BasePoolType    string   `json:"basePoolType,omitempty"`
+	BlockTimestamp  int64    `json:"blockTimestamp,omitempty"`
+}
+
+type FeeInfo struct {
+	SwapFee, AdminFee, OffPegFee uint256.Int
 }
 
 func (p *Pool) IsMeta() bool {
 	return len(p.BasePoolAddress) > 0
+}
+
+func (p *Pool) GetBasePoolType() string {
+	return p.BasePoolType
 }

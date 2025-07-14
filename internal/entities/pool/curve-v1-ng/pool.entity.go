@@ -9,10 +9,6 @@ import (
 	"github.com/tuanha-98/curve-utils/internal/utils/toolkit/number"
 )
 
-type FeeInfo struct {
-	SwapFee, AdminFee, OffPegFee uint256.Int
-}
-
 type PoolSimulator struct {
 	Address, Exchange string
 	Reserves          []uint256.Int
@@ -24,16 +20,20 @@ type PoolSimulator struct {
 	Extra             Extra
 }
 
-func (p *PoolSimulator) GetTokens() []token.Token {
-	return p.Tokens
+func (p *PoolSimulator) GetBasePoolType() string {
+	return "curvev1ng"
+}
+
+func (p *PoolSimulator) GetNumTokens() int {
+	return p.NumTokens
 }
 
 func (p *PoolSimulator) XpMem(rate_multipliers []uint256.Int, reserves []uint256.Int) []uint256.Int {
 	return XpMem(rate_multipliers, reserves)
 }
 
-func (p *PoolSimulator) GetFeeInfo() FeeInfo {
-	return FeeInfo{
+func (p *PoolSimulator) GetFeeInfo() entities.FeeInfo {
+	return entities.FeeInfo{
 		SwapFee:   *p.Extra.SwapFee,
 		AdminFee:  *p.Extra.AdminFee,
 		OffPegFee: *p.Extra.OffPegFee,
@@ -142,9 +142,9 @@ func (p *PoolSimulator) GetDy(
 	i, j int, dx *uint256.Int,
 	// output
 	dy *uint256.Int,
-	adminFee *uint256.Int,
+	// adminFee *uint256.Int,
 ) error {
 	var xp = XpMem(p.Extra.Rates, p.Reserves)
 	var x = number.SafeAdd(&xp[i], number.Div(number.SafeMul(dx, &p.Extra.Rates[i]), Precision))
-	return p.GetDyByX(i, j, x, xp, dy, adminFee)
+	return p.GetDyByX(i, j, x, xp, dy)
 }
