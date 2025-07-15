@@ -306,17 +306,6 @@ func (p *PoolSimulator) GetDyByX(
 
 	dy.Div(number.SafeMul(number.SafeSub(dy, &dyFee), Precision), &p.Extra.Rates[j])
 
-	// adminFee.Div(
-	// 	number.SafeMul(
-	// 		number.Div(
-	// 			number.SafeMul(&dyFee, p.Extra.AdminFee),
-	// 			FeeDenominator,
-	// 		),
-	// 		Precision,
-	// 	),
-	// 	&p.Extra.Rates[j],
-	// )
-
 	return nil
 }
 
@@ -383,7 +372,6 @@ func (p *PoolSimulator) CalculateTokenAmount(
 
 	// output
 	mintAmount *uint256.Int,
-	// feeAmounts []uint256.Int,
 ) error {
 	var a = p._A()
 	var d0, d1, d2 uint256.Int
@@ -439,16 +427,9 @@ func (p *PoolSimulator) CalculateTokenAmount(
 			// xs = unsafe_div(rates[i] * (old_balances[i] + new_balance), PRECISION)
 			xs.Div(number.SafeMul(&p.Extra.Rates[i], &xs), Precision)
 
-			// _dynamic_fee_i = self._dynamic_fee(xs, ys, base_fee, fee_multiplier)
 			p.DynamicFee(&xs, &ys, baseFee, &_dynamic_fee_i)
-
-			// new_balances[i] -= _dynamic_fee_i * difference / FEE_DENOMINATOR
 			fee := number.Div(number.SafeMul(&_dynamic_fee_i, &difference), FeeDenominator)
 			number.SafeSubZ(&newBalances[i], fee, &newBalances[i])
-
-			// record fee so we can update balance later
-			// self.admin_balances[i] += unsafe_div(fees[i] * admin_fee, FEE_DENOMINATOR)
-			// feeAmounts[i].Div(number.SafeMul(fee, p.Extra.AdminFee), FeeDenominator)
 		}
 
 		for i := 0; i < p.NumTokens; i++ {
@@ -475,4 +456,14 @@ func (p *PoolSimulator) CalculateTokenAmount(
 	// return diff * total_supply / D0
 	mintAmount.Div(number.Mul(&diff, totalSupply), &d0)
 	return nil
+}
+
+func (p *PoolSimulator) BaseCalculateTokenAmount(
+	amounts []uint256.Int,
+	deposit bool,
+
+	// output
+	mintAmount *uint256.Int,
+) error {
+	return p.CalculateTokenAmount(amounts, deposit, mintAmount)
 }

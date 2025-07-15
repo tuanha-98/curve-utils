@@ -17,7 +17,7 @@ type BasePool interface {
 	GetFeeInfo() entities.FeeInfo
 	GetDy(i, j int, dx, dy *uint256.Int) error
 	XpMem(rates []uint256.Int, reserves []uint256.Int) []uint256.Int
-	CalculateTokenAmount(amounts []uint256.Int, deposit bool, mintAmount *uint256.Int) error
+	BaseCalculateTokenAmount(amounts []uint256.Int, deposit bool, mintAmount *uint256.Int) error
 	CalculateWithdrawOneCoin(tokenAmount *uint256.Int, index int, dy *uint256.Int, fee *uint256.Int) error
 	GetBasePoolType() string
 }
@@ -88,11 +88,11 @@ func (p *PoolSimulator) GetDyUnderlying(
 				base_inputs[k].Clear()
 			}
 			base_inputs[base_i].Set(_dx)
-			var err = p.BasePool.CalculateTokenAmount(base_inputs, true, &amountOut)
+			var err = p.BasePool.BaseCalculateTokenAmount(base_inputs, true, &amountOut)
 			if err != nil {
 				return err
 			}
-			x = number.Div(number.SafeMul(&amountOut, &p.Extra.Rates[maxCoins]), Precision)
+			x = number.Div(number.SafeMul(&amountOut, &p.PoolSimulator.Extra.Rates[maxCoins]), Precision)
 			number.SafeAddZ(x, &xp[maxCoins], x)
 		} else {
 			if err := p.BasePool.GetDy(base_i, base_j, _dx, dy); err != nil {

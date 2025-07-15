@@ -6379,8 +6379,8 @@
       "nTokens": 2,
       "basePoolAddress": "0x0000000000000000000000000000000000000000",
       "reserves": [
-        "3003065536774",
-        "750091141348"
+        "2986645625458",
+        "766506224780"
       ],
       "totalSupply": "3719777290463079693728589",
       "swapFee": "100000",
@@ -6402,7 +6402,7 @@
       "lpTokenAddress": "0x4f493b7de8aac7d55f71853688b1f7c8f0243c85",
       "kind": "plain",
       "basePoolType": "curvev1ng",
-      "blockTimestamp": 1752482327
+      "blockTimestamp": 1752482243
     },
     "testCases": [
       {

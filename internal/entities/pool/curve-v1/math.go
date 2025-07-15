@@ -396,3 +396,56 @@ func (p *PoolSimulator) CalculateTokenAmount(
 	mintAmount.Set(number.Div(number.Mul(&totalSupply, &diff), &d0))
 	return nil
 }
+
+func (p *PoolSimulator) BaseCalculateTokenAmount(
+	amounts []uint256.Int,
+	deposit bool,
+
+	// output
+	mintAmount *uint256.Int,
+) error {
+	var numTokens = len(p.Tokens)
+	var a = p._A()
+	var d0, d1, d2 uint256.Int
+	err := p.get_D_mem(p.Extra.Rates, p.Reserves, a, &d0)
+	if err != nil {
+		return err
+	}
+	var balances1 = make([]uint256.Int, p.NumTokens)
+	for i := 0; i < numTokens; i++ {
+		if deposit {
+			balances1[i].Add(&p.Reserves[i], &amounts[i])
+		} else {
+			if p.Reserves[i].Cmp(&amounts[i]) < 0 {
+				return ErrWithdrawMoreThanAvailable
+			}
+			balances1[i].Sub(&p.Reserves[i], &amounts[i])
+		}
+	}
+
+	err = p.get_D_mem(p.Extra.Rates, balances1, a, &d1)
+	if err != nil {
+		return err
+	}
+
+	var totalSupply = p.LpSupply
+	var diff uint256.Int
+
+	var _fee = number.Div(number.Mul(p.Extra.SwapFee, &p.NumTokensU256),
+		number.Mul(number.Number_4, uint256.NewInt(uint64(p.NumTokens-1))))
+
+	for i := 0; i < p.NumTokens; i += 1 {
+		var ideal_balance = number.Div(number.Mul(&d1, &p.Reserves[i]), &d0)
+		if ideal_balance.Cmp(&balances1[i]) > 0 {
+			diff.Sub(ideal_balance, &balances1[i])
+		} else {
+			diff.Sub(&balances1[i], ideal_balance)
+		}
+		var fee = number.Div(number.Mul(_fee, &diff), FeeDenominator)
+		balances1[i].Sub(&balances1[i], fee)
+	}
+	_ = p.get_D_mem(p.Extra.Rates, balances1, a, &d2)
+	mintAmount.Div(number.Mul(&totalSupply, number.Sub(&d2, &d0)), &d0)
+
+	return nil
+}
