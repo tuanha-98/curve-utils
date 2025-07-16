@@ -16,6 +16,7 @@ const (
 	PoolTypeAave     = "aave"
 	PoolTypeOracle   = "oracle"
 	PoolTypeCompound = "compound"
+	PoolTypeLending  = "lending"
 )
 
 var (

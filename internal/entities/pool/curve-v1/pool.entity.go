@@ -164,6 +164,25 @@ func (p *PoolSimulator) GetDy(
 		p.DynamicFee(number.Div(number.Add(&xp[i], x), number.Number_2), number.Div(number.Add(&xp[j], &y), number.Number_2), p.Extra.SwapFee, &fee)
 		fee.Div(number.Mul(&fee, dy), FeeDenominator)
 		dy.Sub(dy, &fee)
+
+	case PoolTypeLending:
+		fallthrough
+	case PoolTypeCompound:
+		var xp = XpMem(p.Extra.Rates, p.Reserves)
+		var x = number.SafeAdd(&xp[i], number.Mul(dx, &p.Extra.Precisions[i]))
+		var y uint256.Int
+		var err = p.getY(i, j, x, xp, nil, &y)
+		if err != nil {
+			return err
+		}
+		dy.Div(number.Sub(&xp[j], &y), &p.Extra.Precisions[j])
+		var fee uint256.Int
+		p.FeeCalculate(dy, &fee)
+		if dy.Cmp(&fee) < 0 {
+			return ErrInvalidReserve
+		}
+		dy.Sub(dy, &fee)
+
 	default:
 		var xp = XpMem(p.Extra.Rates, p.Reserves)
 		var x = number.SafeAdd(&xp[i], number.Div(number.Mul(dx, &p.Extra.Rates[i]), Precision))
