@@ -1,15 +1,16 @@
-package curvev1ng
+package curvev1ngmeta
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"os"
 	"testing"
 	"time"
 
 	"github.com/holiman/uint256"
-	"github.com/tuanha-98/curve-utils/internal/entities"
+	entities "github.com/tuanha-98/curve-utils/internal/entities/pool/v1"
+	curvev1 "github.com/tuanha-98/curve-utils/internal/entities/pool/v1/curve-v1"
+	curvev1ng "github.com/tuanha-98/curve-utils/internal/entities/pool/v1/curve-v1-ng"
 )
 
 type PoolJSON []struct {
@@ -22,11 +23,10 @@ type PoolJSON []struct {
 		AmountIn          string `json:"amountIn"`
 		ExpectedAmountOut string `json:"expectedAmountOut"`
 		Swappable         bool   `json:"swappable"`
-		BlockTimestamp    int64  `json:"blockTimestamp"`
 	}
 }
 
-func TestGetDYCurveV1NGPool(t *testing.T) {
+func TestGetDYUnderlyingMetaPool(t *testing.T) {
 	jsonFile, err := os.Open("data/curvev1_pools_with_testcases.json")
 	if err != nil {
 		t.Fatalf("Failed to open curvev1_pools_with_testcases.json: %v", err)
@@ -45,29 +45,45 @@ func TestGetDYCurveV1NGPool(t *testing.T) {
 	}
 
 	for _, poolResult := range result {
-		if poolResult.Pool.Kind == PoolTypeMeta {
-			t.Logf("\033[33mSkipping META pool %s\033[0m", poolResult.Pool.Address)
+		if poolResult.Pool.Kind != PoolTypeMeta {
+			t.Logf("\033[33mSkipping NOT META pool %s\033[0m", poolResult.Pool.Address)
 			continue
 		}
 
-		pool, err := NewPool(poolResult.Pool)
+		basePoolAddress := poolResult.Pool.BasePoolAddress
+		var basePool *entities.Pool
+
+		for _, bp := range result {
+			if bp.Pool.Address == basePoolAddress {
+				basePool = &bp.Pool
+				break
+			}
+		}
+
+		if basePool == nil {
+			t.Fatalf("Base pool not found for meta pool %s with base pool address %s",
+				poolResult.Pool.Address, basePoolAddress)
+		}
+
+		pool, err := NewPool(poolResult.Pool, *basePool)
 		if err != nil {
 			t.Fatalf("Failed to construct pool: %s", poolResult.Pool.Address)
 		}
 
 		for _, testCase := range poolResult.TestCases {
-			NowFunc = func() time.Time {
+			curvev1.NowFunc = func() time.Time {
+				return time.Unix(poolResult.Pool.BlockTimestamp, 0)
+			}
+			curvev1ng.NowFunc = func() time.Time {
 				return time.Unix(poolResult.Pool.BlockTimestamp, 0)
 			}
 
 			if testCase.Swappable {
 				var amountIn, amountOut uint256.Int
 				amountIn.SetFromDecimal(testCase.AmountIn)
-
-				fmt.Println("Testing pool:", poolResult.Pool.Address)
-				err := pool.GetDy(testCase.IndexIn, testCase.IndexOut, &amountIn, &amountOut)
+				err := pool.GetDyUnderlying(testCase.IndexIn, testCase.IndexOut, &amountIn, &amountOut)
 				if err != nil {
-					t.Errorf("Failed to calculate GetDy for pool %s: %v", poolResult.Pool.Address, err)
+					t.Errorf("Failed to calculate GetDyUnderlying for pool %s: %v", poolResult.Pool.Address, err)
 					continue
 				}
 				expectAmountOut := uint256.MustFromDecimal(testCase.ExpectedAmountOut)
@@ -81,11 +97,11 @@ func TestGetDYCurveV1NGPool(t *testing.T) {
 
 				maxAllowedDiff := uint256.NewInt(2)
 				if diff.Cmp(maxAllowedDiff) > 0 {
-					t.Errorf("\033[31mGetDy FAILED for pool %s: calculated %s, expected %s (diff: %s wei)\033[0m",
-						poolResult.Pool.Address, amountOut.String(), expectAmountOut.String(), diff.String())
+					t.Errorf("\033[31mGetDy FAILED for pool %s: calculated %s, expected %s (diff: %s wei) (i: %d, j: %d)\033[0m",
+						poolResult.Pool.Address, amountOut.String(), expectAmountOut.String(), diff.String(), testCase.IndexIn, testCase.IndexOut)
 				} else {
-					t.Logf("\033[32mGetDy SUCCESS for pool %s: calculated %s, expected %s\033[0m",
-						poolResult.Pool.Address, amountOut.String(), expectAmountOut.String())
+					t.Logf("\033[32mGetDy SUCCESS for pool %s: calculated %s, expected %s (i: %d, j: %d)\033[0m",
+						poolResult.Pool.Address, amountOut.String(), expectAmountOut.String(), testCase.IndexIn, testCase.IndexOut)
 				}
 			}
 		}

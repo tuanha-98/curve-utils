@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/holiman/uint256"
-	"github.com/tuanha-98/curve-utils/internal/entities"
+	entities "github.com/tuanha-98/curve-utils/internal/entities/pool/v1"
 )
 
 type PoolJSON []struct {

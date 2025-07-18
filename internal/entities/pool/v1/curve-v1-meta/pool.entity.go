@@ -2,10 +2,10 @@ package curvev1meta
 
 import (
 	"github.com/holiman/uint256"
-	"github.com/tuanha-98/curve-utils/internal/entities"
+	entities "github.com/tuanha-98/curve-utils/internal/entities/pool/v1"
 	"github.com/tuanha-98/curve-utils/internal/utils/toolkit/number"
 
-	curvev1 "github.com/tuanha-98/curve-utils/internal/entities/pool/curve-v1"
+	curvev1 "github.com/tuanha-98/curve-utils/internal/entities/pool/v1/curve-v1"
 	token "github.com/tuanha-98/curve-utils/internal/entities/token"
 )
 

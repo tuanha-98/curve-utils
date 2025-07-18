@@ -8,8 +8,7 @@ import (
 	"time"
 
 	"github.com/holiman/uint256"
-	"github.com/tuanha-98/curve-utils/internal/entities"
-	curvev1 "github.com/tuanha-98/curve-utils/internal/entities/pool/curve-v1"
+	entities "github.com/tuanha-98/curve-utils/internal/entities/pool/v1"
 )
 
 type PoolJSON []struct {
@@ -25,7 +24,6 @@ type PoolJSON []struct {
 	}
 }
 
-// ! Pool: 0x618788357d0ebd8a37e763adab3bc575d54c2c7d -> calculate wrong
 func TestGetDYUnderlyingMetaPool(t *testing.T) {
 	jsonFile, err := os.Open("data/curvev1_pools_with_testcases.json")
 	if err != nil {
@@ -71,9 +69,9 @@ func TestGetDYUnderlyingMetaPool(t *testing.T) {
 		}
 
 		for _, testCase := range poolResult.TestCases {
-			curvev1.NowFunc = func() time.Time {
-				return time.Unix(poolResult.Pool.BlockTimestamp, 0)
-			}
+			// curvev1.NowFunc = func() time.Time {
+			// 	return time.Unix(poolResult.Pool.BlockTimestamp, 0)
+			// }
 			NowFunc = func() time.Time {
 				return time.Unix(poolResult.Pool.BlockTimestamp, 0)
 			}

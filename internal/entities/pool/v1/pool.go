@@ -1,4 +1,4 @@
-package entities
+package v1
 
 import "github.com/holiman/uint256"
 

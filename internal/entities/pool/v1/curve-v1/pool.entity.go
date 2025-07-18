@@ -1,10 +1,10 @@
-package curvev1ng
+package curvev1
 
 import (
 	"strconv"
 
 	"github.com/holiman/uint256"
-	"github.com/tuanha-98/curve-utils/internal/entities"
+	entities "github.com/tuanha-98/curve-utils/internal/entities/pool/v1"
 	token "github.com/tuanha-98/curve-utils/internal/entities/token"
 	"github.com/tuanha-98/curve-utils/internal/utils/toolkit/number"
 )
@@ -20,12 +20,12 @@ type PoolSimulator struct {
 	Extra             Extra
 }
 
-func (p *PoolSimulator) GetBasePoolType() string {
-	return "curvev1ng"
-}
-
 func (p *PoolSimulator) GetNumTokens() int {
 	return p.NumTokens
+}
+
+func (p *PoolSimulator) GetBasePoolType() string {
+	return "curvev1"
 }
 
 func (p *PoolSimulator) XpMem(rate_multipliers []uint256.Int, reserves []uint256.Int) []uint256.Int {
@@ -83,7 +83,7 @@ func NewPool(
 
 	pool := &PoolSimulator{
 		Address:       entityPool.Address,
-		Exchange:      "CurveV1NG",
+		Exchange:      "CurveV1",
 		Reserves:      reserves,
 		LpSupply:      lpSupply,
 		NumTokens:     entityPool.NTokens,
@@ -149,9 +149,59 @@ func (p *PoolSimulator) GetDy(
 	i, j int, dx *uint256.Int,
 	// output
 	dy *uint256.Int,
-	// adminFee *uint256.Int,
 ) error {
-	var xp = XpMem(p.Extra.Rates, p.Reserves)
-	var x = number.SafeAdd(&xp[i], number.Div(number.SafeMul(dx, &p.Extra.Rates[i]), Precision))
-	return p.GetDyByX(i, j, x, xp, dy)
+	switch p.Static.PoolType {
+	case PoolTypeAave:
+		var xp = xp(p.Extra.Precisions, p.Reserves)
+		var x = number.SafeAdd(&xp[i], number.Mul(dx, &p.Extra.Precisions[i]))
+		var y uint256.Int
+		var err = p.getY(i, j, x, xp, nil, &y)
+		if err != nil {
+			return err
+		}
+		dy.Div(number.Sub(&xp[j], &y), &p.Extra.Precisions[j])
+		var fee uint256.Int
+		p.DynamicFee(number.Div(number.Add(&xp[i], x), number.Number_2), number.Div(number.Add(&xp[j], &y), number.Number_2), p.Extra.SwapFee, &fee)
+		fee.Div(number.Mul(&fee, dy), FeeDenominator)
+		dy.Sub(dy, &fee)
+
+	case PoolTypeLending:
+		fallthrough
+	case PoolTypeCompound:
+		var xp = XpMem(p.Extra.Rates, p.Reserves)
+		var x = number.SafeAdd(&xp[i], number.Mul(dx, &p.Extra.Precisions[i]))
+		var y uint256.Int
+		var err = p.getY(i, j, x, xp, nil, &y)
+		if err != nil {
+			return err
+		}
+		dy.Div(number.Sub(&xp[j], &y), &p.Extra.Precisions[j])
+		var fee uint256.Int
+		p.FeeCalculate(dy, &fee)
+		if dy.Cmp(&fee) < 0 {
+			return ErrInvalidReserve
+		}
+		dy.Sub(dy, &fee)
+
+	default:
+		var xp = XpMem(p.Extra.Rates, p.Reserves)
+		var x = number.SafeAdd(&xp[i], number.Div(number.Mul(dx, &p.Extra.Rates[i]), Precision))
+		var y uint256.Int
+		var err = p.getY(i, j, x, xp, nil, &y)
+		if err != nil {
+			return err
+		}
+		number.SafeSubZ(&xp[j], &y, dy)
+		if dy.Sign() <= 0 {
+			return ErrZero
+		}
+		dy.SubUint64(dy, 1)
+		var fee uint256.Int
+		p.FeeCalculate(dy, &fee)
+		if dy.Cmp(&fee) < 0 {
+			return ErrInvalidReserve
+		}
+		dy.Div(number.Mul(dy.Sub(dy, &fee), Precision), &p.Extra.Rates[j])
+	}
+	return nil
 }

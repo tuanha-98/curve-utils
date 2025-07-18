@@ -2,9 +2,9 @@ package curvev1ngmeta
 
 import (
 	"github.com/holiman/uint256"
-	"github.com/tuanha-98/curve-utils/internal/entities"
-	curvev1 "github.com/tuanha-98/curve-utils/internal/entities/pool/curve-v1"
-	curvev1ng "github.com/tuanha-98/curve-utils/internal/entities/pool/curve-v1-ng"
+	entities "github.com/tuanha-98/curve-utils/internal/entities/pool/v1"
+	curvev1 "github.com/tuanha-98/curve-utils/internal/entities/pool/v1/curve-v1"
+	curvev1ng "github.com/tuanha-98/curve-utils/internal/entities/pool/v1/curve-v1-ng"
 
 	"github.com/tuanha-98/curve-utils/internal/utils/toolkit/number"
 )
