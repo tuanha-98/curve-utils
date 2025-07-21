@@ -1,0 +1,3688 @@
+[
+  {
+    "pool": {
+      "id": "0x5f0985a8aad85e82fd592a23cc0501e4345fb18c",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b1821503a"
+          },
+          "id": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "decimals": 6,
+          "symbol": "USDT"
+        },
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b1821503b"
+          },
+          "id": "0xb56aaac80c931161548a49181c9e000a19489c44",
+          "decimals": 18,
+          "symbol": "ABDS"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "58781674",
+        "39508330581121937295821"
+      ],
+      "totalSupply": "1470900643320787931268",
+      "d": "148509224782203728860",
+      "midFee": "26000000",
+      "outFee": "45000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1000000000000",
+        "1"
+      ],
+      "priceScales": [
+        "2367811876187368"
+      ],
+      "lpTokenAddress": "0x5f0985a8aad85e82fd592a23cc0501e4345fb18c",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexIn": 0,
+        "out": "0xb56aaac80c931161548a49181c9e000a19489c44",
+        "indexOut": 1,
+        "amountIn": "5290350",
+        "expectedAmountOut": "3219819747482900093738",
+        "swappable": true
+      },
+      {
+        "in": "0xb56aaac80c931161548a49181c9e000a19489c44",
+        "indexIn": 1,
+        "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexOut": 0,
+        "amountIn": "395083305811219372958",
+        "expectedAmountOut": "584153",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x004c167d27ada24305b76d80762997fa6eb8d9b2",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b1821503e"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b1821503f"
+          },
+          "id": "0x97effb790f2fbb701d88f89db4521348a2b77be8",
+          "decimals": 18,
+          "symbol": "CVG"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "43867441300238900",
+        "2033819425305152944430037"
+      ],
+      "totalSupply": "279696973241079344897",
+      "d": "105268858856443302",
+      "midFee": "26000000",
+      "outFee": "45000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "30981949297"
+      ],
+      "lpTokenAddress": "0x004c167d27ada24305b76d80762997fa6eb8d9b2",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 0,
+        "out": "0x97effb790f2fbb701d88f89db4521348a2b77be8",
+        "indexOut": 1,
+        "amountIn": "3948069717021501",
+        "expectedAmountOut": "165577751727242812146439",
+        "swappable": true
+      },
+      {
+        "in": "0x97effb790f2fbb701d88f89db4521348a2b77be8",
+        "indexIn": 1,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 0,
+        "amountIn": "40676388506103058888600",
+        "expectedAmountOut": "863852355226866",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x592878b920101946fb5915ab97961bc546f211cc",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b18215042"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b18215043"
+          },
+          "id": "0x1cfa5641c01406ab8ac350ded7d735ec41298372",
+          "decimals": 18,
+          "symbol": "CJPY"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "74172455619802332406",
+        "45242235176962567654163057"
+      ],
+      "totalSupply": "56870033131773929748504",
+      "d": "175171073107779415101",
+      "midFee": "26000000",
+      "outFee": "45000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "2281209718661"
+      ],
+      "lpTokenAddress": "0x592878b920101946fb5915ab97961bc546f211cc",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 0,
+        "out": "0x1cfa5641c01406ab8ac350ded7d735ec41298372",
+        "indexOut": 1,
+        "amountIn": "3708622780990116620",
+        "expectedAmountOut": "2124072994355385140068512",
+        "swappable": true
+      },
+      {
+        "in": "0x1cfa5641c01406ab8ac350ded7d735ec41298372",
+        "indexIn": 1,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 0,
+        "amountIn": "452422351769625676541630",
+        "expectedAmountOut": "737850853555841278",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x77146b0a1d08b6844376df6d9da99ba7f1b19e71",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b18215046"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b18215047"
+          },
+          "id": "0x55c08ca52497e2f1534b59e2917bf524d4765257",
+          "decimals": 18,
+          "symbol": "UwU"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "8209018512531855032",
+        "4215503709981029913868984"
+      ],
+      "totalSupply": "5874142217512292782372",
+      "d": "89230705232076893668",
+      "midFee": "26000000",
+      "outFee": "45000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "56871378590085"
+      ],
+      "lpTokenAddress": "0x77146b0a1d08b6844376df6d9da99ba7f1b19e71",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 0,
+        "out": "0x55c08ca52497e2f1534b59e2917bf524d4765257",
+        "indexOut": 1,
+        "amountIn": "574631295877229852",
+        "expectedAmountOut": "273071504095827532384785",
+        "swappable": true
+      },
+      {
+        "in": "0x55c08ca52497e2f1534b59e2917bf524d4765257",
+        "indexIn": 1,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 0,
+        "amountIn": "126465111299430897416069",
+        "expectedAmountOut": "239332508298554875",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0xacdc85afcd8b83eb171affcbe29fad204f6ae45c",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b1821504a"
+          },
+          "id": "0x4e38d89362f7e5db0096ce44ebd021c3962aa9a0",
+          "decimals": 18,
+          "symbol": "UBQ"
+        },
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b1821504b"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "53689721160898208668999",
+        "118244656842406740"
+      ],
+      "totalSupply": "72406123399055398320",
+      "d": "92401515094374202991037",
+      "midFee": "100000000",
+      "outFee": "100000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "335560063696754607034013"
+      ],
+      "lpTokenAddress": "0xacdc85afcd8b83eb171affcbe29fad204f6ae45c",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0x4e38d89362f7e5db0096ce44ebd021c3962aa9a0",
+        "indexIn": 0,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 1,
+        "amountIn": "1610691634826946260069",
+        "expectedAmountOut": "3441108668422251",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 1,
+        "out": "0x4e38d89362f7e5db0096ce44ebd021c3962aa9a0",
+        "indexOut": 0,
+        "amountIn": "5912232842120337",
+        "expectedAmountOut": "2505698256884770862551",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x69cae865bb5efec4990692bdeb2dacaacc77086f",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b1821504d"
+          },
+          "id": "0x07ef9e82721ac16809d24dafbe1792ce01654db4",
+          "decimals": 18,
+          "symbol": "BNANA"
+        },
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b1821504e"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "6100290532028494063869716",
+        "66736901128300256"
+      ],
+      "totalSupply": "621577873432065511780",
+      "d": "10741969742877349456864450",
+      "midFee": "26000000",
+      "outFee": "45000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "70735176620087369133506753"
+      ],
+      "lpTokenAddress": "0x69cae865bb5efec4990692bdeb2dacaacc77086f",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0x07ef9e82721ac16809d24dafbe1792ce01654db4",
+        "indexIn": 0,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 1,
+        "amountIn": "183008715960854821916091",
+        "expectedAmountOut": "1953974094917892",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 1,
+        "out": "0x07ef9e82721ac16809d24dafbe1792ce01654db4",
+        "indexOut": 0,
+        "amountIn": "1334738022566005",
+        "expectedAmountOut": "117839452528308794325051",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x86ea1191a219989d2da3a85c949a12a92f8ed3db",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b18215054"
+          },
+          "id": "0xfe18ae03741a5b84e39c295ac9c856ed7991c38e",
+          "decimals": 18,
+          "symbol": "CDCETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b18215055"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "194239611089231512690",
+        "259278036444758507066"
+      ],
+      "totalSupply": "226374956621888529683",
+      "d": "449623316316957501706",
+      "midFee": "3000000",
+      "outFee": "45000000",
+      "feeGamma": "300000000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "13611294676837538538534984297272728458240000000",
+      "futureAGamma": "13611294676837538538534984297272728458240000000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "985742105672962341"
+      ],
+      "lpTokenAddress": "0x86ea1191a219989d2da3a85c949a12a92f8ed3db",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xfe18ae03741a5b84e39c295ac9c856ed7991c38e",
+        "indexIn": 0,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 1,
+        "amountIn": "1942396110892315126",
+        "expectedAmountOut": "2028043394262145437",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 1,
+        "out": "0xfe18ae03741a5b84e39c295ac9c856ed7991c38e",
+        "indexOut": 0,
+        "amountIn": "20742242915580680565",
+        "expectedAmountOut": "18510283731947254993",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0xfb8b95fb2296a0ad4b6b1419fdaa5aa5f13e4009",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b1821517f"
+          },
+          "id": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "decimals": 18,
+          "symbol": "crvUSD"
+        },
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b18215180"
+          },
+          "id": "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
+          "decimals": 18,
+          "symbol": "FXS"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "1622894192473861626581",
+        "440774168677923752888"
+      ],
+      "totalSupply": "835097894775464938635",
+      "d": "2986079512052471099094",
+      "midFee": "26000000",
+      "outFee": "45000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "3112380333314692400"
+      ],
+      "lpTokenAddress": "0xfb8b95fb2296a0ad4b6b1419fdaa5aa5f13e4009",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+        "indexIn": 0,
+        "out": "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
+        "indexOut": 1,
+        "amountIn": "32457883849477232531",
+        "expectedAmountOut": "8703017894496519137",
+        "swappable": true
+      },
+      {
+        "in": "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
+        "indexIn": 1,
+        "out": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+        "indexOut": 0,
+        "amountIn": "26446450120675425173",
+        "expectedAmountOut": "90194218497018095955",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x85847ef522d78efdbec8afb0045dc7d6982837c3",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b18215182"
+          },
+          "id": "0xab846fb6c81370327e784ae7cbb6d6a6af6ff4bf",
+          "decimals": 18,
+          "symbol": "PAL"
+        },
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b18215183"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "2335213870572324093803335",
+        "67628334353002969320"
+      ],
+      "totalSupply": "12128641549719443586635",
+      "d": "4055418107551462241464769",
+      "midFee": "26000000",
+      "outFee": "75000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "25985982924970805685987"
+      ],
+      "lpTokenAddress": "0x85847ef522d78efdbec8afb0045dc7d6982837c3",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xab846fb6c81370327e784ae7cbb6d6a6af6ff4bf",
+        "indexIn": 0,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 1,
+        "amountIn": "116760693528616204690166",
+        "expectedAmountOut": "3225614354701367787",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 1,
+        "out": "0xab846fb6c81370327e784ae7cbb6d6a6af6ff4bf",
+        "indexOut": 0,
+        "amountIn": "4733983404710207852",
+        "expectedAmountOut": "150047253255892898493420",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x9a74faaabb5b24e3340cf4332e9be4c3ad82ebde",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b18215186"
+          },
+          "id": "0x609dcb77c8994d15b1481c10b7e6760c5a1dea94",
+          "decimals": 18,
+          "symbol": "FLEET"
+        },
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b18215187"
+          },
+          "id": "0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0",
+          "decimals": 18,
+          "symbol": "MATIC"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "5905000000000000000000000",
+        "598938341339082063492063"
+      ],
+      "totalSupply": "1880688029159921137974760",
+      "d": "11940298456519976250452542",
+      "midFee": "26000000",
+      "outFee": "45000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "10076813401849566394"
+      ],
+      "lpTokenAddress": "0x9a74faaabb5b24e3340cf4332e9be4c3ad82ebde",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0x609dcb77c8994d15b1481c10b7e6760c5a1dea94",
+        "indexIn": 0,
+        "out": "0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0",
+        "indexOut": 1,
+        "amountIn": "531450000000000000000000",
+        "expectedAmountOut": "49807034250223488094703",
+        "swappable": true
+      },
+      {
+        "in": "0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0",
+        "indexIn": 1,
+        "out": "0x609dcb77c8994d15b1481c10b7e6760c5a1dea94",
+        "indexOut": 0,
+        "amountIn": "29946917066954103174603",
+        "expectedAmountOut": "284665196489111765953100",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x9dbcfc09e651c040ee68d6dbeb8a09f8dd0caa77",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b1821518a"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b1821518b"
+          },
+          "id": "0x6b5204b0be36771253cc38e88012e02b752f0f36",
+          "decimals": 18,
+          "symbol": "ZUN"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "72725728765863768",
+        "2778972332675482208346425"
+      ],
+      "totalSupply": "438705688157111559841",
+      "d": "329310072385531351",
+      "midFee": "26000000",
+      "outFee": "45000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "133272353154"
+      ],
+      "lpTokenAddress": "0x9dbcfc09e651c040ee68d6dbeb8a09f8dd0caa77",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 0,
+        "out": "0x6b5204b0be36771253cc38e88012e02b752f0f36",
+        "indexOut": 1,
+        "amountIn": "3636286438293188",
+        "expectedAmountOut": "130993282931760400741398",
+        "swappable": true
+      },
+      {
+        "in": "0x6b5204b0be36771253cc38e88012e02b752f0f36",
+        "indexIn": 1,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 0,
+        "amountIn": "166738339960528932500785",
+        "expectedAmountOut": "4120872116569353",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x4484a052a0be82af20896ea3c8d891a3d11e8d1a",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b1821518e"
+          },
+          "id": "0x4d7564f1272e24111280918b8ae4df9953a6253f",
+          "decimals": 18,
+          "symbol": "LLAMAwnft"
+        },
+        {
+          "_id": {
+            "$oid": "687deb0e92950d9b1821518f"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "999999916477197172",
+        "1194743230177876196"
+      ],
+      "totalSupply": "1093043059639921593",
+      "d": "2000000000136079216",
+      "midFee": "26000000",
+      "outFee": "45000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "837000000000000000"
+      ],
+      "lpTokenAddress": "0x4484a052a0be82af20896ea3c8d891a3d11e8d1a",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0x4d7564f1272e24111280918b8ae4df9953a6253f",
+        "indexIn": 0,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 1,
+        "amountIn": "19999998329543943",
+        "expectedAmountOut": "23662377664073393",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 1,
+        "out": "0x4d7564f1272e24111280918b8ae4df9953a6253f",
+        "indexOut": 0,
+        "amountIn": "71684593810672571",
+        "expectedAmountOut": "57224916165370213",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x256fbda404b96a283b1ae851b465d4b9601c25a6",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb0f92950d9b18215192"
+          },
+          "id": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "decimals": 6,
+          "symbol": "USDC"
+        },
+        {
+          "_id": {
+            "$oid": "687deb0f92950d9b18215193"
+          },
+          "id": "0xc1f33e0cf7e40a67375007104b929e49a581bafe",
+          "decimals": 9,
+          "symbol": "SPOT"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "260760015",
+        "33541335575"
+      ],
+      "totalSupply": "119043562484908862878",
+      "d": "301326784778315703729",
+      "midFee": "300000000",
+      "outFee": "300000000",
+      "feeGamma": "10000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "13611294676837538538534984297469728458240000000",
+      "futureAGamma": "13611294676837538538534984297469728458240000000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1000000000000",
+        "1000000000"
+      ],
+      "priceScales": [
+        "1241568471447525188"
+      ],
+      "lpTokenAddress": "0x256fbda404b96a283b1ae851b465d4b9601c25a6",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexIn": 0,
+        "out": "0xc1f33e0cf7e40a67375007104b929e49a581bafe",
+        "indexOut": 1,
+        "amountIn": "23468401",
+        "expectedAmountOut": "15702959227",
+        "swappable": true
+      },
+      {
+        "in": "0xc1f33e0cf7e40a67375007104b929e49a581bafe",
+        "indexIn": 1,
+        "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexOut": 0,
+        "amountIn": "3018720201",
+        "expectedAmountOut": "3858711",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x8e001d4bac0eae1eea348dfc22f9b8bda67dd211",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb0f92950d9b18215196"
+          },
+          "id": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "decimals": 6,
+          "symbol": "USDC"
+        },
+        {
+          "_id": {
+            "$oid": "687deb0f92950d9b18215197"
+          },
+          "id": "0x4956b52ae2ff65d74ca2d61207523288e4528f96",
+          "decimals": 18,
+          "symbol": "RLP"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "63240702270",
+        "27315566639766120151035"
+      ],
+      "totalSupply": "44056172200325530184535",
+      "d": "93007039898412194904483",
+      "midFee": "3000000",
+      "outFee": "15000000",
+      "feeGamma": "90000000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "6805647338418769269267492148655364229120000000",
+      "futureAGamma": "6805647338418769269267492148655364229120000000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1000000000000",
+        "1"
+      ],
+      "priceScales": [
+        "1101196450023685364"
+      ],
+      "lpTokenAddress": "0x8e001d4bac0eae1eea348dfc22f9b8bda67dd211",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexIn": 0,
+        "out": "0x4956b52ae2ff65d74ca2d61207523288e4528f96",
+        "indexOut": 1,
+        "amountIn": "5691663204",
+        "expectedAmountOut": "4309355161100404454706",
+        "swappable": true
+      },
+      {
+        "in": "0x4956b52ae2ff65d74ca2d61207523288e4528f96",
+        "indexIn": 1,
+        "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexOut": 0,
+        "amountIn": "273155666397661201510",
+        "expectedAmountOut": "330262636",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0xa19bf6fbf05624282cb6ed498f4761f22e084edd",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb0f92950d9b1821519d"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb0f92950d9b1821519e"
+          },
+          "id": "0x73968b9a57c6e53d41345fd57a6e6ae27d6cdb2f",
+          "decimals": 18,
+          "symbol": "SDT"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "201811888747561412795",
+        "1965129713866995192579870"
+      ],
+      "totalSupply": "19814396426441238817400",
+      "d": "389631113707599335418",
+      "midFee": "26000000",
+      "outFee": "45000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "95644837636382"
+      ],
+      "lpTokenAddress": "0xa19bf6fbf05624282cb6ed498f4761f22e084edd",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 0,
+        "out": "0x73968b9a57c6e53d41345fd57a6e6ae27d6cdb2f",
+        "indexOut": 1,
+        "amountIn": "10090594437378070639",
+        "expectedAmountOut": "94446672919062164402749",
+        "swappable": true
+      },
+      {
+        "in": "0x73968b9a57c6e53d41345fd57a6e6ae27d6cdb2f",
+        "indexIn": 1,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 0,
+        "amountIn": "98256485693349759628993",
+        "expectedAmountOut": "9495184025588340169",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0xc8f40791b6c2ff6ae42836d3966b11874432edeb",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1092950d9b182151a1"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1092950d9b182151a2"
+          },
+          "id": "0xaee5913ffd19dbca4fd1ef6f3925ed0414407d37",
+          "decimals": 18,
+          "symbol": "YLAY"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "4300164482620261584",
+        "2257380761378517235667553"
+      ],
+      "totalSupply": "3086248441873575789390",
+      "d": "10782221466672767080",
+      "midFee": "26000000",
+      "outFee": "45000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "2986241398357"
+      ],
+      "lpTokenAddress": "0xc8f40791b6c2ff6ae42836d3966b11874432edeb",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 0,
+        "out": "0xaee5913ffd19dbca4fd1ef6f3925ed0414407d37",
+        "indexOut": 1,
+        "amountIn": "172006579304810463",
+        "expectedAmountOut": "85700907767680327961657",
+        "swappable": true
+      },
+      {
+        "in": "0xaee5913ffd19dbca4fd1ef6f3925ed0414407d37",
+        "indexIn": 1,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 0,
+        "amountIn": "158016653296496206496728",
+        "expectedAmountOut": "282232939570704413",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x6edbf3ada7b6d9524c3248955538d573aae449cf",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1092950d9b182151a5"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1092950d9b182151a6"
+          },
+          "id": "0xb78cd5a40b4d28e70bd219f53605f3f26487fec4",
+          "decimals": 18,
+          "symbol": "LMDA"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "842030893187282025",
+        "3959674796994873956697726"
+      ],
+      "totalSupply": "1828452686656197690924",
+      "d": "3122549216058916426",
+      "midFee": "30000000",
+      "outFee": "50000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "727188062174"
+      ],
+      "lpTokenAddress": "0x6edbf3ada7b6d9524c3248955538d573aae449cf",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 0,
+        "out": "0xb78cd5a40b4d28e70bd219f53605f3f26487fec4",
+        "indexOut": 1,
+        "amountIn": "58942162523109741",
+        "expectedAmountOut": "256198912723340914491834",
+        "swappable": true
+      },
+      {
+        "in": "0xb78cd5a40b4d28e70bd219f53605f3f26487fec4",
+        "indexIn": 1,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 0,
+        "amountIn": "316773983759589916535818",
+        "expectedAmountOut": "62423456484066496",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x5d2a5da4245f24a954bb1fb3ca24726d7ff88056",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1092950d9b182151a9"
+          },
+          "id": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "decimals": 6,
+          "symbol": "USDT"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1092950d9b182151aa"
+          },
+          "id": "0x440017a1b021006d556d7fc06a54c32e42eb745b",
+          "decimals": 18,
+          "symbol": "@G"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "14774227013",
+        "74089928807877058204408"
+      ],
+      "totalSupply": "28911867354239245941720",
+      "d": "27551713152694449342576",
+      "midFee": "26000000",
+      "outFee": "45000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1000000000000",
+        "1"
+      ],
+      "priceScales": [
+        "173181981519219018"
+      ],
+      "lpTokenAddress": "0x5d2a5da4245f24a954bb1fb3ca24726d7ff88056",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexIn": 0,
+        "out": "0x440017a1b021006d556d7fc06a54c32e42eb745b",
+        "indexOut": 1,
+        "amountIn": "443226810",
+        "expectedAmountOut": "2173914413563345923914",
+        "swappable": true
+      },
+      {
+        "in": "0x440017a1b021006d556d7fc06a54c32e42eb745b",
+        "indexIn": 1,
+        "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexOut": 0,
+        "amountIn": "2963597152315082328176",
+        "expectedAmountOut": "557637208",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x12e1e335f68e520ea9aa2ba708861d7e01c1b8dc",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1092950d9b182151ad"
+          },
+          "id": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "decimals": 6,
+          "symbol": "USDC"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1092950d9b182151ae"
+          },
+          "id": "0x253ed65f440a5bd3902d7f4c03a2e29a57618914",
+          "decimals": 9,
+          "symbol": "GS"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "151614706",
+        "147282549340315598"
+      ],
+      "totalSupply": "149352063067779509018768",
+      "d": "336107592506048992726",
+      "midFee": "26000000",
+      "outFee": "45000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1000000000000",
+        "1000000000"
+      ],
+      "priceScales": [
+        "1262899445021"
+      ],
+      "lpTokenAddress": "0x12e1e335f68e520ea9aa2ba708861d7e01c1b8dc",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexIn": 0,
+        "out": "0x253ed65f440a5bd3902d7f4c03a2e29a57618914",
+        "indexOut": 1,
+        "amountIn": "10613029",
+        "expectedAmountOut": "9471158495002127",
+        "swappable": true
+      },
+      {
+        "in": "0x253ed65f440a5bd3902d7f4c03a2e29a57618914",
+        "indexIn": 1,
+        "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexOut": 0,
+        "amountIn": "13255429440628403",
+        "expectedAmountOut": "12580822",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x8d688646ebb400f7de2b713b80b6a58fcf35d2d9",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1092950d9b182151b4"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1092950d9b182151b5"
+          },
+          "id": "0x626e8036deb333b408be468f951bdb42433cbf18",
+          "decimals": 18,
+          "symbol": "AIOZ"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "38600273171418977772",
+        "341824902713645884518955"
+      ],
+      "totalSupply": "3552426544387639358921",
+      "d": "76691785742857571046",
+      "midFee": "26000000",
+      "outFee": "45000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "111436118467556"
+      ],
+      "lpTokenAddress": "0x8d688646ebb400f7de2b713b80b6a58fcf35d2d9",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 0,
+        "out": "0x626e8036deb333b408be468f951bdb42433cbf18",
+        "indexOut": 1,
+        "amountIn": "386002731714189777",
+        "expectedAmountOut": "3430182265760552482510",
+        "swappable": true
+      },
+      {
+        "in": "0x626e8036deb333b408be468f951bdb42433cbf18",
+        "indexIn": 1,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 0,
+        "amountIn": "23927743189955211916326",
+        "expectedAmountOut": "2547303310134799720",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x05001f08e5ab5a4c6b6996bdfb5c7f5ed3fb3809",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1092950d9b182151b8"
+          },
+          "id": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "decimals": 6,
+          "symbol": "USDC"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1092950d9b182151b9"
+          },
+          "id": "0x67466be17df832165f8c80a5a120ccc652bd7e69",
+          "decimals": 18,
+          "symbol": "WOLF"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "2856910123",
+        "37294176678169351491430575"
+      ],
+      "totalSupply": "277368816608334347397878",
+      "d": "5467508774690068428580",
+      "midFee": "26000000",
+      "outFee": "300000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1000000000000",
+        "1"
+      ],
+      "priceScales": [
+        "70092379256168"
+      ],
+      "lpTokenAddress": "0x05001f08e5ab5a4c6b6996bdfb5c7f5ed3fb3809",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexIn": 0,
+        "out": "0x67466be17df832165f8c80a5a120ccc652bd7e69",
+        "indexOut": 1,
+        "amountIn": "257121911",
+        "expectedAmountOut": "3023098445507388393996839",
+        "swappable": true
+      },
+      {
+        "in": "0x67466be17df832165f8c80a5a120ccc652bd7e69",
+        "indexIn": 1,
+        "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexOut": 0,
+        "amountIn": "3356475901035241634228751",
+        "expectedAmountOut": "229461076",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x3d0d331390d14df42c16fc20700f7e6ad4849c50",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1092950d9b182151bc"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1092950d9b182151bd"
+          },
+          "id": "0x59a529070fbb61e6d6c91f952ccb7f35c34cf8aa",
+          "decimals": 18,
+          "symbol": "ASF"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "138400989372231115062",
+        "410456107380378659578449"
+      ],
+      "totalSupply": "7151896145398218848279",
+      "d": "248872666210693938705",
+      "midFee": "26000000",
+      "outFee": "45000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "272163344481936"
+      ],
+      "lpTokenAddress": "0x3d0d331390d14df42c16fc20700f7e6ad4849c50",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 0,
+        "out": "0x59a529070fbb61e6d6c91f952ccb7f35c34cf8aa",
+        "indexOut": 1,
+        "amountIn": "9688069256056178054",
+        "expectedAmountOut": "26990238858953933539865",
+        "swappable": true
+      },
+      {
+        "in": "0x59a529070fbb61e6d6c91f952ccb7f35c34cf8aa",
+        "indexIn": 1,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 0,
+        "amountIn": "4104561073803786595784",
+        "expectedAmountOut": "1349120272822461679",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x6031bdd613e6a2f587b244e078053fe7bbabe3b5",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1192950d9b182151c5"
+          },
+          "id": "0xb58e61c3098d85632df34eecfb899a1ed80921cb",
+          "decimals": 18,
+          "symbol": "ZCHF"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1192950d9b182151c6"
+          },
+          "id": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "decimals": 6,
+          "symbol": "USDT"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "538699778391981490680126",
+        "784108722821"
+      ],
+      "totalSupply": "654224006051703974311203",
+      "d": "1246016078878367757992409",
+      "midFee": "5000000",
+      "outFee": "45000000",
+      "feeGamma": "5000000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "6805647338418769269267492148636364229120000000",
+      "futureAGamma": "6805647338418769269267492148636364229120000000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1000000000000"
+      ],
+      "priceScales": [
+        "905140544064957216"
+      ],
+      "lpTokenAddress": "0x6031bdd613e6a2f587b244e078053fe7bbabe3b5",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xb58e61c3098d85632df34eecfb899a1ed80921cb",
+        "indexIn": 0,
+        "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexOut": 1,
+        "amountIn": "5386997783919814906801",
+        "expectedAmountOut": "6603164770",
+        "swappable": true
+      },
+      {
+        "in": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexIn": 1,
+        "out": "0xb58e61c3098d85632df34eecfb899a1ed80921cb",
+        "indexOut": 0,
+        "amountIn": "7841087228",
+        "expectedAmountOut": "6211726447183822676729",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x6bd88c57523bf138a19b263e8ebc8661c836b171",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1192950d9b182151c8"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1192950d9b182151c9"
+          },
+          "id": "0x41d5d79431a913c4ae7d69a668ecdfe5ff9dfb68",
+          "decimals": 18,
+          "symbol": "INV"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "156601027723590134962",
+        "15134316409424986903445"
+      ],
+      "totalSupply": "1482245228338092602838",
+      "d": "325946024927196126395",
+      "midFee": "30000000",
+      "outFee": "80000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "11199461630684475"
+      ],
+      "lpTokenAddress": "0x6bd88c57523bf138a19b263e8ebc8661c836b171",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 0,
+        "out": "0x41d5d79431a913c4ae7d69a668ecdfe5ff9dfb68",
+        "indexOut": 1,
+        "amountIn": "4698030831707704048",
+        "expectedAmountOut": "430825662488344691791",
+        "swappable": true
+      },
+      {
+        "in": "0x41d5d79431a913c4ae7d69a668ecdfe5ff9dfb68",
+        "indexIn": 1,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 0,
+        "amountIn": "302686328188499738068",
+        "expectedAmountOut": "3092564666302638136",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x7a4adfbc173e2d4f224f11496b0d0ef86f336091",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1192950d9b182151cc"
+          },
+          "id": "0xb90b2a35c65dbc466b04240097ca756ad2005295",
+          "decimals": 18,
+          "symbol": "BOBO"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1192950d9b182151cd"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "63817458333410519805760476218",
+        "13050374869982531077"
+      ],
+      "totalSupply": "891053633417278302323579",
+      "d": "129755404959489493030726246271",
+      "midFee": "26000000",
+      "outFee": "45000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "5052874476048690920901469724"
+      ],
+      "lpTokenAddress": "0x7a4adfbc173e2d4f224f11496b0d0ef86f336091",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xb90b2a35c65dbc466b04240097ca756ad2005295",
+        "indexIn": 0,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 1,
+        "amountIn": "3190872916670525990288023810",
+        "expectedAmountOut": "622713188812107351",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 1,
+        "out": "0xb90b2a35c65dbc466b04240097ca756ad2005295",
+        "indexOut": 0,
+        "amountIn": "130503748699825310",
+        "expectedAmountOut": "641806743459399153563729651",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0xee351f12eae8c2b8b9d1b9bfd3c5dd565234578d",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1192950d9b182151d3"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1192950d9b182151d4"
+          },
+          "id": "0x419905009e4656fdc02418c7df35b1e61ed5f726",
+          "decimals": 18,
+          "symbol": "RSUP"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "483304299484020278808",
+        "1150695503334002453345116"
+      ],
+      "totalSupply": "23342103896311153255600",
+      "d": "1073978737022297389330",
+      "midFee": "26000000",
+      "outFee": "45000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "517730273605891"
+      ],
+      "lpTokenAddress": "0xee351f12eae8c2b8b9d1b9bfd3c5dd565234578d",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 0,
+        "out": "0x419905009e4656fdc02418c7df35b1e61ed5f726",
+        "indexOut": 1,
+        "amountIn": "28998257969041216728",
+        "expectedAmountOut": "64053385657506862493589",
+        "swappable": true
+      },
+      {
+        "in": "0x419905009e4656fdc02418c7df35b1e61ed5f726",
+        "indexIn": 1,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 0,
+        "amountIn": "34520865100020073600353",
+        "expectedAmountOut": "14160176463353150473",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0xeb593fe90591923fddd97f2e5fcb1a14ce656e5d",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1392950d9b182151da"
+          },
+          "id": "0x0d57436f2d39c0664c6f0f2e349229483f87ea38",
+          "decimals": 6,
+          "symbol": "wA7A5"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1392950d9b182151db"
+          },
+          "id": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "decimals": 6,
+          "symbol": "USDT"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "41822876844750",
+        "552310129444"
+      ],
+      "totalSupply": "4807308361071555792422833",
+      "d": "87559247814558900574589243",
+      "midFee": "5000000",
+      "outFee": "5000000",
+      "feeGamma": "10000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1000000000000",
+        "1000000000000"
+      ],
+      "priceScales": [
+        "82914449375634950893"
+      ],
+      "lpTokenAddress": "0xeb593fe90591923fddd97f2e5fcb1a14ce656e5d",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0x0d57436f2d39c0664c6f0f2e349229483f87ea38",
+        "indexIn": 0,
+        "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexOut": 1,
+        "amountIn": "3764058916027",
+        "expectedAmountOut": "45544064486",
+        "swappable": true
+      },
+      {
+        "in": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexIn": 1,
+        "out": "0x0d57436f2d39c0664c6f0f2e349229483f87ea38",
+        "indexOut": 0,
+        "amountIn": "49707911649",
+        "expectedAmountOut": "3491790882346",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x2034b76bb7318d5fda07ec183c0308c5e06c9c8c",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1392950d9b182151de"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1392950d9b182151df"
+          },
+          "id": "0x7ebab7190d3d574ce82d29f2fa1422f18e29969c",
+          "decimals": 18,
+          "symbol": "SQUILL"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "9463582910192387224",
+        "85151705480579855281740"
+      ],
+      "totalSupply": "875276610603148972657",
+      "d": "19376249015611825912",
+      "midFee": "26000000",
+      "outFee": "100000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972737284582400000",
+      "futureAGamma": "136112946768375385385349842972737284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "116454631597876"
+      ],
+      "lpTokenAddress": "0x2034b76bb7318d5fda07ec183c0308c5e06c9c8c",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 0,
+        "out": "0x7ebab7190d3d574ce82d29f2fa1422f18e29969c",
+        "indexOut": 1,
+        "amountIn": "94635829101923872",
+        "expectedAmountOut": "831973938218438553292",
+        "swappable": true
+      },
+      {
+        "in": "0x7ebab7190d3d574ce82d29f2fa1422f18e29969c",
+        "indexIn": 1,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 0,
+        "amountIn": "5109102328834791316904",
+        "expectedAmountOut": "533037276706917790",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0xcbcd4d46ff017b90c0d1cda1cbd20086b0901738",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1392950d9b182151e2"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1392950d9b182151e3"
+          },
+          "id": "0x323c03c48660fe31186fa82c289b0766d331ce21",
+          "decimals": 18,
+          "symbol": "OPEN"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "22871984997218112870",
+        "45249691589077092457062"
+      ],
+      "totalSupply": "1016585113857752400748",
+      "d": "46915141537099663162",
+      "midFee": "26000000",
+      "outFee": "45000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "531473343949216"
+      ],
+      "lpTokenAddress": "0xcbcd4d46ff017b90c0d1cda1cbd20086b0901738",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 0,
+        "out": "0x323c03c48660fe31186fa82c289b0766d331ce21",
+        "indexOut": 1,
+        "amountIn": "914879399888724514",
+        "expectedAmountOut": "1724812294650815972462",
+        "swappable": true
+      },
+      {
+        "in": "0x323c03c48660fe31186fa82c289b0766d331ce21",
+        "indexIn": 1,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 0,
+        "amountIn": "2714981495344625547423",
+        "expectedAmountOut": "1307554347965914318",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x20f858d88124857274994516eeac7720fe39b8ea",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1492950d9b182151e6"
+          },
+          "id": "0x1b40183efb4dd766f11bda7a7c3ad8982e998421",
+          "decimals": 18,
+          "symbol": "VSP"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1492950d9b182151e7"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "46457366038456589326885",
+        "2058750339185446162"
+      ],
+      "totalSupply": "307966168374652010437",
+      "d": "88834284170042826871542",
+      "midFee": "26000000",
+      "outFee": "45000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "20612307708354845758244"
+      ],
+      "lpTokenAddress": "0x20f858d88124857274994516eeac7720fe39b8ea",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0x1b40183efb4dd766f11bda7a7c3ad8982e998421",
+        "indexIn": 0,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 1,
+        "amountIn": "2787441962307395359613",
+        "expectedAmountOut": "117469429419992109",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 1,
+        "out": "0x1b40183efb4dd766f11bda7a7c3ad8982e998421",
+        "indexOut": 0,
+        "amountIn": "164700027134835692",
+        "expectedAmountOut": "3417268148416805065269",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x27cb06f65d8b7228147375e15d37912b93b501cc",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1592950d9b182151ea"
+          },
+          "id": "0x0f5d2fb29fb7d3cfee444a200298f468908cc942",
+          "decimals": 18,
+          "symbol": "MANA"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1592950d9b182151eb"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "1039483907798919007713",
+        "96200295273983953"
+      ],
+      "totalSupply": "10000000000000000000",
+      "d": "1953589774881787709721",
+      "midFee": "26000000",
+      "outFee": "45000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "9532062963536318935280"
+      ],
+      "lpTokenAddress": "0x27cb06f65d8b7228147375e15d37912b93b501cc",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0x0f5d2fb29fb7d3cfee444a200298f468908cc942",
+        "indexIn": 0,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 1,
+        "amountIn": "41579356311956760308",
+        "expectedAmountOut": "3727886214901900",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 1,
+        "out": "0x0f5d2fb29fb7d3cfee444a200298f468908cc942",
+        "indexOut": 0,
+        "amountIn": "4810014763699197",
+        "expectedAmountOut": "48523115874011759242",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x60c11cb90f3c2c6b68852a0216e08f5461a48d3d",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1592950d9b182151ee"
+          },
+          "id": "0x37a15c92e67686aa268df03d4c881a76340907e8",
+          "decimals": 0,
+          "symbol": "PIXIU"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1592950d9b182151ef"
+          },
+          "id": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "decimals": 6,
+          "symbol": "USDT"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "37413",
+        "216940177"
+      ],
+      "totalSupply": "2848845127450391804409",
+      "d": "67442463848988643674351",
+      "midFee": "26000000",
+      "outFee": "45000000",
+      "feeGamma": "230000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "136112946768375385385349842972852284582400000",
+      "futureAGamma": "136112946768375385385349842972852284582400000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1000000000000000000",
+        "1000000000000"
+      ],
+      "priceScales": [
+        "139893446131816670099"
+      ],
+      "lpTokenAddress": "0x60c11cb90f3c2c6b68852a0216e08f5461a48d3d",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0x37a15c92e67686aa268df03d4c881a76340907e8",
+        "indexIn": 0,
+        "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexOut": 1,
+        "amountIn": "1122",
+        "expectedAmountOut": "6353907",
+        "swappable": true
+      },
+      {
+        "in": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexIn": 1,
+        "out": "0x37a15c92e67686aa268df03d4c881a76340907e8",
+        "indexOut": 0,
+        "amountIn": "8677607",
+        "expectedAmountOut": "1416",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x39b2535b2d86c453e3dd8d81519458624bb38289",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1592950d9b182151f2"
+          },
+          "id": "0x139450c2dcef827c9a2a0bb1cb5506260940c9fd",
+          "decimals": 6,
+          "symbol": "sSuperUSD"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1592950d9b182151f3"
+          },
+          "id": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "decimals": 6,
+          "symbol": "USDC"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "44969636704",
+        "54966772096"
+      ],
+      "totalSupply": "49966772096000000000000",
+      "d": "99936045406210166464258",
+      "midFee": "3000000",
+      "outFee": "25000000",
+      "feeGamma": "100000000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "13611294676837538538534984297320728458240000000",
+      "futureAGamma": "13611294676837538538534984297320728458240000000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1000000000000",
+        "1000000000000"
+      ],
+      "priceScales": [
+        "1000000000000000000"
+      ],
+      "lpTokenAddress": "0x39b2535b2d86c453e3dd8d81519458624bb38289",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0x139450c2dcef827c9a2a0bb1cb5506260940c9fd",
+        "indexIn": 0,
+        "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexOut": 1,
+        "amountIn": "2698178202",
+        "expectedAmountOut": "2697551239",
+        "swappable": true
+      },
+      {
+        "in": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexIn": 1,
+        "out": "0x139450c2dcef827c9a2a0bb1cb5506260940c9fd",
+        "indexOut": 0,
+        "amountIn": "2198670883",
+        "expectedAmountOut": "2196486318",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0xf1244c75a270c9d2d2480f45298b3f32c5107353",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1692950d9b182151f6"
+          },
+          "id": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "decimals": 6,
+          "symbol": "USDC"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1692950d9b182151f7"
+          },
+          "id": "0x63e5cbd71fb7424873f0001f66fdffa2a3121dbf",
+          "decimals": 6,
+          "symbol": "USDi"
+        }
+      ],
+      "nTokens": 2,
+      "reserves": [
+        "209000000",
+        "205304519"
+      ],
+      "totalSupply": "207144018670585803686",
+      "d": "418000000342000000000",
+      "midFee": "5000000",
+      "outFee": "45000000",
+      "feeGamma": "5000000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "6805647338418769269267492148636364229120000000",
+      "futureAGamma": "6805647338418769269267492148636364229120000000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1000000000000",
+        "1000000000000"
+      ],
+      "priceScales": [
+        "1018000000000000000"
+      ],
+      "lpTokenAddress": "0xf1244c75a270c9d2d2480f45298b3f32c5107353",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexIn": 0,
+        "out": "0x63e5cbd71fb7424873f0001f66fdffa2a3121dbf",
+        "indexOut": 1,
+        "amountIn": "6270000",
+        "expectedAmountOut": "6151636",
+        "swappable": true
+      },
+      {
+        "in": "0x63e5cbd71fb7424873f0001f66fdffa2a3121dbf",
+        "indexIn": 1,
+        "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexOut": 0,
+        "amountIn": "18477406",
+        "expectedAmountOut": "18640252",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x5426178799ee0a0181a89b4f57efddfab49941ec",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1692950d9b182151fe"
+          },
+          "id": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "decimals": 6,
+          "symbol": "USDC"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1692950d9b182151ff"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1692950d9b18215200"
+          },
+          "id": "0x41d5d79431a913c4ae7d69a668ecdfe5ff9dfb68",
+          "decimals": 18,
+          "symbol": "INV"
+        }
+      ],
+      "nTokens": 3,
+      "reserves": [
+        "15359939556",
+        "4039688185220248369",
+        "386312047322884784595"
+      ],
+      "totalSupply": "260740063836717199561",
+      "d": "45933090952478123951689",
+      "midFee": "2999999",
+      "outFee": "80000000",
+      "feeGamma": "350000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "581076037942835227425498917514114728328226821",
+      "futureAGamma": "918762390686533851351111440065775470931200000",
+      "initialAGammaTime": "1693579979",
+      "futureAGammaTime": "1693834970",
+      "precisions": [
+        "1000000000000",
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "3774881935704001556323",
+        "39667116148909659520"
+      ],
+      "lpTokenAddress": "0x5426178799ee0a0181a89b4f57efddfab49941ec",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexIn": 0,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 1,
+        "amountIn": "1228795164",
+        "expectedAmountOut": "297294022443833009",
+        "swappable": true
+      },
+      {
+        "in": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexIn": 0,
+        "out": "0x41d5d79431a913c4ae7d69a668ecdfe5ff9dfb68",
+        "indexOut": 2,
+        "amountIn": "1228795164",
+        "expectedAmountOut": "28429938145441484616",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 1,
+        "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexOut": 0,
+        "amountIn": "242381291113214902",
+        "expectedAmountOut": "864141524",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 1,
+        "out": "0x41d5d79431a913c4ae7d69a668ecdfe5ff9dfb68",
+        "indexOut": 2,
+        "amountIn": "242381291113214902",
+        "expectedAmountOut": "21733430707255904976",
+        "swappable": true
+      },
+      {
+        "in": "0x41d5d79431a913c4ae7d69a668ecdfe5ff9dfb68",
+        "indexIn": 2,
+        "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexOut": 0,
+        "amountIn": "15452481892915391383",
+        "expectedAmountOut": "587660388",
+        "swappable": true
+      },
+      {
+        "in": "0x41d5d79431a913c4ae7d69a668ecdfe5ff9dfb68",
+        "indexIn": 2,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 1,
+        "amountIn": "15452481892915391383",
+        "expectedAmountOut": "154539029270675565",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x7f86bf177dd4f3494b841a37e810a34dd56c829b",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1692950d9b1821520a"
+          },
+          "id": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "decimals": 6,
+          "symbol": "USDC"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1692950d9b1821520b"
+          },
+          "id": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "decimals": 8,
+          "symbol": "WBTC"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1692950d9b1821520c"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        }
+      ],
+      "nTokens": 3,
+      "reserves": [
+        "6778059946756",
+        "5652081865",
+        "1776157999049846226061"
+      ],
+      "totalSupply": "8615131254396741733691",
+      "d": "20084981391629875653613314",
+      "midFee": "3000000",
+      "outFee": "30000000",
+      "feeGamma": "500000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "581076037942835227425498917514114728328226821",
+      "futureAGamma": "581076037942835227425498917514114728328226821",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1000000000000",
+        "10000000000",
+        "1"
+      ],
+      "priceScales": [
+        "117721052669998868752223",
+        "3746041018380080459535"
+      ],
+      "lpTokenAddress": "0x7f86bf177dd4f3494b841a37e810a34dd56c829b",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexIn": 0,
+        "out": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "indexOut": 1,
+        "amountIn": "610025395208",
+        "expectedAmountOut": "467101087",
+        "swappable": true
+      },
+      {
+        "in": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexIn": 0,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 2,
+        "amountIn": "610025395208",
+        "expectedAmountOut": "146785832170965029309",
+        "swappable": true
+      },
+      {
+        "in": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "indexIn": 1,
+        "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexOut": 0,
+        "amountIn": "282604093",
+        "expectedAmountOut": "322964847346",
+        "swappable": true
+      },
+      {
+        "in": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "indexIn": 1,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 2,
+        "amountIn": "282604093",
+        "expectedAmountOut": "84680103957134554353",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 2,
+        "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexOut": 0,
+        "amountIn": "124331059933489235824",
+        "expectedAmountOut": "443635084833",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 2,
+        "out": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "indexOut": 1,
+        "amountIn": "124331059933489235824",
+        "expectedAmountOut": "370080843",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0xf5f5b97624542d72a9e06f04804bf81baa15e2b4",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1692950d9b1821520e"
+          },
+          "id": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "decimals": 6,
+          "symbol": "USDT"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1692950d9b1821520f"
+          },
+          "id": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "decimals": 8,
+          "symbol": "WBTC"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1692950d9b18215210"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        }
+      ],
+      "nTokens": 3,
+      "reserves": [
+        "9050977249391",
+        "7647139261",
+        "2366298944462799866604"
+      ],
+      "totalSupply": "11417833299388070187912",
+      "d": "26705706557527382080888020",
+      "midFee": "1000000",
+      "outFee": "140000000",
+      "feeGamma": "400000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "918762390686533851351111440065817170931200000",
+      "futureAGamma": "183752478137306770270222288013235334186240000",
+      "initialAGammaTime": "1705051523",
+      "futureAGammaTime": "1705536862",
+      "precisions": [
+        "1000000000000",
+        "10000000000",
+        "1"
+      ],
+      "priceScales": [
+        "117882741238408212427495",
+        "3652635395965017310821"
+      ],
+      "lpTokenAddress": "0xf5f5b97624542d72a9e06f04804bf81baa15e2b4",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexIn": 0,
+        "out": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "indexOut": 1,
+        "amountIn": "543058634963",
+        "expectedAmountOut": "430191598",
+        "swappable": true
+      },
+      {
+        "in": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexIn": 0,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 2,
+        "amountIn": "543058634963",
+        "expectedAmountOut": "133352042052669439170",
+        "swappable": true
+      },
+      {
+        "in": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "indexIn": 1,
+        "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexOut": 0,
+        "amountIn": "305885570",
+        "expectedAmountOut": "345904132338",
+        "swappable": true
+      },
+      {
+        "in": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "indexIn": 1,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 2,
+        "amountIn": "305885570",
+        "expectedAmountOut": "90690152979598783301",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 2,
+        "out": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "indexOut": 0,
+        "amountIn": "70988968333883995998",
+        "expectedAmountOut": "261015255908",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 2,
+        "out": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "indexOut": 1,
+        "amountIn": "70988968333883995998",
+        "expectedAmountOut": "220576675",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x4ebdf703948ddcea3b11f675b4d1fba9d2414a14",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1692950d9b1821521b"
+          },
+          "id": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "decimals": 18,
+          "symbol": "crvUSD"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1692950d9b1821521c"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1692950d9b1821521d"
+          },
+          "id": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+          "decimals": 18,
+          "symbol": "CRV"
+        }
+      ],
+      "nTokens": 3,
+      "reserves": [
+        "3557405249920189902810458",
+        "936540115511590435933",
+        "3621292815874275837672685"
+      ],
+      "totalSupply": "197509693071289238792176",
+      "d": "10686852636265811015650538",
+      "midFee": "2999999",
+      "outFee": "80000000",
+      "feeGamma": "350000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "918762390686533851351111440065775470931200000",
+      "futureAGamma": "918762390686533851351111440065775470931200000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "3794709883505461177873",
+        "987371572723323579"
+      ],
+      "lpTokenAddress": "0x4ebdf703948ddcea3b11f675b4d1fba9d2414a14",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+        "indexIn": 0,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 1,
+        "amountIn": "284592419993615192224836",
+        "expectedAmountOut": "68923987392391013091",
+        "swappable": true
+      },
+      {
+        "in": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+        "indexIn": 0,
+        "out": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+        "indexOut": 2,
+        "amountIn": "284592419993615192224836",
+        "expectedAmountOut": "266506757149974568460581",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 1,
+        "out": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+        "indexOut": 0,
+        "amountIn": "46827005775579521796",
+        "expectedAmountOut": "168423803985752780430674",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 1,
+        "out": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+        "indexOut": 2,
+        "amountIn": "46827005775579521796",
+        "expectedAmountOut": "171456886209640992050926",
+        "swappable": true
+      },
+      {
+        "in": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+        "indexIn": 2,
+        "out": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+        "indexOut": 0,
+        "amountIn": "217277568952456550260361",
+        "expectedAmountOut": "200131971854625903552196",
+        "swappable": true
+      },
+      {
+        "in": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+        "indexIn": 2,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 1,
+        "amountIn": "217277568952456550260361",
+        "expectedAmountOut": "52687620601492642555",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x6a62ee3e5c4b412cd9167d3afd5e481e1e30715a",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1692950d9b18215224"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1692950d9b18215225"
+          },
+          "id": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "decimals": 18,
+          "symbol": "crvUSD"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1692950d9b18215226"
+          },
+          "id": "0xa21af1050f7b26e0cff45ee51548254c41ed6b5c",
+          "decimals": 18,
+          "symbol": "OSAK"
+        }
+      ],
+      "nTokens": 3,
+      "reserves": [
+        "66249355681952155",
+        "239810765940420882752",
+        "1433535604351200431185436614"
+      ],
+      "totalSupply": "2689861870627793743941",
+      "d": "208107842976603523",
+      "midFee": "2999999",
+      "outFee": "80000000",
+      "feeGamma": "350000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "918762390686533851351111440065775470931200000",
+      "futureAGamma": "918762390686533851351111440065775470931200000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "298706179671411",
+        "49065002"
+      ],
+      "lpTokenAddress": "0x6a62ee3e5c4b412cd9167d3afd5e481e1e30715a",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 0,
+        "out": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+        "indexOut": 1,
+        "amountIn": "5299948454556172",
+        "expectedAmountOut": "17646336507603402186",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 0,
+        "out": "0xa21af1050f7b26e0cff45ee51548254c41ed6b5c",
+        "indexOut": 2,
+        "amountIn": "5299948454556172",
+        "expectedAmountOut": "105442871525164729307773370",
+        "swappable": true
+      },
+      {
+        "in": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+        "indexIn": 1,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 0,
+        "amountIn": "14388645956425252965",
+        "expectedAmountOut": "3724118079512462",
+        "swappable": true
+      },
+      {
+        "in": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+        "indexIn": 1,
+        "out": "0xa21af1050f7b26e0cff45ee51548254c41ed6b5c",
+        "indexOut": 2,
+        "amountIn": "14388645956425252965",
+        "expectedAmountOut": "80575101823135855743668213",
+        "swappable": true
+      },
+      {
+        "in": "0xa21af1050f7b26e0cff45ee51548254c41ed6b5c",
+        "indexIn": 2,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 0,
+        "amountIn": "57341424174048017247417464",
+        "expectedAmountOut": "2530820990028900",
+        "swappable": true
+      },
+      {
+        "in": "0xa21af1050f7b26e0cff45ee51548254c41ed6b5c",
+        "indexIn": 2,
+        "out": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+        "indexOut": 1,
+        "amountIn": "57341424174048017247417464",
+        "expectedAmountOut": "9160574897895693389",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0xbed58c1053fd347843883eade0781f562a66f623",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1792950d9b18215229"
+          },
+          "id": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "decimals": 18,
+          "symbol": "crvUSD"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1792950d9b1821522a"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1792950d9b1821522b"
+          },
+          "id": "0x97effb790f2fbb701d88f89db4521348a2b77be8",
+          "decimals": 18,
+          "symbol": "CVG"
+        }
+      ],
+      "nTokens": 3,
+      "reserves": [
+        "86224014340778738063",
+        "23866510493596030",
+        "1023971259551103871784040"
+      ],
+      "totalSupply": "100549361408788905847",
+      "d": "247583447301835036067",
+      "midFee": "2999999",
+      "outFee": "80000000",
+      "feeGamma": "350000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "918762390686533851351111440065775470931200000",
+      "futureAGamma": "918762390686533851351111440065775470931200000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "2735192488145740739807",
+        "97504752772454"
+      ],
+      "lpTokenAddress": "0xbed58c1053fd347843883eade0781f562a66f623",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+        "indexIn": 0,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 1,
+        "amountIn": "3448960573631149522",
+        "expectedAmountOut": "910977988995155",
+        "swappable": true
+      },
+      {
+        "in": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+        "indexIn": 0,
+        "out": "0x97effb790f2fbb701d88f89db4521348a2b77be8",
+        "indexOut": 2,
+        "amountIn": "3448960573631149522",
+        "expectedAmountOut": "39064395181140153915200",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 1,
+        "out": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+        "indexOut": 0,
+        "amountIn": "477330209871920",
+        "expectedAmountOut": "1676689972606379797",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 1,
+        "out": "0x97effb790f2fbb701d88f89db4521348a2b77be8",
+        "indexOut": 2,
+        "amountIn": "477330209871920",
+        "expectedAmountOut": "19907041332172554056780",
+        "swappable": true
+      },
+      {
+        "in": "0x97effb790f2fbb701d88f89db4521348a2b77be8",
+        "indexIn": 2,
+        "out": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+        "indexOut": 0,
+        "amountIn": "71677988168577271024882",
+        "expectedAmountOut": "5597586926363616662",
+        "swappable": true
+      },
+      {
+        "in": "0x97effb790f2fbb701d88f89db4521348a2b77be8",
+        "indexIn": 2,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 1,
+        "amountIn": "71677988168577271024882",
+        "expectedAmountOut": "1549763622250313",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x9432242d9dc10ad5e2fe570b8fc053a16597caf6",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1792950d9b1821522d"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1792950d9b1821522e"
+          },
+          "id": "0x66e9b35be6c529a68622531bbc169733f73b8eca",
+          "decimals": 18,
+          "symbol": "esgNPC"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1792950d9b1821522f"
+          },
+          "id": "0x2c9084e65d046146d6cfc26bf45f5b80042b90eb",
+          "decimals": 18,
+          "symbol": "THING"
+        }
+      ],
+      "nTokens": 3,
+      "reserves": [
+        "153436146713152689",
+        "67167407000000004383",
+        "13661058825094914241128683"
+      ],
+      "totalSupply": "513371471126556091713",
+      "d": "522694663783478668",
+      "midFee": "1000000",
+      "outFee": "140000000",
+      "feeGamma": "400000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "183752478137306770270222288013235334186240000",
+      "futureAGamma": "183752478137306770270222288013235334186240000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "2570643245153644",
+        "14596702187"
+      ],
+      "lpTokenAddress": "0x9432242d9dc10ad5e2fe570b8fc053a16597caf6",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 0,
+        "out": "0x66e9b35be6c529a68622531bbc169733f73b8eca",
+        "indexOut": 1,
+        "amountIn": "7671807335657634",
+        "expectedAmountOut": "3149594452865975471",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 0,
+        "out": "0x2c9084e65d046146d6cfc26bf45f5b80042b90eb",
+        "indexOut": 2,
+        "amountIn": "7671807335657634",
+        "expectedAmountOut": "637493990761420856034991",
+        "swappable": true
+      },
+      {
+        "in": "0x66e9b35be6c529a68622531bbc169733f73b8eca",
+        "indexIn": 1,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 0,
+        "amountIn": "6045066630000000394",
+        "expectedAmountOut": "12538497626135614",
+        "swappable": true
+      },
+      {
+        "in": "0x66e9b35be6c529a68622531bbc169733f73b8eca",
+        "indexIn": 1,
+        "out": "0x2c9084e65d046146d6cfc26bf45f5b80042b90eb",
+        "indexOut": 2,
+        "amountIn": "6045066630000000394",
+        "expectedAmountOut": "1110857500558278171188193",
+        "swappable": true
+      },
+      {
+        "in": "0x2c9084e65d046146d6cfc26bf45f5b80042b90eb",
+        "indexIn": 2,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 0,
+        "amountIn": "409831764752847427233860",
+        "expectedAmountOut": "4434948313715419",
+        "swappable": true
+      },
+      {
+        "in": "0x2c9084e65d046146d6cfc26bf45f5b80042b90eb",
+        "indexIn": 2,
+        "out": "0x66e9b35be6c529a68622531bbc169733f73b8eca",
+        "indexOut": 1,
+        "amountIn": "409831764752847427233860",
+        "expectedAmountOut": "1937373790336860990",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x80441ed630a10f2a36955c993c2d45bd9f848af5",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1792950d9b18215232"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1792950d9b18215233"
+          },
+          "id": "0xd96e84ddbc7cbe1d73c55b6fe8c64f3a6550deea",
+          "decimals": 18,
+          "symbol": "GMAC"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1792950d9b18215234"
+          },
+          "id": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "decimals": 6,
+          "symbol": "USDC"
+        }
+      ],
+      "nTokens": 3,
+      "reserves": [
+        "32377027517197094",
+        "85050509127422358257222",
+        "116342725"
+      ],
+      "totalSupply": "67527011367857929348",
+      "d": "99860810153626070",
+      "midFee": "2999999",
+      "outFee": "80000000",
+      "feeGamma": "350000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "918762390686533851351111440065775470931200000",
+      "futureAGamma": "918762390686533851351111440065775470931200000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1",
+        "1000000000000"
+      ],
+      "priceScales": [
+        "382113887714",
+        "301263790907438"
+      ],
+      "lpTokenAddress": "0x80441ed630a10f2a36955c993c2d45bd9f848af5",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 0,
+        "out": "0xd96e84ddbc7cbe1d73c55b6fe8c64f3a6550deea",
+        "indexOut": 1,
+        "amountIn": "647540550343941",
+        "swappable": false
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 0,
+        "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexOut": 2,
+        "amountIn": "647540550343941",
+        "swappable": false
+      },
+      {
+        "in": "0xd96e84ddbc7cbe1d73c55b6fe8c64f3a6550deea",
+        "indexIn": 1,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 0,
+        "amountIn": "850505091274223582572",
+        "swappable": false
+      },
+      {
+        "in": "0xd96e84ddbc7cbe1d73c55b6fe8c64f3a6550deea",
+        "indexIn": 1,
+        "out": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexOut": 2,
+        "amountIn": "850505091274223582572",
+        "swappable": false
+      },
+      {
+        "in": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexIn": 2,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 0,
+        "amountIn": "5817136",
+        "swappable": false
+      },
+      {
+        "in": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "indexIn": 2,
+        "out": "0xd96e84ddbc7cbe1d73c55b6fe8c64f3a6550deea",
+        "indexOut": 1,
+        "amountIn": "5817136",
+        "swappable": false
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x8cd52ee292313c4d851e71a7064f096504ab3ee9",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1792950d9b1821523b"
+          },
+          "id": "0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f",
+          "decimals": 18,
+          "symbol": "GHO"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1792950d9b1821523c"
+          },
+          "id": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "decimals": 8,
+          "symbol": "WBTC"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1792950d9b1821523d"
+          },
+          "id": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+          "decimals": 18,
+          "symbol": "wstETH"
+        }
+      ],
+      "nTokens": 3,
+      "reserves": [
+        "1584192523570673285436",
+        "1333181",
+        "354719290951108006"
+      ],
+      "totalSupply": "1926453322587204281",
+      "d": "4512732465527299427971",
+      "midFee": "1000000",
+      "outFee": "140000000",
+      "feeGamma": "400000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "183752478137306770270222288013235334186240000",
+      "futureAGamma": "183752478137306770270222288013235334186240000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "10000000000",
+        "1"
+      ],
+      "priceScales": [
+        "115875425498765599547952",
+        "3918018762710907414066"
+      ],
+      "lpTokenAddress": "0x8cd52ee292313c4d851e71a7064f096504ab3ee9",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f",
+        "indexIn": 0,
+        "out": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "indexOut": 1,
+        "amountIn": "31683850471413465708",
+        "expectedAmountOut": "25867",
+        "swappable": true
+      },
+      {
+        "in": "0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f",
+        "indexIn": 0,
+        "out": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+        "indexOut": 2,
+        "amountIn": "31683850471413465708",
+        "expectedAmountOut": "6914008362234270",
+        "swappable": true
+      },
+      {
+        "in": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "indexIn": 1,
+        "out": "0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f",
+        "indexOut": 0,
+        "amountIn": "106654",
+        "expectedAmountOut": "116061816719148691082",
+        "swappable": true
+      },
+      {
+        "in": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "indexIn": 1,
+        "out": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+        "indexOut": 2,
+        "amountIn": "106654",
+        "expectedAmountOut": "26072768723052640",
+        "swappable": true
+      },
+      {
+        "in": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+        "indexIn": 2,
+        "out": "0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f",
+        "indexOut": 0,
+        "amountIn": "3547192909511080",
+        "expectedAmountOut": "15365766460850825750",
+        "swappable": true
+      },
+      {
+        "in": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+        "indexIn": 2,
+        "out": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "indexOut": 1,
+        "amountIn": "3547192909511080",
+        "expectedAmountOut": "12954",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x62bfea5673c6336d265865e5ea1d32f67c523c33",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1892950d9b18215240"
+          },
+          "id": "0xb69753c06bb5c366be51e73bfc0cc2e3dc07e371",
+          "decimals": 18,
+          "symbol": "POOH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1892950d9b18215241"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1892950d9b18215242"
+          },
+          "id": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "decimals": 18,
+          "symbol": "crvUSD"
+        }
+      ],
+      "nTokens": 3,
+      "reserves": [
+        "15772820900149608631522404283",
+        "37498435397370218",
+        "139574155237865387080"
+      ],
+      "totalSupply": "4282071030147847470710",
+      "d": "46532872238532526164466779707",
+      "midFee": "2999999",
+      "outFee": "80000000",
+      "feeGamma": "350000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "918762390686533851351111440065775470931200000",
+      "futureAGamma": "918762390686533851351111440065775470931200000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1",
+        "1"
+      ],
+      "priceScales": [
+        "351157877250470704182095928349",
+        "128712092832741394622868012"
+      ],
+      "lpTokenAddress": "0x62bfea5673c6336d265865e5ea1d32f67c523c33",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0xb69753c06bb5c366be51e73bfc0cc2e3dc07e371",
+        "indexIn": 0,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 1,
+        "amountIn": "1104097463010472604206568299",
+        "expectedAmountOut": "2434685281241409",
+        "swappable": true
+      },
+      {
+        "in": "0xb69753c06bb5c366be51e73bfc0cc2e3dc07e371",
+        "indexIn": 0,
+        "out": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+        "indexOut": 2,
+        "amountIn": "1104097463010472604206568299",
+        "expectedAmountOut": "9057864983054217780",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 1,
+        "out": "0xb69753c06bb5c366be51e73bfc0cc2e3dc07e371",
+        "indexOut": 0,
+        "amountIn": "3374859185763319",
+        "expectedAmountOut": "1291872360128728356734949014",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 1,
+        "out": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+        "indexOut": 2,
+        "amountIn": "3374859185763319",
+        "expectedAmountOut": "11430065951880184576",
+        "swappable": true
+      },
+      {
+        "in": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+        "indexIn": 2,
+        "out": "0xb69753c06bb5c366be51e73bfc0cc2e3dc07e371",
+        "indexOut": 0,
+        "amountIn": "11165932419029230966",
+        "expectedAmountOut": "1159529809756078069399836782",
+        "swappable": true
+      },
+      {
+        "in": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+        "indexIn": 2,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 1,
+        "amountIn": "11165932419029230966",
+        "expectedAmountOut": "2757217222394300",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x56be5d27878bf847189f5a6a29ed1350177c7420",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1892950d9b18215244"
+          },
+          "id": "0x1cfa5641c01406ab8ac350ded7d735ec41298372",
+          "decimals": 18,
+          "symbol": "CJPY"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1892950d9b18215245"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1892950d9b18215246"
+          },
+          "id": "0x961dd84059505d59f82ce4fb87d3c09bec65301d",
+          "decimals": 8,
+          "symbol": "TXJP"
+        }
+      ],
+      "nTokens": 3,
+      "reserves": [
+        "6559271036235747678328725",
+        "10953303194556319627",
+        "128900748978"
+      ],
+      "totalSupply": "4429160415613580312321",
+      "d": "19867431199146261989865191",
+      "midFee": "2999999",
+      "outFee": "80000000",
+      "feeGamma": "350000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "918762390686533851351111440065775470931200000",
+      "futureAGamma": "918762390686533851351111440065775470931200000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "1",
+        "10000000000"
+      ],
+      "priceScales": [
+        "588492623306182554971422",
+        "5328944463849213630772"
+      ],
+      "lpTokenAddress": "0x56be5d27878bf847189f5a6a29ed1350177c7420",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0x1cfa5641c01406ab8ac350ded7d735ec41298372",
+        "indexIn": 0,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 1,
+        "amountIn": "196778131087072430349861",
+        "expectedAmountOut": "316966627962059843",
+        "swappable": true
+      },
+      {
+        "in": "0x1cfa5641c01406ab8ac350ded7d735ec41298372",
+        "indexIn": 0,
+        "out": "0x961dd84059505d59f82ce4fb87d3c09bec65301d",
+        "indexOut": 2,
+        "amountIn": "196778131087072430349861",
+        "expectedAmountOut": "3733868422",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 1,
+        "out": "0x1cfa5641c01406ab8ac350ded7d735ec41298372",
+        "indexOut": 0,
+        "amountIn": "766731223618942373",
+        "expectedAmountOut": "426122779552290748724549",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 1,
+        "out": "0x961dd84059505d59f82ce4fb87d3c09bec65301d",
+        "indexOut": 2,
+        "amountIn": "766731223618942373",
+        "expectedAmountOut": "8379109570",
+        "swappable": true
+      },
+      {
+        "in": "0x961dd84059505d59f82ce4fb87d3c09bec65301d",
+        "indexIn": 2,
+        "out": "0x1cfa5641c01406ab8ac350ded7d735ec41298372",
+        "indexOut": 0,
+        "amountIn": "10312059918",
+        "expectedAmountOut": "482485571906869127387612",
+        "swappable": true
+      },
+      {
+        "in": "0x961dd84059505d59f82ce4fb87d3c09bec65301d",
+        "indexIn": 2,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 1,
+        "amountIn": "10312059918",
+        "expectedAmountOut": "805725751588905450",
+        "swappable": true
+      }
+    ]
+  },
+  {
+    "pool": {
+      "id": "0x8a4f252812dff2a8636e4f7eb249d8fc2e3bd77f",
+      "tokens": [
+        {
+          "_id": {
+            "$oid": "687deb1892950d9b18215251"
+          },
+          "id": "0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f",
+          "decimals": 18,
+          "symbol": "GHO"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1892950d9b18215252"
+          },
+          "id": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+          "decimals": 8,
+          "symbol": "cbBTC"
+        },
+        {
+          "_id": {
+            "$oid": "687deb1892950d9b18215253"
+          },
+          "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "decimals": 18,
+          "symbol": "WETH"
+        }
+      ],
+      "nTokens": 3,
+      "reserves": [
+        "1556807759777031744991207",
+        "1314470731",
+        "408890945670360073768"
+      ],
+      "totalSupply": "2008978999975801549303",
+      "d": "4581665046523818317321129",
+      "midFee": "1000000",
+      "outFee": "140000000",
+      "feeGamma": "400000000000000",
+      "adminFee": "5000000000",
+      "initialAGamma": "183752478137306770270222288013235334186240000",
+      "futureAGamma": "183752478137306770270222288013235334186240000",
+      "initialAGammaTime": "0",
+      "futureAGammaTime": "0",
+      "precisions": [
+        "1",
+        "10000000000",
+        "1"
+      ],
+      "priceScales": [
+        "118570142934767264227185",
+        "3588927426119799488958"
+      ],
+      "lpTokenAddress": "0x8a4f252812dff2a8636e4f7eb249d8fc2e3bd77f",
+      "basePoolType": "curvev2",
+      "blockTimestamp": 1753082627
+    },
+    "testCases": [
+      {
+        "in": "0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f",
+        "indexIn": 0,
+        "out": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+        "indexOut": 1,
+        "amountIn": "93408465586621904699472",
+        "expectedAmountOut": "73833139",
+        "swappable": true
+      },
+      {
+        "in": "0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f",
+        "indexIn": 0,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 2,
+        "amountIn": "93408465586621904699472",
+        "expectedAmountOut": "23022153553810229304",
+        "swappable": true
+      },
+      {
+        "in": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+        "indexIn": 1,
+        "out": "0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f",
+        "indexOut": 0,
+        "amountIn": "52578829",
+        "expectedAmountOut": "59418653500657941932155",
+        "swappable": true
+      },
+      {
+        "in": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+        "indexIn": 1,
+        "out": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexOut": 2,
+        "amountIn": "52578829",
+        "expectedAmountOut": "15656492899431004142",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 2,
+        "out": "0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f",
+        "indexOut": 0,
+        "amountIn": "4088909456703600737",
+        "expectedAmountOut": "15135142501698616910510",
+        "swappable": true
+      },
+      {
+        "in": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "indexIn": 2,
+        "out": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+        "indexOut": 1,
+        "amountIn": "4088909456703600737",
+        "expectedAmountOut": "12776438",
+        "swappable": true
+      }
+    ]
+  }
+]
