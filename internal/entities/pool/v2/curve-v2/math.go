@@ -115,6 +115,23 @@ func newton_y(ann, gamma *uint256.Int, x []uint256.Int, D *uint256.Int, i int,
 		)
 	}
 
+	// if y use the above formula will lead 1 wei wrong -> lead wrong newton_y result
+	if NumTokens < 3 {
+		y.Div(
+			new(uint256.Int).Exp(
+				D,
+				number.Number_2,
+			),
+			number.SafeMul(
+				&Si,
+				new(uint256.Int).Exp(
+					NumTokensU256,
+					number.Number_2,
+				),
+			),
+		)
+	}
+
 	var yPrev, K0, S, _g1k0, mul1, yfprime uint256.Int
 	for j := 0; j < MaxLoopLimit; j++ {
 		yPrev.Set(y)
@@ -248,6 +265,7 @@ func reductionCoefficient(x []uint256.Int, feeGamma *uint256.Int, K *uint256.Int
 	var NumTokensU256 = uint256.NewInt(uint64(NumTokens))
 
 	var S uint256.Int
+
 	K.Set(number.TenPow(18))
 
 	for _, xi := range x {

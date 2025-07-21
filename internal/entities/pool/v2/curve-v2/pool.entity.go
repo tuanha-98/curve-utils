@@ -144,13 +144,13 @@ func (p *PoolSimulator) GetDy(
 
 	var y uint256.Int
 	var err = newton_y(A, gamma, xp, p.Extra.D, j, &y)
+
 	if err != nil {
 		return err
 	}
 
 	number.SafeSubZ(number.SafeSub(&xp[j], &y), number.SetUint64(1), dy)
 	xp[j].Set(&y)
-
 	if j > 0 {
 		dy.Div(number.SafeMul(dy, Precision), &p.Extra.PriceScales[j-1])
 	}
