@@ -1,6 +1,7 @@
 package curvev2
 
 import (
+	"sort"
 	"time"
 
 	"github.com/holiman/uint256"
@@ -10,23 +11,10 @@ import (
 var NowFunc = time.Now
 
 func sortArray(x []uint256.Int) []uint256.Int {
-	var n = len(x)
-	var ret = make([]uint256.Int, n)
-	for i := 0; i < n; i++ {
-		ret[i].Set(&x[i])
-	}
-
-	for i := 1; i < n; i++ {
-		var key uint256.Int
-		key.Set(&ret[i])
-		var j = i - 1
-		for j >= 0 && ret[j].Cmp(&key) < 0 {
-			ret[j+1].Set(&ret[j])
-			j--
-		}
-		ret[j+1].Set(&key)
-	}
-	return ret
+	sort.Slice(x, func(i, j int) bool {
+		return x[i].Cmp(&x[j]) > 0
+	})
+	return x
 }
 
 func newton_y(ann, gamma *uint256.Int, x []uint256.Int, D *uint256.Int, i int,
