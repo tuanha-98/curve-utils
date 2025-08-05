@@ -142,8 +142,19 @@ func (p *PoolSimulator) GetDy(
 
 	A, gamma := p._A_gamma()
 
+	var D uint256.Int
+
+	D.Set(p.Extra.D)
+
+	if p.Extra.FutureAGammaTime > 0 {
+		err := newton_D(A, gamma, xp, &D)
+		if err != nil {
+			return err
+		}
+	}
+
 	var y uint256.Int
-	var err = newton_y(A, gamma, xp, p.Extra.D, j, &y)
+	var err = newton_y(A, gamma, xp, &D, j, &y)
 
 	if err != nil {
 		return err
