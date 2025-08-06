@@ -12,6 +12,24 @@ import (
 
 var NowFunc = time.Now
 
+// export for testing
+func SortArray(x []uint256.Int) []uint256.Int {
+	return sortArray(x)
+}
+
+func Newton_D(ann, gamma *uint256.Int, x []uint256.Int, K0_prev *uint256.Int,
+	// output
+	D *uint256.Int,
+) error {
+	return newton_D(ann, gamma, x, K0_prev, D)
+}
+
+func GeometricMean(
+	unsorted_x []uint256.Int,
+) *uint256.Int {
+	return geometric_mean(unsorted_x)
+}
+
 func sortArray(x []uint256.Int) []uint256.Int {
 	var n = len(x)
 	var ret = make([]uint256.Int, n)
@@ -90,6 +108,33 @@ func _cbrt(x *uint256.Int, a *uint256.Int) {
 		a.Mul(a, number.TenPow(12))
 	} else if x.Cmp(CbrtConst2) >= 0 {
 		a.Mul(a, number.TenPow(6))
+	}
+}
+
+func geometric_mean(_x []uint256.Int) *uint256.Int {
+	var result uint256.Int
+	_geometric_mean(_x, &result)
+	return &result
+}
+
+// calculates a geometric mean for three numbers.
+func _geometric_mean(_x []uint256.Int, result *uint256.Int) {
+	var NumTokens = len(_x)
+
+	if NumTokens > 2 {
+		prod := number.Div(
+			number.SafeMul(number.Div(number.SafeMul(&_x[0], &_x[1]), number.Number_1e18), &_x[2]),
+			number.Number_1e18,
+		)
+
+		if prod.IsZero() {
+			result.Clear()
+			return
+		}
+
+		_cbrt(prod, result)
+	} else {
+		result.Sqrt(result.Mul(&_x[0], &_x[1]))
 	}
 }
 
@@ -554,6 +599,271 @@ func get_y(
 	default:
 		return fmt.Errorf("unsupported number of tokens: %d", NumTokens)
 	}
+}
+
+func newton_D(ann, gamma *uint256.Int, x_unsorted []uint256.Int, K0_prev *uint256.Int,
+	// output
+	D *uint256.Int,
+) error {
+	var NumTokens = len(x_unsorted)
+	var NumTokensU256 = uint256.NewInt(uint64(NumTokens))
+
+	x := make([]uint256.Int, len(x_unsorted))
+	for i := range x_unsorted {
+		x[i].Set(&x_unsorted[i])
+	}
+	x = sortArray(x)
+
+	if NumTokens > 2 {
+		if x[0].IsZero() || x[0].Cmp(MaxX) >= 0 {
+			return ErrUnsafeX0
+		}
+	} else {
+		if ann.Cmp(number.SubUint64(MinATwo, 1)) <= 0 || ann.Cmp(number.AddUint64(MaxATwo, 1)) >= 0 {
+			return ErrUnsafeA
+		}
+		if gamma.Cmp(number.SubUint64(MinGamma, 1)) <= 0 || gamma.Cmp(number.AddUint64(MaxGammaTwo, 1)) >= 0 {
+			return ErrUnsafeGamma
+		}
+		if x[0].Cmp(MinX0) < 0 || x[0].Cmp(MaxX1) > 0 {
+			return ErrUnsafeX0
+		}
+		if number.Div(number.Mul(&x[1], number.TenPow(18)), &x[0]).Cmp(number.TenPow(14)) < 0 {
+			return ErrUnsafeXi
+		}
+	}
+
+	var S uint256.Int
+	D.Clear()
+	for _, x_i := range x {
+		S.Add(&S, &x_i)
+	}
+
+	if K0_prev.IsZero() {
+		D.Mul(NumTokensU256, geometric_mean(x))
+	} else {
+		if NumTokens > 2 {
+			if S.Cmp(number.TenPow(36)) > 0 {
+				_cbrt(
+					number.Mul(
+						number.Div(
+							number.Mul(number.Div(number.Mul(&x[0], &x[1]), number.TenPow(36)), &x[2]),
+							K0_prev,
+						),
+						number.Mul(number.Number_27, number.TenPow(12)),
+					),
+					D,
+				)
+			} else if S.Cmp(number.TenPow(24)) > 0 {
+				_cbrt(
+					number.Mul(
+						number.Div(
+							number.Mul(number.Div(number.Mul(&x[0], &x[1]), number.TenPow(24)), &x[2]),
+							K0_prev,
+						),
+						number.Mul(number.Number_27, number.TenPow(6)),
+					),
+					D,
+				)
+			} else {
+				_cbrt(
+					number.Mul(
+						number.Div(
+							number.Mul(number.Div(number.Mul(&x[0], &x[1]), number.TenPow(18)), &x[2]),
+							K0_prev,
+						),
+						number.Number_27,
+					),
+					D,
+				)
+			}
+		} else { // twocrypto
+			D.Sqrt(
+				number.Mul(
+					number.Div(
+						number.Mul(number.Mul(number.Number_4, &x[0]), &x[1]),
+						K0_prev,
+					),
+					number.Number_1e18,
+				),
+			)
+
+			if S.Cmp(D) < 0 {
+				D.Set(&S)
+			}
+		}
+	}
+
+	var __g1k0 = number.Add(gamma, number.Number_1e18)
+	var D_prev, K0, diff uint256.Int
+
+	for i := 0; i < 255; i++ {
+		var _g1k0, mul1, mul2, neg_fprime, D_plus, D_minus uint256.Int
+
+		if D.Sign() <= 0 {
+			return ErrUnsafeD
+		}
+		D_prev.Set(D)
+
+		if NumTokens > 2 {
+			K0.Div(
+				number.Mul(
+					number.Mul(
+						number.Div(
+							number.Mul(
+								number.Mul(
+									number.Div(
+										number.Mul(
+											number.Mul(number.Number_1e18, &x[0]),
+											NumTokensU256,
+										),
+										D,
+									),
+									&x[1],
+								),
+								NumTokensU256,
+							),
+							D,
+						),
+						&x[2],
+					),
+					NumTokensU256,
+				),
+				D,
+			)
+		} else {
+			K0.Div(
+				number.Mul(
+					number.Div(
+						number.Mul(
+							number.Mul(
+								number.Number_1e18,
+								number.Mul(NumTokensU256, NumTokensU256),
+							),
+							&x[0],
+						),
+						D,
+					),
+					&x[1],
+				),
+				D,
+			)
+		}
+
+		_g1k0.Set(__g1k0)
+		if _g1k0.Cmp(&K0) > 0 {
+			_g1k0.AddUint64(number.Sub(&_g1k0, &K0), 1)
+		} else {
+			_g1k0.AddUint64(number.Sub(&K0, &_g1k0), 1)
+		}
+
+		mul1.Div(
+			number.Mul(
+				number.Mul(
+					number.Div(
+						number.Mul(
+							number.Div(number.Mul(number.Number_1e18, D), gamma), &_g1k0,
+						),
+						gamma,
+					),
+					&_g1k0,
+				),
+				AMultiplier,
+			),
+			ann,
+		)
+
+		mul2.Div(
+			number.Mul(
+				number.Mul(
+					number.SafeMul(
+						number.Number_2,
+						number.TenPow(18),
+					),
+					NumTokensU256,
+				),
+				&K0,
+			),
+			&_g1k0,
+		)
+
+		neg_fprime.Sub(
+			number.Add(
+				number.Add(&S, number.Div(number.Mul(&S, &mul2), number.Number_1e18)),
+				number.SafeDiv(number.Mul(&mul1, NumTokensU256), &K0),
+			),
+			number.Div(number.Mul(&mul2, D), number.Number_1e18),
+		)
+
+		D_plus.Div(
+			number.SafeMul(D, number.Add(&neg_fprime, &S)),
+			&neg_fprime,
+		)
+
+		D_minus.Div(
+			number.SafeMul(D, D),
+			&neg_fprime,
+		)
+
+		if number.Number_1e18.Cmp(&K0) > 0 {
+			D_minus.Set(
+				number.SafeAdd(
+					&D_minus,
+					number.Div(
+						number.Mul(
+							number.Div(number.SafeMul(D, number.Div(&mul1, &neg_fprime)), number.Number_1e18),
+							number.Sub(number.Number_1e18, &K0),
+						),
+						&K0,
+					),
+				),
+			)
+		} else {
+			D_minus.Set(
+				number.SafeSub(
+					&D_minus,
+					number.Div(
+						number.Mul(
+							number.Div(number.SafeMul(D, number.Div(&mul1, &neg_fprime)), number.Number_1e18),
+							number.Sub(&K0, number.Number_1e18),
+						),
+						&K0,
+					),
+				),
+			)
+		}
+
+		if D_plus.Cmp(&D_minus) > 0 {
+			D.Sub(&D_plus, &D_minus)
+		} else {
+			D.Div(
+				number.Sub(&D_minus, &D_plus),
+				number.Number_2,
+			)
+		}
+
+		if D.Cmp(&D_prev) > 0 {
+			diff.Sub(D, &D_prev)
+		} else {
+			diff.Sub(&D_prev, D)
+		}
+
+		temp := number.TenPow(16)
+		if D.Cmp(number.TenPow(16)) > 0 {
+			temp.Set(D)
+		}
+
+		if number.Mul(&diff, number.TenPow(14)).Cmp(temp) < 0 {
+			for i := range x {
+				var frac = number.Div(number.Mul(&x[i], number.TenPow(18)), D)
+				if frac.Cmp(number.Div(MinFrac, NumTokensU256)) < 0 || frac.Cmp(number.Div(MaxFrac, NumTokensU256)) > 0 {
+					return ErrUnsafeXi
+				}
+			}
+			return nil
+		}
+	}
+	return ErrDDoesNotConverge
 }
 
 func pow_mod256(x, y *uint256.Int) *uint256.Int {

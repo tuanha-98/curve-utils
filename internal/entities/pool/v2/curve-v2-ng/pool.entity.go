@@ -2,6 +2,7 @@ package curvev2ng
 
 import (
 	"strconv"
+	"time"
 
 	"github.com/holiman/uint256"
 	entities "github.com/tuanha-98/curve-utils/internal/entities/pool/v2"
@@ -120,9 +121,11 @@ func (p *PoolSimulator) GetDy(
 	}
 
 	var xp = make([]uint256.Int, p.NumTokens)
+	var x0, x1 uint256.Int
 
 	for k := 0; k < p.NumTokens; k += 1 {
 		if k == i {
+			x0.Set(&p.Reserves[k])
 			number.SafeAddZ(&p.Reserves[k], dx, &xp[k])
 			continue
 		}
@@ -144,6 +147,26 @@ func (p *PoolSimulator) GetDy(
 	}
 
 	A, gamma := p._A_gamma()
+	var D uint256.Int
+	D.Set(p.Extra.D)
+
+	if p.Extra.FutureAGammaTime > time.Now().Unix() {
+		// old xp[i]
+		x0.Mul(&x0, &p.Extra.Precisions[i])
+		if i > 0 {
+			x0.Div(number.Mul(&x0, &p.Extra.PriceScales[i-1]), Precision)
+		}
+		// value xp[i] + dx
+		x1.Set(&xp[i])
+		// backup to old value xp[i]
+		xp[i].Set(&x0)
+		err := newton_D(A, gamma, xp, number.Zero, &D)
+		// restore xp[i] + dx value
+		xp[i].Set(&x1)
+		if err != nil {
+			return err
+		}
+	}
 
 	var y uint256.Int
 	var err = get_y(A, gamma, xp, p.Extra.D, j, &y)
