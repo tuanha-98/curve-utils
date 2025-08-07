@@ -75,7 +75,7 @@ var (
 	MaxFrac = number.TenPow(20)
 
 	MinX0 = number.TenPow(9)
-	MaxX1 = number.TenPow(20)
+	MaxX1 = number.TenPow(33)
 	MaxX  = number.Mul(
 		number.Div(uint256.MustFromHex("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"), number.TenPow(18)),
 		number.Number_27,
