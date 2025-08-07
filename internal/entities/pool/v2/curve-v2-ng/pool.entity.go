@@ -2,7 +2,6 @@ package curvev2ng
 
 import (
 	"strconv"
-	"time"
 
 	"github.com/holiman/uint256"
 	entities "github.com/tuanha-98/curve-utils/internal/entities/pool/v2"
@@ -150,7 +149,7 @@ func (p *PoolSimulator) GetDy(
 	var D uint256.Int
 	D.Set(p.Extra.D)
 
-	if p.Extra.FutureAGammaTime > time.Now().Unix() {
+	if p.Extra.FutureAGammaTime > NowFunc().Unix() {
 		// old xp[i]
 		x0.Mul(&x0, &p.Extra.Precisions[i])
 		if i > 0 {
@@ -169,7 +168,7 @@ func (p *PoolSimulator) GetDy(
 	}
 
 	var y uint256.Int
-	var err = get_y(A, gamma, xp, p.Extra.D, j, &y)
+	var err = get_y(A, gamma, xp, &D, j, &y)
 	if err != nil {
 		return err
 	}
