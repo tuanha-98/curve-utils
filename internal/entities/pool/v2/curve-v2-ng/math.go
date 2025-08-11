@@ -533,7 +533,7 @@ func get_y(
 		if sqrt_arg.Sign() > 0 {
 			sqrt_val.Sqrt(sqrt_arg)
 		} else {
-			return newton_y(_ann, _gamma, x, _D, i, y, nil)
+			return newton_y(_ann, _gamma, x, _D, i, nil, y)
 		}
 
 		var b_cbrt *int256.Int
