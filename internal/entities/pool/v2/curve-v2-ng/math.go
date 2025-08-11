@@ -24,10 +24,34 @@ func Newton_D(ann, gamma *uint256.Int, x []uint256.Int, K0_prev *uint256.Int,
 	return newton_D(ann, gamma, x, K0_prev, D)
 }
 
+func Newton_y(
+	ann, gamma *uint256.Int, x []uint256.Int, D *uint256.Int, i int, lim_mul *uint256.Int,
+	// output
+	y *uint256.Int,
+) error {
+	return newton_y(ann, gamma, x, D, i, lim_mul, y)
+}
+
 func GeometricMean(
 	unsorted_x []uint256.Int,
 ) *uint256.Int {
 	return geometric_mean(unsorted_x)
+}
+
+func ReductionCoefficient(
+	x []uint256.Int, feeGamma *uint256.Int,
+	// output
+	K *uint256.Int,
+) error {
+	return reductionCoefficient(x, feeGamma, K)
+}
+
+func Cbrt(x *uint256.Int) *uint256.Int {
+	return cbrt(x)
+}
+
+func SnekmateLog2(x *uint256.Int, round bool) *uint256.Int {
+	return snekmate_log_2(x, round)
 }
 
 func sortArray(x []uint256.Int) []uint256.Int {

@@ -22,12 +22,26 @@ func Newton_D(ann, gamma *uint256.Int, x []uint256.Int,
 	return newton_D(ann, gamma, x, D)
 }
 
+func Newton_y(ann, gamma *uint256.Int, x []uint256.Int, D *uint256.Int, i int,
+	// output
+	y *uint256.Int,
+) error {
+	return newton_y(ann, gamma, x, D, i, y)
+}
+
 func GeometricMean(
 	unsorted_x []uint256.Int, sort bool,
 	// output
 	D *uint256.Int,
 ) error {
 	return geometricMean(unsorted_x, sort, D)
+}
+
+func ReductionCoefficient(x []uint256.Int, feeGamma *uint256.Int,
+	// output
+	K *uint256.Int,
+) error {
+	return reductionCoefficient(x, feeGamma, K)
 }
 
 func sortArray(x []uint256.Int) []uint256.Int {
@@ -330,8 +344,24 @@ func newton_D(ann, gamma *uint256.Int, x_unsorted []uint256.Int,
 		D_prev.Set(D)
 		var K0 = number.TenPow(18)
 
-		for _, _x := range x {
-			K0.Div(number.Mul(number.Mul(K0, &_x), NumTokensU256), D)
+		if NumTokens > 2 {
+			for _, _x := range x {
+				K0.Div(number.Mul(number.Mul(K0, &_x), NumTokensU256), D)
+			}
+		} else {
+			K0.Div(
+				number.Mul(
+					number.Div(
+						number.Mul(
+							number.Mul(K0, number.Mul(NumTokensU256, NumTokensU256)),
+							&x[0],
+						),
+						D,
+					),
+					&x[1],
+				),
+				D,
+			)
 		}
 
 		_g1k0.Add(gamma, number.Number_1e18)
@@ -474,19 +504,32 @@ func geometricMean(
 	for i := 0; i < 255; i += 1 {
 		var DPrev uint256.Int
 		DPrev.Set(D)
-		var tmp = number.TenPow(18)
-		for _, _x := range x {
-			tmp = number.Div(number.Mul(tmp, &_x), D)
-		}
-		D.Div(
-			number.Mul(
-				D,
-				number.Add(
-					number.Mul(number.Sub(NumTokensU256, number.Number_1), number.Number_1e18), tmp,
+		if NumTokens > 2 {
+			var tmp = number.TenPow(18)
+			for _, _x := range x {
+				tmp = number.Div(number.Mul(tmp, &_x), D)
+			}
+			D.Div(
+				number.Mul(
+					D,
+					number.Add(
+						number.Mul(number.Sub(NumTokensU256, number.Number_1), number.Number_1e18), tmp,
+					),
 				),
-			),
-			number.Mul(NumTokensU256, number.Number_1e18),
-		)
+				number.Mul(NumTokensU256, number.Number_1e18),
+			)
+		} else {
+			D.Div(
+				number.Add(
+					D,
+					number.Div(
+						number.Mul(&x[0], &x[1]),
+						D,
+					),
+				),
+				NumTokensU256,
+			)
+		}
 		if D.Cmp(&DPrev) > 0 {
 			diff.Sub(D, &DPrev)
 		} else {
