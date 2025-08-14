@@ -15,6 +15,7 @@ type PoolSimulator struct {
 	NumTokensU256     uint256.Int
 	Tokens            []token.Token
 	Extra             Extra
+	UseDynamicFee     bool
 }
 
 func NewPool(
@@ -54,7 +55,7 @@ func NewPool(
 	maxOracleDnPow := number.TenPow(18)
 	for range maxTicks {
 		maxOracleDnPow = number.SafeDiv(
-			number.Mul(maxOracleDnPow, number.Number_1e18),
+			number.Mul(maxOracleDnPow, &A),
 			Aminus1,
 		)
 	}
@@ -68,6 +69,7 @@ func NewPool(
 		NumTokens:     entityPool.NTokens,
 		NumTokensU256: *number.SetUint64(uint64(entityPool.NTokens)),
 		Tokens:        tokens,
+		UseDynamicFee: entityPool.UseDynamicFee,
 
 		Extra: Extra{
 			A:                   &A,
@@ -161,10 +163,12 @@ func (p *PoolSimulator) calcSwapOut(
 	y.Set(p.getBandY(out.N2))
 	inAmountLeft.Set(inAmount)
 
-	antifee.Div(
-		Number_1e36,
-		temp.Sub(number.Number_1e18, minUint256(p.Extra.SwapFee, tenPow18Minus1)),
-	)
+	if !p.UseDynamicFee {
+		antifee.Div(
+			Number_1e36,
+			temp.Sub(number.Number_1e18, minUint256(p.Extra.SwapFee, tenPow18Minus1)),
+		)
+	}
 
 	j := maxTicksUnit
 	for i := range maxTicks + maxSkipTicks {
@@ -180,13 +184,17 @@ func (p *PoolSimulator) calcSwapOut(
 			f.Mul(p.Extra.A, &y0).Mul(&f, po).Div(&f, poUp).Mul(&f, po).Div(&f, number.Number_1e18)
 			g.Mul(p.Extra.Aminus1, &y0).Mul(&g, poUp).Div(&g, po)
 			inv.Add(&f, &x).Mul(&inv, temp.Add(&g, &y))
-			dynamicFee.Set(maxUint256(p.getDynamicFee(po, poUp), p.Extra.SwapFee))
+			if p.UseDynamicFee {
+				dynamicFee.Set(maxUint256(p.getDynamicFee(po, poUp), p.Extra.SwapFee))
+			}
 		}
 
-		antifee.Div(
-			Number_1e36,
-			temp.Sub(number.Number_1e18, minUint256(&dynamicFee, tenPow18Minus1)),
-		)
+		if p.UseDynamicFee {
+			antifee.Div(
+				Number_1e36,
+				temp.Sub(number.Number_1e18, minUint256(&dynamicFee, tenPow18Minus1)),
+			)
+		}
 
 		if j != maxTicksUnit {
 			var tick uint256.Int

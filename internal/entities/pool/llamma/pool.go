@@ -27,4 +27,5 @@ type Pool struct {
 	BorrowedPrecision   string   `json:"borrowedPrecision"`
 	CollateralPrecision string   `json:"collateralPrecision"`
 	BlockTimestamp      int64    `json:"blockTimestamp,omitempty"`
+	UseDynamicFee       bool     `json:"useDynamicFee,omitempty"`
 }
